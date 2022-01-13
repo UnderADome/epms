@@ -54,6 +54,9 @@
          * 在这里一共两类事件：edit和delete
          */
         table.on('tool(currentTableFilter)', function (obj) {
+            //仅仅通过table.on无法获取行数据
+
+
             if (obj.event === 'edit'){  //监听add动作
                 var content = miniPage.getHrefContent('project/EditMeeting.html');
                 var openWH = miniPage.getOpenWidthHeight();
@@ -81,8 +84,11 @@
                      */
                     //layer.alert("index：" +  (index == null) + "    "  +JSON.stringify(index.data));
                     //layer.alert(obj.tr.data);
-                    var checkStatus = table.checkStatus('currentTableId');
-                    layer.alert(checkStatus.data);
+                    //var checkStatus = table.checkStatus('currentTableId');
+                    //layer.alert(JSON.stringify(checkStatus.data));
+                    //layer.alert(obj.data);
+                    layer.alert(JSON.stringify(obj.data));
+                    console.log(JSON.stringify(obj.data));
                     obj.del();
                     layer.close(index);
                 });
