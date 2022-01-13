@@ -2,6 +2,8 @@ package com.wisdri.epms.Controller;
 
 import com.wisdri.epms.Entity.TTest;
 import com.wisdri.epms.Entity.WangEditor;
+import com.wisdri.epms.ResultEntity.MeetingResult;
+import org.apache.tomcat.jni.Local;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.ResourceUtils;
@@ -12,8 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.util.*;
 
 @Controller
 public class AppController {
@@ -124,7 +126,7 @@ public class AppController {
                 values.add(value);
 
             }catch (Exception e){
-                return null;
+                //return null;  //似乎没有什么必要
             }
         }
         WangEditor wangEditor = new WangEditor();
@@ -143,4 +145,31 @@ public class AppController {
         System.out.println(ddd.getText() + " " +ddd.getTitle() + "  " + ddd.getEditortext());
     }
 
+    @RequestMapping(value="test/ReadMeetingInfo", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object> ReadMeetingInfo(@RequestParam("page") String page, @RequestParam("limit") String limit){
+        System.out.println("查询会议基本信息");
+
+        MeetingResult mResult = new MeetingResult();
+        mResult.id = "111111111111111111111111111111111111111111";
+        mResult.content = "111111111111111111111111111111111111111";
+        mResult.meetingTime = LocalDateTime.now();
+        mResult.infoCreateTime = LocalDateTime.now();
+        mResult.organize = "1111111111111111111111111111111111111";
+        mResult.partner = "12312312312312312312312312312312313";
+        mResult.question = "12312312123123123123123123123123";
+        mResult.type = "23412312312312312312312312312";
+
+        ArrayList<MeetingResult> mResultList = new ArrayList<MeetingResult>();
+        mResultList.add(mResult);
+        mResultList.add(mResult);
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("code", 0);
+        map.put("msg", "消息传递成功");
+        map.put("count", "100");
+        map.put("data", mResultList);
+
+        return  map;
+    }
 }

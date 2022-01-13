@@ -26,6 +26,12 @@
               "href": "project/AddMeeting.html",
               "icon": "fa fa-tachometer",
               "target": "_self"
+            },
+            {
+              "title": "查看会议",
+              "href": "project/ReadMeetingInfo.html",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
             }
           ]
         },

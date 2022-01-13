@@ -1,0 +1,92 @@
+<div class="layuimini-container layuimini-page-anim">
+    <div class="layuimini-main">
+
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+        </script>
+    </div>
+</div>
+
+<!--
+    因为col后面的[[表达式 在thymeleaf被认为是内联表达式,所以渲染错误
+    讲内联样式禁用，可以规避这个问题
+-->
+<script th:inline="none">
+    layui.use(['form', 'table','miniPage','element', 'layer'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table,
+            miniPage = layui.miniPage,
+            layer = layui.layer;
+
+        table.render({
+            elem: '#currentTableId',
+            url: 'test/ReadMeetingInfo',
+            method: 'POST',
+            toolbar: '#toolbarDemo',
+            defaultToolbar: ['filter', 'exports', 'print', {
+                title: '提示',
+                layEvent: 'LAYTABLE_TIPS',
+                icon: 'layui-icon-tips'
+            }],
+            cols: [[
+                //{type: "checkbox", width: 50},
+                //{field: 'id', width: 80, title: 'ID', sort: true},
+                {field: 'meetingTime', width: 120, title: '会议时间',  sort: true},
+                {field: 'organize',    width: 150, title: '会议组织者', sort: true},
+                {field: 'type',        width: 120, title: '会议类型'},
+                {field: 'partner',     width: 120, title: '参与人员'},
+                {field: 'content',                 title: '会议内容', align: "center"},
+
+                {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
+            ]],
+            limits: [10, 15, 20, 25, 50, 100],
+            limit: 15,
+            page: true,
+            skin: 'line'
+        });
+
+        //对点击事件进行监听
+        /**
+         * 在这里一共两类事件：edit和delete
+         */
+        table.on('tool(currentTableFilter)', function (obj) {
+            if (obj.event === 'edit'){  //监听add动作
+                var content = miniPage.getHrefContent('project/EditMeeting.html');
+                var openWH = miniPage.getOpenWidthHeight();
+
+                var index = layer.open({
+                    title:'编辑会议',
+                    type:1,
+                    shade:0.2,
+                    maxmin:true,
+                    shadeClose:true,
+                    area:[openWH[0] + 'px', openWH[1] + 'px'],
+                    offset:[openWH[2] + 'px', openWH[3] + 'px'],
+                    content:content
+                });
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+
+                return false;
+            }
+            else if(obj.event === 'delete'){
+                layer.confirm('是否要删除该信息？', function (index) {
+                    /**
+                     * 执行相关删除逻辑
+                     */
+                    //layer.alert("index：" +  (index == null) + "    "  +JSON.stringify(index.data));
+                    //layer.alert(obj.tr.data);
+                    var checkStatus = table.checkStatus('currentTableId');
+                    layer.alert(checkStatus.data);
+                    obj.del();
+                    layer.close(index);
+                });
+            }
+        });
+    })
+</script>

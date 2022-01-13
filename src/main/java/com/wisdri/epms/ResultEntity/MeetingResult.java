@@ -1,9 +1,12 @@
-package com.wisdri.epms.Entity;
+package com.wisdri.epms.ResultEntity;
 
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -13,7 +16,7 @@ import java.util.List;
 @Data
 @Setter
 @Getter
-public class Meeting {
+public class MeetingResult {
     public String id;
     /**
      * 会议纪要
