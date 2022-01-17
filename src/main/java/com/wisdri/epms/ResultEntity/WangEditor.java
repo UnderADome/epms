@@ -1,4 +1,4 @@
-package com.wisdri.epms.Entity;
+package com.wisdri.epms.ResultEntity;
 
 import lombok.Getter;
 import lombok.Setter;

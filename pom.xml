@@ -65,6 +65,21 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<!--分页插件-->
+		<!--springboot2.6中默认禁止循环依赖，1.4.1以下均不能直接适配2.6-->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.4.1</version>
+		</dependency>
+
+		<!--分页插件-->
+<!--		<dependency>-->
+<!--			&lt;!&ndash;mybatis版&ndash;&gt;-->
+<!--			<groupId>com.github.pagehelper</groupId>-->
+<!--			<artifactId>pagehelper</artifactId>-->
+<!--			<version>5.1.2-beta</version>-->
+<!--		</dependency>-->
 	</dependencies>
 
 	<build>

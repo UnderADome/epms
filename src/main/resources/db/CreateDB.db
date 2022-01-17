@@ -1,2 +1,16 @@
 create database epms;
 use epms;
+
+drop table meeting;
+create table meeting(
+id int(11) primary key auto_increment,
+content text,
+question text,
+partner varchar(100),
+meetingTime date,
+infoCreateTime datetime,
+organize varchar(100),
+type varchar(25),
+userId int
+);
+select * from meeting;

@@ -1,0 +1,316 @@
+<div class="layuimini-container layuimini-page-anim">
+    <div class="layuimini-main">
+
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>填写会议基础内容</legend>
+        </fieldset>
+
+        <form class="layui-form" action="" id="form" name="form">
+            <!--富文本编辑器-->
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">会议纪要</label>
+                <div class="layui-input-inline" id="editor">   <!--style="margin: 100px 0 100px 0"-->
+                    <p>请输入会议纪要</p>
+                </div>
+            </div>
+            <!--隐藏的文本域，用于同步富文本中的文本内容，然后向后台传值
+            content
+            -->
+            <div class="layui-form-item layui-form-text" style="display: none;">
+                <div class="layui-input-block">
+                    <textarea id="content" name="content" class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <!--会议中提出的问题
+            question
+            -->
+            <div class="layui-form-item layui-form-text">
+                <label class="layui-form-label">会议中提出的问题</label>
+                <div class="layui-input-block">
+                    <textarea id="question" name="question" placeholder="请输入内容" class="layui-textarea"></textarea>
+                </div>
+            </div>
+            <!--参与人员
+            partner
+            -->
+            <div class="layui-form-item">
+                <label class="layui-form-label">参与人员</label>
+                <div class="layui-input-block">
+                    <input id="partner" name="partner" type="text"  lay-verify="title" autocomplete="off"
+                           placeholder="请输入内容" class="layui-input">
+                </div>
+            </div>
+            <!--组织人员
+            organize
+            -->
+            <div class="layui-form-item">
+                <label class="layui-form-label">会议组织者</label>
+                <div class="layui-input-block">
+                    <input id="organize" name="organize" type="text"  lay-verify="title" autocomplete="off"
+                           placeholder="会议组织者" class="layui-input">
+                </div>
+            </div>
+            <!--会议类型
+            type
+            -->
+            <div class="layui-form-item">
+                <label class="layui-form-label">会议类型</label>
+                <div class="layui-input-block">
+                    <select id="type" name="type" lay-filter="type">
+                        <option value=""></option>
+                        <option value="1">项目进度会议</option>
+                        <option value="2">工作部署会议</option>
+                        <option value="3">交流会</option>
+                    </select>
+                </div>
+            </div>
+            <!--开会时间
+            meetingTime
+            -->
+            <div class="layui-inline">
+                <label class="layui-form-label">开会日期</label>
+                <div class="layui-input-inline">
+                    <input id="meetingTime" name="meetingTime" class="layui-input" type="text" lay-verity="date"
+                           placeholder="yyyy-MM-dd" autocomplete="off" >
+                </div>
+            </div>
+            <!--立即提交和重置-->
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <button class="layui-btn" lay-submit="" lay-filter="submitAll">立即提交</button>
+                    <button id="reset" type="reset" class="layui-btn layui-btn-primary">重置</button>
+                </div>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<!--渲染select-->
+<script type="text/javascript">
+    layui.use(['form'], function () {
+        layui.form.render("select");
+    });
+</script>
+
+<!--处理日期的显示-->
+<script type="text/javascript">
+    layui.use(['form', 'laydate'], function () {
+        var laydate = layui.laydate;
+        laydate.render({
+            elem: '#meetingTime'
+        })
+    })
+</script>
+
+<!--向textarea中同步editor中的值-->
+<!--没有用，更改了写的位置-->
+<script type="text/javascript">
+    /**
+     *
+     * 有一点让人非常不能理解的问题是：
+     * layui这里拿到的wangeditor，只能在最开始定义的位置拿到
+     * 换了位置重新new   var editor = new wangEditor('#editor');
+     * 就不行了
+     *
+     * **/
+
+
+
+
+    // var $ = layui.jquery;
+    // layui.use('wangEditor', function () {
+    //     var wangEditor = layui.wangEditor;
+    //     var editor = new wangEditor('#editor');
+    //     editor.customConfig.onchange = function (html) {
+    //         console.log("变化：" + html);
+    //         $('#editortext').val(html);
+    //     }
+    // });
+
+</script>
+
+<!--处理表单提交-->
+<script type="text/javascript">
+    layui.use(['form', 'layer', 'laydate'], function () {
+        var $ = layui.jquery, layer = layui.layer, element = layui.element;
+        var form = layui.form;
+        form.on('submit(submitAll)', function (data) {
+            console.log("当前容器的全部表单字段\n" + JSON.stringify(data.field)); //当前容器的全部表单字段，名值对形式：{name: value}
+            var meetingContent = JSON.stringify(data.field);
+            //console.log( "ssssss\n" + JSON.stringify($('#form').serialize()));
+            $.ajax({
+                url: 'meeting/SubmitMeeting',
+                type: 'post',
+                dataType: 'text',  //从后台返回的值的类型
+                contentType: 'application/json',
+                data: meetingContent,
+                //data:$('#form').serialize(),
+                success: function (data1) {
+                    console.log(data1);
+                    console.log("ajax返回值：\n" + JSON.stringify(data1.field));
+                    layer.msg("上传成功！");
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    // 状态码
+                    console.log(XMLHttpRequest.status);
+                    // 状态
+                    console.log(XMLHttpRequest.readyState);
+                    // 错误信息
+                    console.log(textStatus);
+                    // 打印堆栈
+                    //console.log(errorThrown);
+                }
+            });
+
+            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
+        });
+    });
+</script>
+
+<!--清除所有-->
+<script type="text/javascript">
+    var $ = layui.jquery;
+    $('#reset').click(function () {
+        console.log("使用reset");
+        layui.use('wangEditor', function () {
+            var wangEditor = layui.wangEditor;
+            var editor = new wangEditor('#editor');
+            //这里不给create就不能清除
+            //editor.create();
+            console.log(editor == null);
+            // console.log((editor.txt.html()));
+            // console.log((editor.txt.text()));
+            //editor.txt.clear();
+            //editor.txt.html('<p>请输入会议纪要</p>');
+        });
+        initEditor();
+    });
+
+</script>
+<!--初始化editor-->
+<script type="text/javascript">
+    initEditor();
+    /**
+     function initEditor() {
+        layui.use(['layer', 'wangEditor'], function () {
+            var $ = layui.jquery,
+                layer = layui.layer,
+                wangEditor = layui.wangEditor;
+            var editor = new wangEditor('#editor');
+            //这里默认为true，即表示能够使用网络图片
+            editor.customConfig.showLinkImg = false;
+            //配置服务器地址
+            //editor.customConfig.uploadImgServer = "api/upload.json";
+            //应当修改为自己的URL 但是这里只能上传网络图片
+            editor.customConfig.uploadImgServer = "test/submit";
+            //uploadImgShowBase64（base64 格式）和 uploadImgServer（上传图片到服务器）两者不能同时使用！！！
+            //editor.customConfig.uploadImgShowBase64 = true;
+            editor.customConfig.uploadFileName = "pictures";
+            //过滤掉复制文本的样式  此处关闭了该功能
+            editor.customConfig.pasteFilterStyle = false;
+            //一次最多上传5张图片
+            //editor.customConfig.uploadImgMaxLength = 5;
+            //回调函数，对上传图片的不同阶段，做相应处理
+            editor.customConfig.uploadImgHooks = {
+                //上传图片超时
+                timeout: function (xhr, editor) {
+                    layer.msg('上传超时！')
+                },
+                //图片上传并返回了结果，想要自己把图片插入到编辑器中
+                //例如服务器端返回的不是 { errno: 0, data: [...] } 这种格式，可使用 customInsert
+                customInsert: function (insertImg, result, editor){
+                    console.log("服务器返回结果：" + result.code + "   " + result.data);
+                    if (result.code == 0){  //这里code的值是自己定义。定义为0就继续传值
+                        var urls = result.data;
+                        //console.log("图片的数量："+url.length)
+                        console.log(urls);
+                        urls.forEach(function (e) {
+                            insertImg(e);
+                            console.log("需要插入的图片："+e)
+                        });
+                    }else{
+                        layer.msg(result.msg);
+                    }
+                }
+            };
+            editor.customConfig.customAlert = function (info) {
+                layer.msg(info);
+            }
+
+            editor.customConfig.onchange = function (html) {
+                console.log("变化：" + html);
+                $('#editortext').val(html);
+            }
+
+            editor.create();
+            editor.txt.clear();
+            editor.txt.html('<p>请输入会议纪要</p>');
+        });
+    }
+     */
+    function initEditor() {
+        layui.use(['layer', 'wangEditor'], function () {
+            var $ = layui.jquery,
+                layer = layui.layer,
+                wangEditor = layui.wangEditor;
+            var editor = new wangEditor('#editor');
+            //这里默认为true，即表示能够使用网络图片
+            editor.customConfig.showLinkImg = false;
+
+            //过滤掉复制文本的样式  此处关闭了该功能
+            editor.customConfig.pasteFilterStyle = false;
+
+            //自定义上传
+            editor.customConfig.customUploadImg = async  (files, insert) => {
+                var daw = new FormData();
+                for (var i = 0; i < files.length; i++) {
+                    daw.append("pictures", files[i]);
+                    console.log(files[i].name)
+                }
+                console.log("打印FormData  " + daw.toString());
+                for (var [a, b] of daw.entries()) {
+                    console.log(a, b);
+                }
+                index = layer.load(1, {
+                    shade: [0.1, '#fff'] //0.1透明度的白色背景
+                });
+
+                $.ajax({
+                    url: "meeting/submitMulti",
+                    type: "POST",
+                    data: daw,
+                    async: false,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (result) {
+                        layer.close(index);
+                        if (result.code == 0) {
+                            for (var j = 0; j < result.data.length; j++) {
+                                insert(result.data[j]);
+                            }
+                        } else {
+                            layer.msg(da.msg);
+                            return;
+                        }
+                    },
+                });
+            };
+            editor.customConfig.customAlert = function (info) {
+                layer.msg(info);
+            }
+
+            editor.customConfig.onchange = function (html) {
+                console.log("变化：" + html);
+                $('#content').val(html);
+            }
+
+            editor.create();
+            editor.txt.clear();
+            editor.txt.html('<p>请输入会议纪要</p>');
+
+        });
+    }
+</script>

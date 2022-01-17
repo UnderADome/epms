@@ -1,9 +1,11 @@
 package com.wisdri.epms.Entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -14,6 +16,9 @@ import java.util.List;
 @Setter
 @Getter
 public class Meeting {
+    /**
+     * id
+     */
     public String id;
     /**
      * 会议纪要
@@ -28,13 +33,15 @@ public class Meeting {
      */
     public String partner;
     /**
-     * 会议开启时间
+     * 开会时间
      */
-    public LocalDateTime meetingTime;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd",timezone = "GMT+8")
+    public LocalDate meetingTime;
     /**
      * 会议信息创建时间
      */
-    public LocalDateTime infoCreateTime;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd",timezone = "GMT+8")
+    public LocalDate infoCreateTime;
     /**
      * 组织者
      */
