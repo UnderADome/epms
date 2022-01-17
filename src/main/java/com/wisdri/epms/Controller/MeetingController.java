@@ -2,8 +2,6 @@ package com.wisdri.epms.Controller;
 
 import com.github.pagehelper.Page;
 import com.wisdri.epms.Entity.Meeting;
-import com.wisdri.epms.Entity.TTest;
-import com.wisdri.epms.ResultEntity.MeetingResult;
 import com.wisdri.epms.ResultEntity.WangEditor;
 import com.wisdri.epms.Service.MeetingService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +14,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.net.URLDecoder;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -35,7 +32,7 @@ public class MeetingController {
         else if (content.contains("AddMeeting"))
             return "project/"+content;
         else
-            return "project/404Error";
+            return "project/4041";
     }
 
     /**
