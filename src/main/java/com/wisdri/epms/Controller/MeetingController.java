@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -24,16 +25,42 @@ public class MeetingController {
     @Autowired
     public MeetingService meetingService;
 
-    @RequestMapping("project/{content}")
-    public String ShowMeetingPages(@PathVariable("content") String content){
-        System.out.println("会议页面："+content);
-        if (content.contains("ReadMeetingInfo"))
-            return "project/"+content;
-        else if (content.contains("AddMeeting"))
-            return "project/"+content;
-        else
-            return "project/4041";
+    //这样一下把所有的页面都包了，不可取
+//    @RequestMapping("project/{content}")
+//    public String ShowMeetingPages(@PathVariable String content){
+//        System.out.println("会议页面："+content);
+//        if (content.contains("ReadMeetingInfo"))
+//            return "project/"+content;
+//        else if (content.contains("AddMeeting"))
+//            return "project/"+content;
+//        else
+//            return "project/4041";
+//    }
+    @RequestMapping(value="project/ReadMeetingInfo")
+    public String ShowReadMeetingInfo(){
+        return "project/ReadMeetingInfo";
     }
+    @RequestMapping(value="project/AddMeeting")
+    public String ShowAddMeeting(){
+        return "project/AddMeeting";
+    }
+//    @RequestMapping(value="project/EditMeetingPage")
+//    public String ShowEditMeetingPage(){
+//        System.out.println("显示EditMeeting页面");
+//        return "project/EditMeeting";
+//    }
+    @RequestMapping(value="project/EditMeeting")
+    public ModelAndView ShowEditMeetingContent(@RequestParam String id){
+        System.out.println("显示Edit画面：" + id);
+        ModelAndView view = new ModelAndView();
+        //查询
+        Meeting meeting = meetingService.GetMeetingById(Integer.parseInt(id));
+        System.out.println(meeting.meetingTime);
+        view.addObject(meeting);
+        view.setViewName("project/EditMeeting.html");
+        return view;
+    }
+
 
     /**
      * 批量存储从富文本中上传的图片
@@ -129,12 +156,6 @@ public class MeetingController {
     public void DeleteMeeting(@RequestParam String id){  //并非一定要指定@RequestParam的详细参数
         System.out.println("执行删除函数, 获取的id："+id);
         meetingService.DeleteMeeting(id);
-    }
-
-    @RequestMapping(value="meeting/EditMeeting", method = RequestMethod.POST)
-    public String ShowEditMeeting(@RequestParam String id){
-        System.out.println("显示Edit画面：" + id);
-        return "project/EditMeeting.html";
     }
 
 }

@@ -40,4 +40,12 @@ public class MeetingService {
         meetingMapper.DeleteMeetingById(Integer.parseInt(id));
     }
 
+    /**
+     * 查询会议信息 by id
+     * @param id
+     * @return
+     */
+    public Meeting GetMeetingById(int id){
+        return meetingMapper.GetMeetingById(id);
+    }
 }

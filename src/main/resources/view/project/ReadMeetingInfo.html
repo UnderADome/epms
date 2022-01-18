@@ -11,6 +11,13 @@
 </div>
 
 <!--
+弹出层回显 资料
+https://www.cnblogs.com/dingxu/p/9594295.html
+-->
+
+
+
+<!--
     因为col后面的[[表达式 在thymeleaf被认为是内联表达式,所以渲染错误
     讲内联样式禁用，可以规避这个问题
 -->
@@ -57,10 +64,15 @@
             //obj可以获取到行信息
 
             if (obj.event === 'edit'){  //监听add动作
-                var content = miniPage.getHrefContent('project/EditMeeting'+"?id="+obj.data.id);  //这里是行数据的id
+                console.log(obj.data.id);
+                var str = 'project/EditMeeting'+"?id="+obj.data.id;
+                console.log(str);
+                var content = miniPage.getHrefContent(str);  //这里是行数据的id
+                                                                                            //这里只能get
+                //var content = miniPage.getHrefContent('project/EditMeetingPage');
                 var openWH = miniPage.getOpenWidthHeight();
 
-                var index = layer.open({
+                var index = layer.open({  //layui.open弹窗功能
                     title:'编辑会议',
                     type:1,
                     shade:0.2,
@@ -68,7 +80,19 @@
                     shadeClose:true,
                     area:[openWH[0] + 'px', openWH[1] + 'px'],
                     offset:[openWH[2] + 'px', openWH[3] + 'px'],
-                    content:content
+                    content:content,
+                    // success:function (layero, index) {
+                    //     // var form = $(layero).find("#form");
+                    //     // form.find("#id").val(obj.data.id);
+                    //     console.log(obj.data.id  + " 已写入")
+                    //     var body = layer.getChildFrame('body', index);
+                    //     var iframeWin = window[layero.find('iframe')[0]['name']];
+                    //     body.find('#id').val(obj.data.id)
+                    //     layui.form.render();
+                    // },
+                    // error:function () {
+                    //     console.log("未执行success")
+                    // }
                 });
                 $(window).on("resize", function () {
                     layer.full(index);

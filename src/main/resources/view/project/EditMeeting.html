@@ -5,12 +5,19 @@
             <legend>填写会议基础内容</legend>
         </fieldset>
 
-        <form class="layui-form" action="" id="form" name="form">
+        <form class="layui-form" action="" id="form" name="form" th:object="${meeting}">
+
+            <!--隐藏id
+            id
+            -->
+            <div class="layui-form-item layui-form-text">
+                <input id="id" name="id" type="text" class="layui-input"
+                       th:value="*{id}" style="display: none;">
+            </div>
             <!--富文本编辑器-->
             <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">会议纪要</label>
                 <div class="layui-input-inline" id="editor">   <!--style="margin: 100px 0 100px 0"-->
-                    <p>请输入会议纪要</p>
                 </div>
             </div>
             <!--隐藏的文本域，用于同步富文本中的文本内容，然后向后台传值
@@ -27,7 +34,7 @@
             <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">会议中提出的问题</label>
                 <div class="layui-input-block">
-                    <textarea id="question" name="question" placeholder="请输入内容" class="layui-textarea"></textarea>
+                    <textarea id="question" name="question" placeholder="请输入内容" class="layui-textarea" th:text="*{question}"></textarea>
                 </div>
             </div>
             <!--参与人员
@@ -37,7 +44,7 @@
                 <label class="layui-form-label">参与人员</label>
                 <div class="layui-input-block">
                     <input id="partner" name="partner" type="text"  lay-verify="title" autocomplete="off"
-                           placeholder="请输入内容" class="layui-input">
+                           placeholder="请输入内容" class="layui-input" th:value="*{partner}">
                 </div>
             </div>
             <!--组织人员
@@ -47,7 +54,7 @@
                 <label class="layui-form-label">会议组织者</label>
                 <div class="layui-input-block">
                     <input id="organize" name="organize" type="text"  lay-verify="title" autocomplete="off"
-                           placeholder="会议组织者" class="layui-input">
+                           placeholder="会议组织者" class="layui-input" th:value="*{organize}">
                 </div>
             </div>
             <!--会议类型
@@ -58,9 +65,9 @@
                 <div class="layui-input-block">
                     <select id="type" name="type" lay-filter="type">
                         <option value=""></option>
-                        <option value="1">项目进度会议</option>
-                        <option value="2">工作部署会议</option>
-                        <option value="3">交流会</option>
+                        <option value="项目进度会议" th:selected="${meeting.type == '项目进度会议'}">项目进度会议</option>
+                        <option value="工作部署会议" th:selected="${meeting.type == '工作部署会议'}">工作部署会议</option>
+                        <option value="交流会" th:selected="${meeting.type == '交流会'}">交流会</option>
                     </select>
                 </div>
             </div>
@@ -71,7 +78,7 @@
                 <label class="layui-form-label">开会日期</label>
                 <div class="layui-input-inline">
                     <input id="meetingTime" name="meetingTime" class="layui-input" type="text" lay-verity="date"
-                           placeholder="yyyy-MM-dd" autocomplete="off" >
+                           placeholder="yyyy-MM-dd" autocomplete="off" th:value="*{meetingTime}">
                 </div>
             </div>
             <!--立即提交和重置-->
@@ -87,6 +94,9 @@
     </div>
 </div>
 
+
+
+<!----------------------------以下复用编辑页面代码-------------------------------->
 <!--渲染select-->
 <script type="text/javascript">
     layui.use(['form'], function () {
@@ -102,33 +112,6 @@
             elem: '#meetingTime'
         })
     })
-</script>
-
-<!--向textarea中同步editor中的值-->
-<!--没有用，更改了写的位置-->
-<script type="text/javascript">
-    /**
-     *
-     * 有一点让人非常不能理解的问题是：
-     * layui这里拿到的wangeditor，只能在最开始定义的位置拿到
-     * 换了位置重新new   var editor = new wangEditor('#editor');
-     * 就不行了
-     *
-     * **/
-
-
-
-
-    // var $ = layui.jquery;
-    // layui.use('wangEditor', function () {
-    //     var wangEditor = layui.wangEditor;
-    //     var editor = new wangEditor('#editor');
-    //     editor.customConfig.onchange = function (html) {
-    //         console.log("变化：" + html);
-    //         $('#editortext').val(html);
-    //     }
-    // });
-
 </script>
 
 <!--处理表单提交-->
@@ -189,67 +172,12 @@
     });
 
 </script>
+
 <!--初始化editor-->
-<script type="text/javascript">
-    initEditor();
-    /**
-     function initEditor() {
-        layui.use(['layer', 'wangEditor'], function () {
-            var $ = layui.jquery,
-                layer = layui.layer,
-                wangEditor = layui.wangEditor;
-            var editor = new wangEditor('#editor');
-            //这里默认为true，即表示能够使用网络图片
-            editor.customConfig.showLinkImg = false;
-            //配置服务器地址
-            //editor.customConfig.uploadImgServer = "api/upload.json";
-            //应当修改为自己的URL 但是这里只能上传网络图片
-            editor.customConfig.uploadImgServer = "test/submit";
-            //uploadImgShowBase64（base64 格式）和 uploadImgServer（上传图片到服务器）两者不能同时使用！！！
-            //editor.customConfig.uploadImgShowBase64 = true;
-            editor.customConfig.uploadFileName = "pictures";
-            //过滤掉复制文本的样式  此处关闭了该功能
-            editor.customConfig.pasteFilterStyle = false;
-            //一次最多上传5张图片
-            //editor.customConfig.uploadImgMaxLength = 5;
-            //回调函数，对上传图片的不同阶段，做相应处理
-            editor.customConfig.uploadImgHooks = {
-                //上传图片超时
-                timeout: function (xhr, editor) {
-                    layer.msg('上传超时！')
-                },
-                //图片上传并返回了结果，想要自己把图片插入到编辑器中
-                //例如服务器端返回的不是 { errno: 0, data: [...] } 这种格式，可使用 customInsert
-                customInsert: function (insertImg, result, editor){
-                    console.log("服务器返回结果：" + result.code + "   " + result.data);
-                    if (result.code == 0){  //这里code的值是自己定义。定义为0就继续传值
-                        var urls = result.data;
-                        //console.log("图片的数量："+url.length)
-                        console.log(urls);
-                        urls.forEach(function (e) {
-                            insertImg(e);
-                            console.log("需要插入的图片："+e)
-                        });
-                    }else{
-                        layer.msg(result.msg);
-                    }
-                }
-            };
-            editor.customConfig.customAlert = function (info) {
-                layer.msg(info);
-            }
-
-            editor.customConfig.onchange = function (html) {
-                console.log("变化：" + html);
-                $('#editortext').val(html);
-            }
-
-            editor.create();
-            editor.txt.clear();
-            editor.txt.html('<p>请输入会议纪要</p>');
-        });
-    }
-     */
+<script type="text/javascript" th:inline="javascript">
+    var meetingContent = [[${meeting.content}]];
+    console.log("后端获取的会议内容信息（meetingContent）：" + meetingContent);
+    initEditor(meetingContent);
     function initEditor() {
         layui.use(['layer', 'wangEditor'], function () {
             var $ = layui.jquery,
@@ -309,7 +237,7 @@
 
             editor.create();
             editor.txt.clear();
-            editor.txt.html('<p>请输入会议纪要</p>');
+            editor.txt.html(meetingContent);
 
         });
     }

@@ -19,4 +19,7 @@ public interface MeetingMapper {
 
     @Delete("delete from meeting where id = #{id}")
     void DeleteMeetingById(int id);
+
+    @Select("select * from meeting where id = #{id}")
+    Meeting GetMeetingById(int id);
 }

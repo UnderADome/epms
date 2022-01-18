@@ -23,13 +23,13 @@
           "child": [
             {
               "title": "增加会议",
-              "href": "project/AddMeeting.html",
+              "href": "project/AddMeeting",
               "icon": "fa fa-tachometer",
               "target": "_self"
             },
             {
               "title": "查看会议",
-              "href": "project/ReadMeetingInfo.html",
+              "href": "project/ReadMeetingInfo",
               "icon": "fa fa-tachometer",
               "target": "_self"
             }
