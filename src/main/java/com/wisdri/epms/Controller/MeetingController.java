@@ -25,17 +25,6 @@ public class MeetingController {
     @Autowired
     public MeetingService meetingService;
 
-    //这样一下把所有的页面都包了，不可取
-//    @RequestMapping("project/{content}")
-//    public String ShowMeetingPages(@PathVariable String content){
-//        System.out.println("会议页面："+content);
-//        if (content.contains("ReadMeetingInfo"))
-//            return "project/"+content;
-//        else if (content.contains("AddMeeting"))
-//            return "project/"+content;
-//        else
-//            return "project/4041";
-//    }
     @RequestMapping(value="project/ReadMeetingInfo")
     public String ShowReadMeetingInfo(){
         return "project/ReadMeetingInfo";
@@ -44,11 +33,6 @@ public class MeetingController {
     public String ShowAddMeeting(){
         return "project/AddMeeting";
     }
-//    @RequestMapping(value="project/EditMeetingPage")
-//    public String ShowEditMeetingPage(){
-//        System.out.println("显示EditMeeting页面");
-//        return "project/EditMeeting";
-//    }
     @RequestMapping(value="project/EditMeeting")
     public ModelAndView ShowEditMeetingContent(@RequestParam String id){
         System.out.println("显示Edit画面：" + id);
@@ -156,6 +140,24 @@ public class MeetingController {
     public void DeleteMeeting(@RequestParam String id){  //并非一定要指定@RequestParam的详细参数
         System.out.println("执行删除函数, 获取的id："+id);
         meetingService.DeleteMeeting(id);
+    }
+
+    /**
+     * 更新会议内容
+     * @param meeting
+     * @return
+     */
+    @RequestMapping(value="meeting/UpdateMeeting", method = RequestMethod.POST)
+    @ResponseBody
+    public String UpdateMeeting(@RequestBody Meeting meeting){
+        try{
+            meetingService.UpdateMeeting(meeting);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return "0";
+        }
+        return "1";  //返回1表示成功
     }
 
 }

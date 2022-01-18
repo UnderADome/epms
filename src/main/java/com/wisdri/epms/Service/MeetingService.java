@@ -48,4 +48,12 @@ public class MeetingService {
     public Meeting GetMeetingById(int id){
         return meetingMapper.GetMeetingById(id);
     }
+
+    /**
+     * 更新会议内容 by id
+     * @param meeting
+     */
+    public void UpdateMeeting(Meeting meeting){
+        meetingMapper.UpdateMeeting(meeting);
+    }
 }

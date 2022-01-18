@@ -3,6 +3,7 @@ package com.wisdri.epms.Dao;
 import com.wisdri.epms.Entity.Meeting;
 import org.apache.ibatis.annotations.*;
 import com.github.pagehelper.Page;
+import org.springframework.web.bind.annotation.RequestBody;
 
 @Mapper
 public interface MeetingMapper {
@@ -22,4 +23,9 @@ public interface MeetingMapper {
 
     @Select("select * from meeting where id = #{id}")
     Meeting GetMeetingById(int id);
+
+    @Update("update meeting set content = #{content}, question = #{question}, partner = #{partner}, " +
+            "meetingTime = #{meetingTime}, infoCreateTime = #{infoCreateTime}, organize = #{organize}, type = #{type} " +
+            "where id = #{id}")
+    void UpdateMeeting(Meeting meeting);
 }

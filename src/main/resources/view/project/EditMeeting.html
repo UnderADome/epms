@@ -97,6 +97,10 @@
 
 
 <!----------------------------以下复用编辑页面代码-------------------------------->
+<!--
+1、修改“初始化editor”功能，回显富文本数据
+2、修改“表单提交”，由新增修改为更新
+-->
 <!--渲染select-->
 <script type="text/javascript">
     layui.use(['form'], function () {
@@ -124,16 +128,25 @@
             var meetingContent = JSON.stringify(data.field);
             //console.log( "ssssss\n" + JSON.stringify($('#form').serialize()));
             $.ajax({
-                url: 'meeting/SubmitMeeting',
+                url: 'meeting/UpdateMeeting',
                 type: 'post',
                 dataType: 'text',  //从后台返回的值的类型
                 contentType: 'application/json',
                 data: meetingContent,
-                //data:$('#form').serialize(),
+                //在后台设置的1为成功，0为失败
                 success: function (data1) {
                     console.log(data1);
                     console.log("ajax返回值：\n" + JSON.stringify(data1.field));
-                    layer.msg("上传成功！");
+                    if (data1 == '1'){
+                        //layer.msg("上传成功！");
+                        //关闭当前窗口，强制刷新父窗口
+                        layer.close(layer.index);
+                        window.parent.location.reload();
+                    }
+                    else if (data1 == '0'){
+                        layer.msg("更新失败");
+                    }
+
                 },
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     // 状态码
