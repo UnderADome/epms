@@ -51,9 +51,16 @@ public class MeetingController {
      */
     @RequestMapping(value="meeting/SubmitMeeting", method = RequestMethod.POST)
     @ResponseBody
-    public void SubmitMeeting(@RequestBody Meeting meeting){
+    public String SubmitMeeting(@RequestBody Meeting meeting){
         System.out.println(meeting.meetingTime + " " + meeting.content);
-        meetingService.SaveMeeting(meeting);
+        try{
+            meetingService.SaveMeeting(meeting);
+        }
+        catch (Exception e){
+            e.printStackTrace();
+            return "0";
+        }
+        return "1";  //返回1表示成功
     }
 
     /**

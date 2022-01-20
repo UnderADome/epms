@@ -6,7 +6,12 @@ layui.define(['layer','jquery','wangEditor'], function (exports) {
     //表示整个js模块，在最后exports的时候包装一下名称
     var obj = {
         //表示函数的名称
-        initEditor : function(){
+        /**
+         * 用于初始化wangEditor
+         * @param mContent 渲染的数据
+         * @param dom  需要被渲染的dom，格式：$('#dom')
+         */
+        initEditor : function(mContent, dom){
                 var editor = new wangEditor('#editor');
                 //这里默认为true，即表示能够使用网络图片
                 editor.customConfig.showLinkImg = false;
@@ -56,14 +61,14 @@ layui.define(['layer','jquery','wangEditor'], function (exports) {
 
                 editor.customConfig.onchange = function (html) {
                     console.log("变化：" + html);
-                    $('#content').val(html);
+                    dom.val(html);
                 }
 
                 editor.create();
                 editor.txt.clear();
-                editor.txt.html('<p>请输入会议纪要</p>');
+                editor.txt.html(mContent);
 
-
+                dom.text(mContent);
         }
     }
     exports("epmsEditor",obj);

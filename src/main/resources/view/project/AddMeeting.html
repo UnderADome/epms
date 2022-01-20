@@ -133,39 +133,10 @@
 
 <!--处理表单提交-->
 <script type="text/javascript">
-    layui.use(['form', 'layer', 'laydate'], function () {
-        var $ = layui.jquery, layer = layui.layer, element = layui.element;
-        var form = layui.form;
-        form.on('submit(submitAll)', function (data) {
-            console.log("当前容器的全部表单字段\n" + JSON.stringify(data.field)); //当前容器的全部表单字段，名值对形式：{name: value}
-            var meetingContent = JSON.stringify(data.field);
-            //console.log( "ssssss\n" + JSON.stringify($('#form').serialize()));
-            $.ajax({
-                url: 'meeting/SubmitMeeting',
-                type: 'post',
-                dataType: 'text',  //从后台返回的值的类型
-                contentType: 'application/json',
-                data: meetingContent,
-                //data:$('#form').serialize(),
-                success: function (data1) {
-                    console.log(data1);
-                    console.log("ajax返回值：\n" + JSON.stringify(data1.field));
-                    layer.msg("上传成功！");
-                },
-                error: function (XMLHttpRequest, textStatus, errorThrown) {
-                    // 状态码
-                    console.log(XMLHttpRequest.status);
-                    // 状态
-                    console.log(XMLHttpRequest.readyState);
-                    // 错误信息
-                    console.log(textStatus);
-                    // 打印堆栈
-                    //console.log(errorThrown);
-                }
-            });
-
-            return false; //阻止表单跳转。如果需要表单跳转，去掉这段即可。
-        });
+    var action = 'meeting/SubmitMeeting';
+    layui.use('epmsForm', function () {
+        var epmsForm = layui.epmsForm;
+        epmsForm.submitAll(action, 0);
     });
 </script>
 
@@ -187,26 +158,18 @@
         });
         layui.use('epmsEditor', function () {
             var epmsEditor = layui.epmsEditor;
-            epmsEditor.initEditor();
-            console.log("wanbi");
+            epmsEditor.initEditor("", $('#content'));
         });
     });
 
 </script>
 <!--初始化editor-->
 <script type="text/javascript">
-    //window.onload = initEditor();
-    console.log("1");
-    // layui.config({
-    //     base:'/epms-js/'
-    // });
-    console.log("2");
+
     layui.use('epmsEditor', function () {
         var epmsEditor = layui.epmsEditor;
-        epmsEditor.initEditor();
-        console.log("wanbi");
+        epmsEditor.initEditor("", $('#content'));
     });
-    console.log("3");
 
 
     //被修改了，无用

@@ -29,5 +29,6 @@ layui.config({
 
     //以下为自定义js
     epmsEditor: 'epms-js/epmsEditor',  //用于设置wangeditor富文本编辑器
-
+    epmsRender: 'epms-js/epmsRender',  //用于渲染各种小组件（时间组件、select组件等等）
+    epmsForm: 'epms-js/epmsForm',  //用于处理表单提交相关的内容
 });
