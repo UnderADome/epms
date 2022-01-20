@@ -14,3 +14,18 @@ type varchar(25),
 userId int
 );
 select * from meeting;
+update meeting set content = '1' where id = 29; 
+
+
+create table train(
+id int(11) primary key auto_increment,
+content text,
+question text,
+partner varchar(100),
+trainTime date,
+infoCreateTime datetime,
+organize varchar(100),
+type varchar(25),
+userId int
+);
+select * from train;

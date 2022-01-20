@@ -36,6 +36,26 @@
           ]
         },
         {
+          "title": "培训管理",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "增加培训",
+              "href": "project/AddTrain",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "查看培训",
+              "href": "project/ReadTrainInfo",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
+        {
           "title": "主页模板",
           "href": "",
           "icon": "fa fa-home",
