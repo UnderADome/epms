@@ -3,8 +3,9 @@ layui.define(['layer','jquery','wangEditor'], function (exports) {
     layer = layui.layer,
     wangEditor = layui.wangEditor;
 
-
+    //表示整个js模块，在最后exports的时候包装一下名称
     var obj = {
+        //表示函数的名称
         initEditor : function(){
                 var editor = new wangEditor('#editor');
                 //这里默认为true，即表示能够使用网络图片
