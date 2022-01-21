@@ -23,13 +23,13 @@
           "child": [
             {
               "title": "增加会议",
-              "href": "project/AddMeeting",
+              "href": "project/meeting/AddMeeting",
               "icon": "fa fa-tachometer",
               "target": "_self"
             },
             {
               "title": "查看会议",
-              "href": "project/ReadMeetingInfo",
+              "href": "project/meeting/ReadMeetingInfo",
               "icon": "fa fa-tachometer",
               "target": "_self"
             }
@@ -43,18 +43,51 @@
           "child": [
             {
               "title": "增加培训",
-              "href": "project/AddTrain",
+              "href": "project/train/AddTrain",
               "icon": "fa fa-tachometer",
               "target": "_self"
             },
             {
               "title": "查看培训",
-              "href": "project/ReadTrainInfo",
+              "href": "project/train/ReadTrainInfo",
               "icon": "fa fa-tachometer",
               "target": "_self"
             }
           ]
         },
+        {
+          "title": "项目管理",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "增加项目",
+              "href": "project/project/AddProject",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "查看项目",
+              "href": "project/project/ReadProjectInfo",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "查看计划",
+              "href": "project/plan/ReadPlanInfo",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "查看实施",
+              "href": "project/execute/ReadExecuteInfo",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
+
         {
           "title": "主页模板",
           "href": "",

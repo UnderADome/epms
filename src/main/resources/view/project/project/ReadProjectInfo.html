@@ -1,0 +1,130 @@
+<div class="layuimini-container layuimini-page-anim">
+    <div class="layuimini-main">
+
+        <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
+
+        <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+        </script>
+    </div>
+</div>
+
+<!--
+弹出层回显 资料
+https://www.cnblogs.com/dingxu/p/9594295.html
+-->
+
+
+
+<!--
+    因为col后面的[[表达式 在thymeleaf被认为是内联表达式,所以渲染错误
+    讲内联样式禁用，可以规避这个问题
+-->
+<script th:inline="none">
+    layui.use(['form', 'table','miniPage','element', 'layer'], function () {
+        var $ = layui.jquery,
+            form = layui.form,
+            table = layui.table,
+            miniPage = layui.miniPage,
+            layer = layui.layer;
+
+        table.render({
+            elem: '#currentTableId',
+            url: 'project/ReadProjectInfo',
+            method: 'POST',
+            toolbar: '#toolbarDemo',
+            defaultToolbar: ['filter', 'exports', 'print', {
+                title: '提示',
+                layEvent: 'LAYTABLE_TIPS',
+                icon: 'layui-icon-tips'
+            }],
+            cols: [[
+                //{type: "checkbox", width: 50},
+                {field: 'id', title: 'ID', hide:true},
+                {field: 'name',     width: 120, title: '项目名称'},
+                {field: 'type',        width: 120, title: '项目类型'},
+                {field: 'proStartTime', width: 120, title: '项目开始时间',  sort: true},
+                {field: 'proEndTime', width: 120, title: '项目结束时间',  sort: true},
+                {field: 'leader',    width: 150, title: '项目负责人', sort: true},
+                {field: 'content',    width: 200, title: '项目内容', align: "center"},
+                {field: 'partner',     width: 120, title: '参与人员'},
+                {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
+            ]],
+            limits: [10, 15, 20, 25, 50, 100],
+            limit: 15,
+            page: true,
+            skin: 'line'
+        });
+
+        //对点击事件进行监听
+        /**
+         * 在这里一共两类事件：edit和delete
+         */
+        table.on('tool(currentTableFilter)', function (obj) {
+            //obj可以获取到行信息
+
+            if (obj.event === 'edit'){  //监听add动作
+                console.log(obj.data.id);
+                var str = 'project/EditPorject'+"?id="+obj.data.id;
+                console.log(str);
+                var content = miniPage.getHrefContent(str);  //这里是行数据的id
+                //这里只能get
+                //var content = miniPage.getHrefContent('project/EditTrainPage');
+                var openWH = miniPage.getOpenWidthHeight();
+
+                var index = layer.open({  //layui.open弹窗功能
+                    title:'编辑项目',
+                    type:1,
+                    shade:0.2,
+                    maxmin:true,
+                    shadeClose:true,
+                    area:[openWH[0] + 'px', openWH[1] + 'px'],
+                    offset:[openWH[2] + 'px', openWH[3] + 'px'],
+                    content:content,
+                    // success:function (layero, index) {
+                    //     // var form = $(layero).find("#form");
+                    //     // form.find("#id").val(obj.data.id);
+                    //     console.log(obj.data.id  + " 已写入")
+                    //     var body = layer.getChildFrame('body', index);
+                    //     var iframeWin = window[layero.find('iframe')[0]['name']];
+                    //     body.find('#id').val(obj.data.id)
+                    //     layui.form.render();
+                    // },
+                    // error:function () {
+                    //     console.log("未执行success")
+                    // }
+                });
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+
+                return false;
+            }
+            else if(obj.event === 'delete'){
+                layer.confirm('是否要删除该信息？', function (index) {
+                    data =  obj.data.id;
+                    console.log(data)
+                    //执行相关删除逻辑
+                    $.ajax({
+                        url: 'project/DeleteProject',
+                        type: 'post',
+                        //dataType: 'text', //可以不写
+                        //contentType: 'html/text',
+                        data: {'id':data},   //当手动编写了{'id':data}，就不需要指定数据的传输类型
+                        success: function (data1) {
+                            layer.alert("已删除以下信息：\n" + data);
+                            console.log("选取的行已经删除");
+                            obj.del();
+                            layer.close(index);
+                        },
+                        error: function (data1) {
+                            layer.alert("以下信息删除失败：\n" + data);
+                            console.log("选取的行删除失败");
+                        }
+                    });
+                });
+            }
+        });
+    })
+</script>
