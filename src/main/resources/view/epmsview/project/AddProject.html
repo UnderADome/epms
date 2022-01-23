@@ -72,7 +72,7 @@
       <div class="layui-inline">
         <label class="layui-form-label">项目启动日期</label>
         <div class="layui-input-inline">
-          <input id="proStartTime" name="proStartTime" class="layui-input" type="text" lay-verity="date"
+          <input id="proStartTime" name="proStartTime" class="layui-input timeelement" type="text" lay-verity="date"
                  placeholder="yyyy-MM-dd" autocomplete="off" >
         </div>
       </div>
@@ -82,7 +82,7 @@
       <div class="layui-inline">
         <label class="layui-form-label">项目结束日期</label>
         <div class="layui-input-inline">
-          <input id="proEndTime" name="proEndTime" class="layui-input" type="text" lay-verity="date"
+          <input id="proEndTime" name="proEndTime" class="layui-input timeelement" type="text" lay-verity="date"
                  placeholder="yyyy-MM-dd" autocomplete="off" >
         </div>
       </div>
@@ -107,15 +107,14 @@
   layui.use(['form', 'laydate'], function () {
     <!--渲染select-->
     var form = layui.form;
+    laydate = layui.laydate;
     form.render("select");
     <!--处理日期的显示-->
-    // var laydate = layui.laydate;
-    // laydate.render({
-    //   elem: '#proStartTime'
-    // })
-    lay('.date').each(function () {
-      laydate.ready({
+    //加上触发器，利用相同的class进行取dom渲染
+    lay('.timeelement').each(function () {
+      laydate.render({
         elem:this,
+        trigger:'click'
       })
     })
   })
