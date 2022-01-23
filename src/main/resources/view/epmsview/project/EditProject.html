@@ -66,10 +66,10 @@
                 <div class="layui-input-block">
                     <select id="type" name="type" lay-filter="type">
                         <option value=""></option>
-                        <option value="BIM设计项目" th:selected="${meeting.type == 'BIM设计项目'}">BIM设计项目</option>
-                        <option value="研发项目" th:selected="${meeting.type == '研发项目'}">研发项目</option>
-                        <option value="软件开发" th:selected="${meeting.type == '软件开发'}">软件开发</option>
-                        <option value="平台基础性工作" th:selected="${meeting.type == '平台基础性工作'}">平台基础性工作</option>
+                        <option value="BIM设计项目" th:selected="${project.type == 'BIM设计项目'}">BIM设计项目</option>
+                        <option value="研发项目" th:selected="${project.type == '研发项目'}">研发项目</option>
+                        <option value="软件开发" th:selected="${project.type == '软件开发'}">软件开发</option>
+                        <option value="平台基础性工作" th:selected="${project.type == '平台基础性工作'}">平台基础性工作</option>
                     </select>
                 </div>
             </div>
@@ -105,3 +105,79 @@
 
     </div>
 </div>
+
+
+<!----------------------------以下复用编辑页面代码-------------------------------->
+<!--
+1、修改“初始化editor”功能，回显富文本数据
+2、修改“表单提交”，由新增修改为更新
+3、修改“重置”，由之前的只能重置富文本，到重置整个表单
+4、富文本第一次渲染的时候，需要同步到隐藏域
+
+thymeleaf中的下拉框(select option)回显选中
+https://blog.csdn.net/Hellowenpan/article/details/88680627
+-->
+<!--基础渲染-->
+<script type="text/javascript">
+    layui.use(['form', 'laydate'], function () {
+        <!--渲染select-->
+        var form = layui.form;
+        form.render("select");
+        <!--处理日期的显示-->
+        // var laydate = layui.laydate;
+        // laydate.render({
+        //   elem: '#proStartTime'
+        // })
+        lay('.date').each(function () {
+            laydate.ready({
+                elem:this,
+            })
+        })
+    })
+</script>
+
+<!--处理表单提交-->
+<script type="text/javascript">
+    var action = 'project/UpdateProject';
+    layui.use('epmsForm', function () {
+        var epmsForm = layui.epmsForm;
+        epmsForm.submitAll(action, 1);  //1表示当前是子页面，需要关闭子页面并打开父页面
+    });
+</script>
+
+<!--重置所有-->
+<script type="text/javascript" th:inline="javascript">
+    var $ = layui.jquery;
+    var projectContent = [[${project.content}]];//暂存最开始的数据
+    $('#resetBtn').click(function () {
+        console.log("使用reset，重写全部数据");
+        layui.use(['form', 'jquery', 'layer'], function () {
+            var form = layui.form;
+            form.render(); //更新全部，重新渲染，=>这个时候会调用thymeleaf的渲染，会把数据全部都重写回来
+
+            //重写富文本编辑器中的内容
+            layui.use('epmsEditor', function () {
+                var epmsEditor = layui.epmsEditor;
+                epmsEditor.initEditor(projectContent, $('#content'));
+            });
+
+            //$('#content').text(meetingContent);
+            //$('#content').val(meetingContent);  //这里没有用的原因是textarea要回显的话，需要用$('#content').text
+            //form提交数据的时候也是读的$('#content').text
+            console.log("重置操作完毕");
+        });
+
+    });
+
+</script>
+
+<!--初始化editor-->
+<script type="text/javascript" th:inline="javascript">
+    var projectContent = [[${project.content}]];
+    console.log("后端获取的执行内容信息（projectContent）：" + projectContent);
+
+    layui.use('epmsEditor', function () {
+        var epmsEditor = layui.epmsEditor;
+        epmsEditor.initEditor(projectContent, $('#content'));
+    });
+</script>

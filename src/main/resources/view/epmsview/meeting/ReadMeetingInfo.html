@@ -31,7 +31,7 @@ https://www.cnblogs.com/dingxu/p/9594295.html
 
         table.render({
             elem: '#currentTableId',
-            url: 'project/ReadProjectInfo',
+            url: 'meeting/ReadMeetingInfo',
             method: 'POST',
             toolbar: '#toolbarDemo',
             defaultToolbar: ['filter', 'exports', 'print', {
@@ -42,13 +42,12 @@ https://www.cnblogs.com/dingxu/p/9594295.html
             cols: [[
                 //{type: "checkbox", width: 50},
                 {field: 'id', title: 'ID', hide:true},
-                {field: 'name',     width: 120, title: '项目名称'},
-                {field: 'type',        width: 120, title: '项目类型'},
-                {field: 'proStartTime', width: 120, title: '项目开始时间',  sort: true},
-                {field: 'proEndTime', width: 120, title: '项目结束时间',  sort: true},
-                {field: 'leader',    width: 150, title: '项目负责人', sort: true},
-                {field: 'content',    width: 200, title: '项目内容', align: "center"},
+                {field: 'meetingTime', width: 120, title: '会议时间',  sort: true},
+                {field: 'organize',    width: 150, title: '会议组织者', sort: true},
+                {field: 'type',        width: 120, title: '会议类型'},
                 {field: 'partner',     width: 120, title: '参与人员'},
+                {field: 'content',                 title: '会议内容', align: "center"},
+
                 {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
             ]],
             limits: [10, 15, 20, 25, 50, 100],
@@ -66,15 +65,14 @@ https://www.cnblogs.com/dingxu/p/9594295.html
 
             if (obj.event === 'edit'){  //监听add动作
                 console.log(obj.data.id);
-                var str = 'project/EditPorject'+"?id="+obj.data.id;
+                var str = 'epmsview/EditMeeting'+"?id="+obj.data.id;
                 console.log(str);
                 var content = miniPage.getHrefContent(str);  //这里是行数据的id
-                //这里只能get
-                //var content = miniPage.getHrefContent('project/EditTrainPage');
+
                 var openWH = miniPage.getOpenWidthHeight();
 
                 var index = layer.open({  //layui.open弹窗功能
-                    title:'编辑项目',
+                    title:'编辑会议',
                     type:1,
                     shade:0.2,
                     maxmin:true,
@@ -107,7 +105,7 @@ https://www.cnblogs.com/dingxu/p/9594295.html
                     console.log(data)
                     //执行相关删除逻辑
                     $.ajax({
-                        url: 'project/DeleteProject',
+                        url: 'meeting/DeleteMeeting',
                         type: 'post',
                         //dataType: 'text', //可以不写
                         //contentType: 'html/text',

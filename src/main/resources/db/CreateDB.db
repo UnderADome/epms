@@ -29,3 +29,51 @@ type varchar(25),
 userId int
 );
 select * from train;
+
+drop table execute;
+create table execute(
+id int(11) primary key auto_increment,
+planid int(11),
+leader varchar(100),
+content text,
+question text,
+exeStartTime datetime,
+exeEndTime datetime
+);
+select * from execute;
+
+create table plan(
+id int(11) primary key auto_increment,
+projectid int(11),
+leader varchar(100),
+name varchar(100),
+content text,
+planStartTime datetime,
+planEndTime datetime
+);
+select * from plan;
+
+create table project(
+id int(11) primary key auto_increment,
+leader varchar(100),
+type varchar(100),
+name varchar(100),
+content text,
+planStartTime datetime,
+planEndTime datetime,
+partner varchar(100)
+);
+select * from project;
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -23,13 +23,13 @@
           "child": [
             {
               "title": "增加会议",
-              "href": "project/meeting/AddMeeting",
+              "href": "epmsview/AddMeeting",
               "icon": "fa fa-tachometer",
               "target": "_self"
             },
             {
               "title": "查看会议",
-              "href": "project/meeting/ReadMeetingInfo",
+              "href": "epmsview/ReadMeetingInfo",
               "icon": "fa fa-tachometer",
               "target": "_self"
             }
@@ -43,13 +43,13 @@
           "child": [
             {
               "title": "增加培训",
-              "href": "project/train/AddTrain",
+              "href": "epmsview/AddTrain",
               "icon": "fa fa-tachometer",
               "target": "_self"
             },
             {
               "title": "查看培训",
-              "href": "project/train/ReadTrainInfo",
+              "href": "epmsview/ReadTrainInfo",
               "icon": "fa fa-tachometer",
               "target": "_self"
             }
@@ -63,25 +63,25 @@
           "child": [
             {
               "title": "增加项目",
-              "href": "project/project/AddProject",
+              "href": "epmsview/AddProject",
               "icon": "fa fa-tachometer",
               "target": "_self"
             },
             {
               "title": "查看项目",
-              "href": "project/project/ReadProjectInfo",
+              "href": "epmsview/ReadProjectInfo",
               "icon": "fa fa-tachometer",
               "target": "_self"
             },
             {
               "title": "查看计划",
-              "href": "project/plan/ReadPlanInfo",
+              "href": "epmsview/ReadPlanInfo",
               "icon": "fa fa-tachometer",
               "target": "_self"
             },
             {
               "title": "查看实施",
-              "href": "project/execute/ReadExecuteInfo",
+              "href": "epmsview/ReadExecuteInfo",
               "icon": "fa fa-tachometer",
               "target": "_self"
             }

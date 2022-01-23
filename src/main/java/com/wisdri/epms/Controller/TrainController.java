@@ -17,15 +17,15 @@ public class TrainController {
     @Autowired
     public TrainService trainService;
 
-    @RequestMapping(value="project/ReadTrainInfo")
+    @RequestMapping(value="epmsview/ReadTrainInfo")
     public String ShowReadTrainInfo(){
-        return "project/ReadTrainInfo";
+        return "epmsview/train/ReadTrainInfo";
     }
-    @RequestMapping(value="project/AddTrain")
+    @RequestMapping(value="epmsview/AddTrain")
     public String ShowAddTrain(){
-        return "project/AddTrain";
+        return "epmsview/train/AddTrain";
     }
-    @RequestMapping(value="project/EditTrain")
+    @RequestMapping(value="epmsview/EditTrain")
     public ModelAndView ShowEditTrainContent(@RequestParam String id){
         System.out.println("显示Edit画面：" + id);
         ModelAndView view = new ModelAndView();
@@ -33,7 +33,7 @@ public class TrainController {
         Train train = trainService.GetTrainById(Integer.parseInt(id));
         System.out.println(train.trainTime);
         view.addObject(train);
-        view.setViewName("project/EditTrain.html");
+        view.setViewName("epmsview/train/EditTrain.html");
         return view;
     }
 

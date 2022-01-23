@@ -65,11 +65,11 @@ https://www.cnblogs.com/dingxu/p/9594295.html
 
       if (obj.event === 'edit'){  //监听add动作
         console.log(obj.data.id);
-        var str = 'project/EditTrain'+"?id="+obj.data.id;
+        var str = 'epmsview/EditTrain'+"?id="+obj.data.id;
         console.log(str);
         var content = miniPage.getHrefContent(str);  //这里是行数据的id
         //这里只能get
-        //var content = miniPage.getHrefContent('project/EditTrainPage');
+        //var content = miniPage.getHrefContent('train/EditTrainPage');
         var openWH = miniPage.getOpenWidthHeight();
 
         var index = layer.open({  //layui.open弹窗功能

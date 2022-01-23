@@ -17,15 +17,15 @@ public class MeetingController {
     @Autowired
     public MeetingService meetingService;
 
-    @RequestMapping(value="project/ReadMeetingInfo")
+    @RequestMapping(value="epmsview/ReadMeetingInfo")
     public String ShowReadMeetingInfo(){
-        return "project/ReadMeetingInfo";
+        return "epmsview/meeting/ReadMeetingInfo";
     }
-    @RequestMapping(value="project/AddMeeting")
+    @RequestMapping(value="epmsview/AddMeeting")
     public String ShowAddMeeting(){
-        return "project/AddMeeting";
+        return "epmsview/meeting/AddMeeting";
     }
-    @RequestMapping(value="project/EditMeeting")
+    @RequestMapping(value="epmsview/EditMeeting")
     public ModelAndView ShowEditMeetingContent(@RequestParam String id){
         System.out.println("显示Edit画面：" + id);
         ModelAndView view = new ModelAndView();
@@ -33,7 +33,7 @@ public class MeetingController {
         Meeting meeting = meetingService.GetMeetingById(Integer.parseInt(id));
         System.out.println(meeting.meetingTime);
         view.addObject(meeting);
-        view.setViewName("project/EditMeeting.html");
+        view.setViewName("epmsview/meeting/EditMeeting.html");
         return view;
     }
 
