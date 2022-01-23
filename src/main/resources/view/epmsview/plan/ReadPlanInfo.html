@@ -4,6 +4,7 @@
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
 
         <script type="text/html" id="currentTableBar">
+            <a class="layui-btn layui-btn-xs" lay-event="addexecute">新增实施</a>
             <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
         </script>
@@ -122,6 +123,31 @@ https://www.cnblogs.com/dingxu/p/9594295.html
                         }
                     });
                 });
+            }
+            else if (obj.event === 'addexecute'){  //监听add动作
+                console.log(obj.data.id);
+                var str = 'epmsview/AddExecute'+"?planId="+obj.data.id;
+                console.log(str);
+                var content = miniPage.getHrefContent(str);  //这里是行数据的id
+                //这里只能get
+                //var content = miniPage.getHrefContent('train/EditTrainPage');
+                var openWH = miniPage.getOpenWidthHeight();
+
+                var index = layer.open({  //layui.open弹窗功能
+                    title:'新增实施',
+                    type:1,
+                    shade:0.2,
+                    maxmin:true,
+                    shadeClose:true,
+                    area:[openWH[0] + 'px', openWH[1] + 'px'],
+                    offset:[openWH[2] + 'px', openWH[3] + 'px'],
+                    content:content,
+                });
+                $(window).on("resize", function () {
+                    layer.full(index);
+                });
+
+                return false;
             }
         });
     })

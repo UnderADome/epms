@@ -7,8 +7,8 @@ import org.apache.ibatis.annotations.*;
 @Mapper
 public interface ExecuteMapper {
 
-    @Insert("insert into execute(id, plantId, leader, content, question, exeStartTime, exeEndTime) " +
-            "values (#{id}, #{plantId}, #{leader}, #{content}, #{question}, #{exeStartTime}, #{exeEndTime})")
+    @Insert("insert into execute(id, planId, leader, content, question, exeStartTime, exeEndTime) " +
+            "values (#{id}, #{planId}, #{leader}, #{content}, #{question}, #{exeStartTime}, #{exeEndTime})")
     void SaveExecute(Execute execute);
 
     @Select("select * from execute")

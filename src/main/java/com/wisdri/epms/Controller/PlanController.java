@@ -24,8 +24,11 @@ public class PlanController {
         return "epmsview/plan/ReadPlanInfo";
     }
     @RequestMapping(value="epmsview/AddPlan")
-    public String ShowAddPlan(){
-        return "epmsview/plan/AddPlan";
+    public ModelAndView ShowAddPlan(@RequestParam String projectId){
+        ModelAndView view = new ModelAndView();
+        view.addObject("projectId", projectId);
+        view.setViewName("epmsview/plan/AddPlan.html");
+        return view;
     }
     @RequestMapping(value="epmsview/EditPlan")
     public ModelAndView ShowEditPlanContent(@RequestParam String id){

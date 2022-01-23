@@ -43,5 +43,5 @@ public class Plan {
      * 计划结束时间
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd",timezone = "GMT+8")
-    private LocalDate plantEndTime;
+    private LocalDate planEndTime;
 }

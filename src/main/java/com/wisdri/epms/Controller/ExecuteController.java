@@ -22,8 +22,11 @@ public class ExecuteController {
         return "epmsview/execute/ReadExecuteInfo";
     }
     @RequestMapping(value="epmsview/AddExecute")
-    public String ShowAddExecute(){
-        return "epmsview/execute/AddExecute";
+    public ModelAndView ShowAddExecute(@RequestParam String planId){
+        ModelAndView view = new ModelAndView();
+        view.addObject("planId", planId);
+        view.setViewName("epmsview/execute/AddExecute.html");
+        return view;
     }
     @RequestMapping(value="epmsview/EditExecute")
     public ModelAndView ShowEditExecuteContent(@RequestParam String id){

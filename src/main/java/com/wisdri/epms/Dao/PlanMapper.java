@@ -21,7 +21,7 @@ public interface PlanMapper {
     @Select("select * from plan where id = #{id}")
     Plan GetPlanById(int id);
 
-    @Update("update plan set leader = #{leader}, content = #{content}, question = #{question}, " +
+    @Update("update plan set leader = #{leader}, content = #{content}, name = #{name}, " +
             "planStartTime = #{planStartTime}, planEndTime = #{planEndTime} " +
             "where id = #{id}")
     void UpdatePlan(Plan plan);
