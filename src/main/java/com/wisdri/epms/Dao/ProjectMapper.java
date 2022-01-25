@@ -25,4 +25,8 @@ public interface ProjectMapper {
             "proStartTime = #{proStartTime}, proEndTime = #{proEndTime} " +
             "where id = #{id}")
     void UpdateProject(Project project);
+
+    @Update("update project, plan, execute set project.finished = 1, plan.finished = 1, execute.finished = 1 " +
+            "where project.id = #{id} and project.id = plan.projectid and plan.id = execute.planid")
+    void FinishProject(int id);
 }

@@ -25,4 +25,7 @@ public interface ExecuteMapper {
             "exeStartTime = #{exeStartTime}, exeEndTime = #{exeEndTime} " +
             "where id = #{id}")
     void UpdateExecute(Execute execute);
+
+    @Update("update execute set finished = 1 where id = #{id}")
+    void FinishExecute(int id);
 }

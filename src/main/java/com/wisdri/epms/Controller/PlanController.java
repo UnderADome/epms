@@ -110,4 +110,14 @@ public class PlanController {
         return "1";  //返回1表示成功
     }
 
+    /**
+     * 表示当前的计划已完成
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "plan/FinishPlan", method = RequestMethod.POST)
+    @ResponseBody
+    public String FinishPlan(@RequestParam String id){
+        return planService.FinishPlan(id);
+    }
 }

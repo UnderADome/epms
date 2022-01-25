@@ -104,5 +104,14 @@ public class ProjectController {
         }
         return "1";  //返回1表示成功
     }
-
+    /**
+     * 表示当前的计划已完成
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "project/FinishProject", method = RequestMethod.POST)
+    @ResponseBody
+    public String FinishProject(@RequestParam String id){
+        return projectService.FinishProject(id);
+    }
 }

@@ -25,4 +25,7 @@ public interface PlanMapper {
             "planStartTime = #{planStartTime}, planEndTime = #{planEndTime} " +
             "where id = #{id}")
     void UpdatePlan(Plan plan);
+
+    @Update("update plan, execute set plan.finished = 1, execute.finished = 1 where plan.id = #{id} and plan.id = execute.planid")
+    void FinishPlan(int id);
 }

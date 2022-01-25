@@ -44,4 +44,8 @@ public class Plan {
      */
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd",timezone = "GMT+8")
     private LocalDate planEndTime;
+    /**
+     * 表示是否完成 0未完成 1完成
+     */
+    private int finished;
 }

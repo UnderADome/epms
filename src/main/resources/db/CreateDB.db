@@ -41,6 +41,8 @@ exeStartTime datetime,
 exeEndTime datetime
 );
 select * from execute;
+alter table execute drop column finished;
+alter table execute add column finished int(1) default 0;
 
 create table plan(
 id int(11) primary key auto_increment,
@@ -52,18 +54,22 @@ planStartTime datetime,
 planEndTime datetime
 );
 select * from plan;
+alter table plan drop column finished;
+alter table plan add column finished int(1) default 0;
 
+drop table project;
 create table project(
 id int(11) primary key auto_increment,
 leader varchar(100),
 type varchar(100),
 name varchar(100),
 content text,
-planStartTime datetime,
-planEndTime datetime,
+proStartTime datetime,
+proEndTime datetime,
 partner varchar(100)
 );
 select * from project;
+alter table project add column finished int(1) default 0;
 
 
 

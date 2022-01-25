@@ -56,4 +56,18 @@ public class ProjectService {
     public void UpdateProject(Project project){
         projectMapper.UpdateProject(project);
     }
+
+    /**
+     * 更新已完成状态
+     * @param id
+     * @return
+     */
+    public String FinishProject(String id){
+        try{
+            projectMapper.FinishProject(Integer.parseInt(id));
+            return "1";
+        }catch (Exception e){
+            return "0";
+        }
+    }
 }

@@ -7,6 +7,7 @@
             <a class="layui-btn layui-btn-xs" lay-event="addexecute">新增实施</a>
             <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
+            <a class="layui-btn layui-btn-xs data-count-update" lay-event="finish">完成</a>
         </script>
     </div>
 </div>
@@ -51,6 +52,18 @@ https://www.cnblogs.com/dingxu/p/9594295.html
                 {field: 'content',    width: 200, title: '项目内容', align: "center"},
                 {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
             ]],
+            done:function (res, curr, count) {
+                // res.data.forEach(function (item, index)
+                $.each(res['data'], function (i, j) {
+                    console.log(j['finished'].toString()==='1');
+                    if (j['finished'].toString()==='1'){
+                        console.log("修改行色");
+                        //j.attr({"style":"background:#99ff99"})
+                        $('.layui-table').find('tr[data-index="' + i + '"]').css("background", "#99ff99");
+                        console.log("修改行色完毕");
+                    }
+                })
+            },
             limits: [10, 15, 20, 25, 50, 100],
             limit: 15,
             page: true,
@@ -148,6 +161,29 @@ https://www.cnblogs.com/dingxu/p/9594295.html
                 });
 
                 return false;
+            }
+            else if(obj.event === 'finish'){
+                layer.confirm('计划（阶段）是否已结束？', function (index) {
+                    data =  obj.data.id;
+                    console.log(data)
+                    //执行相关删除逻辑
+                    $.ajax({
+                        url: 'plan/FinishPlan',
+                        type: 'post',
+                        data: {'id':data},   //当手动编写了{'id':data}，就不需要指定数据的传输类型
+                        success: function (data1) {
+                            layer.alert("已完成以下信息：\n" + data);
+                            console.log("选取的行已经完成");
+                            //obj.del();
+                            //layer.close(index);
+                            obj.tr.attr({"style":"background:#99ff99"});
+                        },
+                        error: function (data1) {
+                            layer.alert("以下信息删除失败：\n" + data);
+                            console.log("选取的行删除失败");
+                        }
+                    });
+                });
             }
         });
     })

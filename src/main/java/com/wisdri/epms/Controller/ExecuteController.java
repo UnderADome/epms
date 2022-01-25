@@ -108,4 +108,14 @@ public class ExecuteController {
         return "1";  //返回1表示成功
     }
 
+    /**
+     * 表示当前的计实施已完成
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "execute/FinishExecute", method = RequestMethod.POST)
+    @ResponseBody
+    public String FinishExecute(@RequestParam String id){
+        return executeService.FinishExecute(id);
+    }
 }

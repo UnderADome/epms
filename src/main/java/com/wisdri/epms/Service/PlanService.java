@@ -56,4 +56,17 @@ public class PlanService {
     public void UpdatePlan(Plan plan){
         planMapper.UpdatePlan(plan);
     }
+    /**
+     * 更新已完成状态
+     * @param id
+     * @return
+     */
+    public String FinishPlan(String id){
+        try{
+            planMapper.FinishPlan(Integer.parseInt(id));
+            return "1";
+        }catch (Exception e){
+            return "0";
+        }
+    }
 }

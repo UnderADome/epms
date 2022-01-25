@@ -48,4 +48,8 @@ public class Project {
      * 参与人
      */
     private String partner;
+    /**
+     * 表示是否完成 0未完成 1完成
+     */
+    private int finished;
 }

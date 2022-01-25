@@ -56,4 +56,19 @@ public class ExecuteService {
     public void UpdateExecute(Execute execute){
         executeMapper.UpdateExecute(execute);
     }
+
+    /**
+     * 更新已完成状态
+     * @param id
+     * @return
+     */
+    public String FinishExecute(String id){
+        try{
+            executeMapper.FinishExecute(Integer.parseInt(id));
+            return "1";
+        }catch (Exception e){
+            return "0";
+        }
+
+    }
 }
