@@ -69,13 +69,18 @@ proEndTime datetime,
 partner varchar(100)
 );
 select * from project;
+alter table project drop column finished;
 alter table project add column finished int(1) default 0;
 
 
 
+#多表联删
+# delete plan, execute from plan left join execute on execute.planid = plan.id where plan.id = #{id}
+SET SQL_SAFE_UPDATES = 0;
+delete plan, execute, project from plan left join execute on execute.planid = plan.id  right join project on project.id = plan.projectid where projectid = 1;
 
 
-
+#多表联查
 
 
 

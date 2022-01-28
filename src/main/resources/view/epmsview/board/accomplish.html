@@ -1,0 +1,222 @@
+<div id="main" class="layuimini-container layuimini-page-anim">
+    <div class="layuimini-main">
+
+        <fieldset class="table-search-fieldset">
+            <legend>搜索信息</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">项目名称</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="name" name="name" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <button id="search" name="search" type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="search"><i class="layui-icon"></i> 搜 索</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+
+
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>项目进度总览</legend>
+        </fieldset>
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md6">
+                    <div class="layui-card">
+                        <div class="layui-card-header">计划完成情况</div>
+                        <div class="layui-card-body">
+                            <p>正在进行的计划：<text id="t1">0</text>个
+                            </p>
+                            <p>计划完成情况：<text id="t2">0</text>
+                            </p>
+                            <p>正在进行的实施：<text id="t3">0</text>个
+                            </p>
+                            <p>实施完成情况：<text id="t4">0</text>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-col-md6">
+                    <div class="layui-card">
+                        <div class="layui-card-header">项目总时间进度--<text id="timespan"></text></div>
+                        <div class="layui-card-body">
+                            <div class="layui-progress layui-progress-big" lay-filter="demoStepX">
+                                <div class="layui-progress-bar layui-bg-cyan" lay-percent="0%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+            <legend>项目详情</legend>
+        </fieldset>
+
+        <table class="layui-table" lay-size="sm">
+            <colgroup>
+                <col width="150">
+                <col width="200">
+                <col>
+            </colgroup>
+            <thead>
+            <tr>
+                <th>工程项-名称</th>
+                <th>开始时间</th>
+                <th>结束时间</th>
+                <th>内容</th>
+                <th>是否已完成</th>
+                <th style='display: none'>计划还是实施</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+<!--处理表单提交-->
+<script type="text/javascript">
+    layui.use(['form', 'jquery', 'element'], function () {
+        var $ = layui.jquery, form = layui.form,
+            element = layui.element, laydate = layui.laydate;
+        var action = '/GetPlanAndExesByProjectName';
+
+        // $("#search").click(function () {
+        //     var projectName = $('#name').val().toString();
+        //     console.log("projectName="+projectName);
+        //     $.ajax({
+        //         url: action,
+        //         type: "POST",
+        //         data: {'projectName':projectName},
+        //     });
+        // })
+
+
+        form.on('submit(search)', function (data) {
+            var projectName = $('#name').val().toString();
+            console.log("projectName="+projectName);
+            $.ajax({
+                url: action,
+                type: "POST",
+                data: {'projectName':projectName},
+                dataType:"json",
+                success: function (data1) {
+                    console.log(data1);
+                    //window.location.reload();
+                    //window.open(data1);
+                    //document.write(data1);
+                    //element.init(data1);
+                    //$('#main').empty();
+                    //$('#main').append(data1);
+
+                    //调起js做渲染
+                    renderTable(data1);
+                    console.log("重新加载完毕");
+
+                    //window.location.href="/epmsview/board/accomplish.html";
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    // 状态码
+                    console.log(XMLHttpRequest.status);
+                    // 状态
+                    console.log(XMLHttpRequest.readyState);
+                    // 错误信息
+                    console.log(textStatus);
+                    // 打印堆栈
+                    //console.log(errorThrown);
+                }
+            });
+            $.ajax({
+                url: '/timegoing',
+                type: "POST",
+                data: {'projectName':projectName},
+                dataType:"json",
+                success: function (data1) {
+                    console.log(data1.proStartTime +" " + data1.proEndTime);
+                    var time=new Date();
+                    var now = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate();
+                    var now_date = new Date(now);
+                    console.log("当前日期：" + now_date);
+                    console.log(now);
+
+                    var start_date = new Date(data1.proStartTime);
+                    var end_date = new Date(data1.proEndTime);
+                    var Difference_In_Time = end_date.getTime() - start_date.getTime();
+                    var allTimeSpan = Difference_In_Time / (1000 * 3600 * 24);
+                    console.log("时间跨度：" + allTimeSpan);
+                    var Difference_In_Time = now_date - start_date.getTime();
+                    var nowTimeSpan = Difference_In_Time / (1000 * 3600 * 24);
+                    console.log("已过时间跨度：" + nowTimeSpan);
+                    // console.log(now);
+                    // var allTimeSpan = data1.proEndTime - data1.proStartTime;//整体时间跨度
+                    // console.log("整体时间跨度：" + allTimeSpan);
+                    // var nowTimeSpan = data1.proEndTime - now;
+                    // console.log("当前时间跨度" + nowTimeSpan);
+                    var percent = nowTimeSpan / allTimeSpan;
+                    console.log(Math.round(percent * 100 ) );
+                    percent = Math.round(percent * 100 );
+
+                    $('.layui-progress-bar').attr('lay-percent',percent+'%');
+                    element.init();
+                    element.progress('demoStepX', percent+'%');
+                    $('#timespan').text("" + percent+'%');
+                },
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    // 状态码
+                    console.log(XMLHttpRequest.status);
+                    // 状态
+                    console.log(XMLHttpRequest.readyState);
+                    // 错误信息
+                    console.log(textStatus);
+                    // 打印堆栈
+                    //console.log(errorThrown);
+                }
+            });
+            return false;
+        })
+
+    });
+    
+    function renderTable(data) {
+        var appendHtml = '';
+        console.log("数据量：" + data.length)
+        var t1 = 0, t2='', t3=0, t4='';
+        var planCount = 0, executeCount = 0;
+        for (var i=0; i<data.length; i++){
+            if (data[i].itemType == 1){
+                planCount += 1;
+                appendHtml += "<tr style='background-color:grey'>";
+            }
+            if (data[i].itemType == 2) {
+                executeCount += 1;
+                appendHtml += "<tr style='background-color:white'>";
+            }
+            appendHtml += "<th>" + data[i].name +"</th>";
+            appendHtml += "<th>" + data[i].startTime +"</th>";
+            appendHtml += "<th>" + data[i].endTime +"</th>";
+            appendHtml += "<th>" + data[i].content +"</th>";
+            appendHtml += "<th>" + data[i].done +"</th>";
+            appendHtml += "<th style='display: none'>" + data[i].itemType +"</th>";
+            appendHtml += "</tr>";
+            if (data[i].itemType == 1 && data[i].done == 0)
+                t1 += 1;
+            if (data[i].itemType == 2 && data[i].done == 0)
+                t3 += 1;
+        }
+        var $ = layui.jquery;
+        $("#tbody").html(appendHtml);
+
+        $("#t1").text(t1);
+        $("#t2").text((planCount-t1) + '/' +planCount);
+        $("#t3").text(t3);
+        $("#t4").text((executeCount-t1) + '/' +executeCount);
+    }
+
+</script>

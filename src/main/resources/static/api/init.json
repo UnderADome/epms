@@ -98,6 +98,12 @@
               "href": "epmsview/ProjectTimeline",
               "icon": "fa fa-tachometer",
               "target": "_self"
+            },
+            {
+              "title": "进度表",
+              "href": "epmsview/ProjectAccomplish",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
             }
           ]
         },

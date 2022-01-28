@@ -2,7 +2,10 @@ package com.wisdri.epms.Dao;
 
 import com.github.pagehelper.Page;
 import com.wisdri.epms.Entity.Execute;
+import com.wisdri.epms.Entity.Plan;
 import org.apache.ibatis.annotations.*;
+
+import java.util.List;
 
 @Mapper
 public interface ExecuteMapper {
@@ -28,4 +31,7 @@ public interface ExecuteMapper {
 
     @Update("update execute set finished = 1 where id = #{id}")
     void FinishExecute(int id);
+
+    @Select("select * from execute where planid = #{planid}")
+    List<Execute> GetPlansByPlanId(int planid);
 }

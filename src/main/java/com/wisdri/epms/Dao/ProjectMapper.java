@@ -15,7 +15,10 @@ public interface ProjectMapper {
     @ResultType(Project.class)
     Page<Project> GetProjectByPage();
 
-    @Delete("delete from project where id = #{id}")
+    @Delete("delete plan, execute, project from " +
+            "plan left join execute on execute.planid = plan.id  " +
+            "    right join project on project.id = plan.projectid " +
+            "where projectid = #{id}")
     void DeleteProjectById(int id);
 
     @Select("select * from project where id = #{id}")
@@ -29,4 +32,10 @@ public interface ProjectMapper {
     @Update("update project, plan, execute set project.finished = 1, plan.finished = 1, execute.finished = 1 " +
             "where project.id = #{id} and project.id = plan.projectid and plan.id = execute.planid")
     void FinishProject(int id);
+
+    @Select("select id from project where name = #{projectName}")
+    int FindProjectIdByName(String projectName);
+
+    @Select("select * from project where name = #{projectName}")
+    Project FindProjectByProjectName(String projectName);
 }
