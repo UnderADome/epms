@@ -31,6 +31,22 @@ public class ProjectService {
         return projectMapper.GetProjectByPage();
     }
 
+    public Page<Project> GetProjectByPageAndCondition(int page, int pagesize, Project project){
+        PageHelper.startPage(page, pagesize);
+        //分三种情况：
+        //1、只对项目名称等字符串进行匹配
+        if (project.getProStartTime() == null && project.getProEndTime() == null)
+            return projectMapper.GetProjectByPageAndNormalCondition(project);
+        //2、有一个时间，直接匹配
+        if ((project.getProStartTime() == null && project.getProEndTime() != null) ||
+                (project.getProStartTime() != null && project.getProEndTime() == null))
+            //调用的方法同上面的
+            return projectMapper.GetProjectByPageAndNormalCondition(project);
+        //3、有两个时间，范围查询
+        else //都不为null，就是时间范围查询
+            return projectMapper.GetProjectByPageAndTimeRange(project);
+    }
+
     /**
      * 删除项目信息
      * id string->int

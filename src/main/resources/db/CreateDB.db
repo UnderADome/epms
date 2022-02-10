@@ -43,6 +43,7 @@ exeEndTime datetime
 select * from execute;
 alter table execute drop column finished;
 alter table execute add column finished int(1) default 0;
+alter table execute add column infoCreateTime datetime;
 
 create table plan(
 id int(11) primary key auto_increment,
@@ -56,6 +57,7 @@ planEndTime datetime
 select * from plan;
 alter table plan drop column finished;
 alter table plan add column finished int(1) default 0;
+alter table plan add column infoCreateTime datetime;
 
 drop table project;
 create table project(
@@ -71,6 +73,7 @@ partner varchar(100)
 select * from project;
 alter table project drop column finished;
 alter table project add column finished int(1) default 0;
+alter table project add column infoCreateTime datetime;
 
 
 
@@ -80,7 +83,20 @@ SET SQL_SAFE_UPDATES = 0;
 delete plan, execute, project from plan left join execute on execute.planid = plan.id  right join project on project.id = plan.projectid where projectid = 1;
 
 
+#普通查询
+select * from plan where projectid = 5;
+select id from project where name = 33;
+
+#模糊查询
+select * from project where name like '%123%' and leader like concat('%',"",'%');
+select * from project where 1=1;
+select * from project where proEndTime<='' and proStartTime>='';
+
 #多表联查
+select * from plan, project where 1=1 and plan.projectId = project.id and project.name like "%新增%" order by infocreatetime asc;
+select plan.* from plan, project where 1=1 and plan.projectId = project.id and project.name like "%玉昆%";
+select * from execute, plan where 1=1       and execute.planId = plan.id and plan.name like "%额外%";
+
 
 
 

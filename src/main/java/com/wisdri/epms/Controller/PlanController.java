@@ -1,8 +1,10 @@
 package com.wisdri.epms.Controller;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
 import com.wisdri.epms.Entity.Execute;
 import com.wisdri.epms.Entity.Plan;
+import com.wisdri.epms.Entity.Receive.SearchPlan;
 import com.wisdri.epms.Service.ExecuteService;
 import com.wisdri.epms.Service.PlanService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,15 +68,21 @@ public class PlanController {
      */
     @RequestMapping(value="plan/ReadPlanInfo", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> ReadPlanInfo(@RequestParam("page") String page, @RequestParam("limit") String limit){
+    public Map<String, Object> ReadPlanInfo(@RequestParam("page") String page, @RequestParam("limit") String limit,
+                                            @RequestParam(value = "plan",required = false) String plan){
         System.out.println("查询计划基本信息");
+        SearchPlan plan1 = JSON.parseObject(plan, SearchPlan.class);
 
-        Page<Plan> mResultList = planService.GetPlanByPage(Integer.parseInt(page), Integer.parseInt(limit));
+        Page<Plan> mResultList = new Page<Plan>();
+        if (plan1 == null)
+            mResultList = planService.GetPlanByPage(Integer.parseInt(page), Integer.parseInt(limit));
+        else
+            mResultList = planService.GetPlanByPageAndCondition(Integer.parseInt(page), Integer.parseInt(limit), plan1);
         //按照layui需要的标准格式进行封装
         Map<String, Object> map = new HashMap<>();
         map.put("code", 0);
         map.put("msg", "消息传递成功");
-        map.put("count", "100");
+        map.put("count", mResultList.size());
         map.put("data", mResultList);
 
         return  map;

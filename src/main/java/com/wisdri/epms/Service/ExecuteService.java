@@ -4,6 +4,9 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.wisdri.epms.Dao.ExecuteMapper;
 import com.wisdri.epms.Entity.Execute;
+import com.wisdri.epms.Entity.Plan;
+import com.wisdri.epms.Entity.Receive.SearchExecute;
+import com.wisdri.epms.Entity.Receive.SearchPlan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,6 +32,22 @@ public class ExecuteService {
     public Page<Execute> GetExecuteByPage(int page, int pagesize){
         PageHelper.startPage(page, pagesize);
         return executeMapper.GetExecuteByPage();
+    }
+
+    public Page<Execute> GetExecuteByPageAndCondition(int page, int pagesize, SearchExecute execute){
+        PageHelper.startPage(page, pagesize);
+        //分三种情况：
+        //1、只对项目名称等字符串进行匹配
+        if (execute.getExeStartTime() == null && execute.getExeEndTime() == null)
+            return executeMapper.GetExecuteByPageAndNormalCondition(execute);
+        //2、有一个时间，直接匹配
+        if ((execute.getExeStartTime() == null && execute.getExeEndTime() != null) ||
+                (execute.getExeStartTime() != null && execute.getExeEndTime() == null))
+            //调用的方法同上面的
+            return executeMapper.GetExecuteByPageAndNormalCondition(execute);
+            //3、有两个时间，范围查询
+        else //都不为null，就是时间范围查询
+            return executeMapper.GetExecuteByPageAndTimeRange(execute);
     }
 
     /**

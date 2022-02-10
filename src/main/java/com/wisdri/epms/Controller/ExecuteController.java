@@ -1,7 +1,9 @@
 package com.wisdri.epms.Controller;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
 import com.wisdri.epms.Entity.Execute;
+import com.wisdri.epms.Entity.Receive.SearchExecute;
 import com.wisdri.epms.Service.ExecuteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -64,15 +66,21 @@ public class ExecuteController {
      */
     @RequestMapping(value="execute/ReadExecuteInfo", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> ReadExecuteInfo(@RequestParam("page") String page, @RequestParam("limit") String limit){
+    public Map<String, Object> ReadExecuteInfo(@RequestParam("page") String page, @RequestParam("limit") String limit,
+                                               @RequestParam(value = "execute",required = false) String execute){
         System.out.println("查询实施基本信息");
+        SearchExecute execute1 = JSON.parseObject(execute, SearchExecute.class);
 
-        Page<Execute> mResultList = executeService.GetExecuteByPage(Integer.parseInt(page), Integer.parseInt(limit));
+        Page<Execute> mResultList = new Page<Execute>();
+        if (execute1 == null)
+            mResultList = executeService.GetExecuteByPage(Integer.parseInt(page), Integer.parseInt(limit));
+        else
+            mResultList = executeService.GetExecuteByPageAndCondition(Integer.parseInt(page), Integer.parseInt(limit), execute1);
         //按照layui需要的标准格式进行封装
         Map<String, Object> map = new HashMap<>();
         map.put("code", 0);
         map.put("msg", "消息传递成功");
-        map.put("count", "100");
+        map.put("count", mResultList.size());
         map.put("data", mResultList);
 
         return  map;

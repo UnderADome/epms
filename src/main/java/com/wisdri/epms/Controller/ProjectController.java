@@ -11,6 +11,8 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.alibaba.fastjson.JSON;
+
 @Controller
 public class ProjectController {
 
@@ -61,15 +63,24 @@ public class ProjectController {
      */
     @RequestMapping(value="project/ReadProjectInfo", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> ReadProjectInfo(@RequestParam("page") String page, @RequestParam("limit") String limit){
+    public Map<String, Object> ReadProjectInfo(@RequestParam("page") String page, @RequestParam("limit") String limit,
+                                   @RequestParam(value = "project",required = false) String project){
         System.out.println("查询项目基本信息");
+        Project project1 = JSON.parseObject(project, Project.class);
+        if (project1 != null) //project1在页面第一次加载，没有检索条件的时候为空
+            System.out.println("name:"+ project1.getName() + " ProStartTime:" + project1.getProStartTime());
 
-        Page<Project> mResultList = projectService.GetProjectByPage(Integer.parseInt(page), Integer.parseInt(limit));
+        //条件查询分三种情况，均在service中完成
+        Page<Project> mResultList  = new Page<Project>();
+        if (project1 == null)
+            mResultList = projectService.GetProjectByPage(Integer.parseInt(page), Integer.parseInt(limit));
+        else
+            mResultList = projectService.GetProjectByPageAndCondition(Integer.parseInt(page), Integer.parseInt(limit), project1);
         //按照layui需要的标准格式进行封装
         Map<String, Object> map = new HashMap<>();
         map.put("code", 0);
         map.put("msg", "消息传递成功");
-        map.put("count", "100");
+        map.put("count", mResultList.size());
         map.put("data", mResultList);
 
         return  map;

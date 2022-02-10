@@ -1,6 +1,52 @@
 <div class="layuimini-container layuimini-page-anim">
     <div class="layuimini-main">
 
+
+        <fieldset class="table-search-fieldset">
+            <legend>计划检索</legend>
+            <div style="margin: 10px 10px 10px 10px">
+                <form class="layui-form layui-form-pane" action="">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">项目名称</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="projectName" name="projectName" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">计划名称</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="name" name="name" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">计划负责人</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="leader" name="leader" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">计划开始时间</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="planStartTime" name="planStartTime" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">计划结束时间</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="planEndTime" name="planEndTime" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <button id="search" type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+
+
+
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
 
         <script type="text/html" id="currentTableBar">
@@ -9,6 +55,10 @@
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
             <a class="layui-btn layui-btn-xs data-count-update" lay-event="finish">完成</a>
         </script>
+
+        <div class="layui-btn-container">
+            <button id="addPlan" type="button" class="layui-btn layui-btn-normal layui-btn-radius">新增临时计划</button>
+        </div>
     </div>
 </div>
 
@@ -68,6 +118,20 @@ https://www.cnblogs.com/dingxu/p/9594295.html
             limit: 15,
             page: true,
             skin: 'line'
+        });
+        form.on('submit(data-search-btn)', function (data) {
+            //表单数据
+            var condition = JSON.stringify(data.field); //这里是不是field？？
+            console.log("form-reload : " + condition);
+            console.log(data.field.name);
+            table.reload('currentTableId', {
+                page: {
+                    curr : 1
+                }, where: {
+                    plan : condition
+                }
+            }, 'data');
+            return false;
         });
 
         //对点击事件进行监听
@@ -185,6 +249,33 @@ https://www.cnblogs.com/dingxu/p/9594295.html
                     });
                 });
             }
+        });
+    })
+</script>
+
+<script>
+    layui.use(['jquery'], function () {
+        var $ = layui.jquery, miniPage = layui.miniPage, layer = layui.layer;
+        $('#addPlan').click(function () {
+
+            var str = 'epmsview/AddPlan?projectId=0';
+            console.log(str);
+            var content = miniPage.getHrefContent(str);
+            var openWH = miniPage.getOpenWidthHeight();
+            var index = layer.open({  //layui.open弹窗功能
+                title:'新增计划',
+                type:1,
+                shade:0.2,
+                maxmin:true,
+                shadeClose:true,
+                area:[openWH[0] + 'px', openWH[1] + 'px'],
+                offset:[openWH[2] + 'px', openWH[3] + 'px'],
+                content:content,
+            });
+            $(window).on("resize", function () {
+                layer.full(index);
+            });
+
         });
     })
 </script>
