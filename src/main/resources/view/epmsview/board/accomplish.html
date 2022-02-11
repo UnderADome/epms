@@ -27,11 +27,11 @@
             <div class="layui-row layui-col-space15">
                 <div class="layui-col-md6">
                     <div class="layui-card">
-                        <div class="layui-card-header">计划完成情况</div>
+                        <div class="layui-card-header">阶段完成情况</div>
                         <div class="layui-card-body">
-                            <p>正在进行的计划：<text id="t1">0</text>个
+                            <p>正在进行的阶段：<text id="t1">0</text>个
                             </p>
-                            <p>计划完成情况：<text id="t2">0</text>
+                            <p>阶段完成情况：<text id="t2">0</text>
                             </p>
                             <p>正在进行的实施：<text id="t3">0</text>个
                             </p>
@@ -57,7 +57,7 @@
             <legend>项目详情</legend>
         </fieldset>
 
-        <table class="layui-table" lay-size="sm">
+        <table class="layui-table" lay-size="lg">
             <colgroup>
                 <col width="150">
                 <col width="200">
@@ -65,12 +65,12 @@
             </colgroup>
             <thead>
             <tr>
-                <th>工程项-名称</th>
+                <th>阶段</th>
                 <th>开始时间</th>
                 <th>结束时间</th>
                 <th>内容</th>
                 <th>是否已完成</th>
-                <th style='display: none'>计划还是实施</th>
+                <th style='display: none'>阶段还是实施</th>
             </tr>
             </thead>
             <tbody id="tbody">
@@ -138,36 +138,7 @@
                 type: "POST",
                 data: {'projectName':projectName},
                 dataType:"json",
-                success: function (data1) {
-                    console.log(data1.proStartTime +" " + data1.proEndTime);
-                    var time=new Date();
-                    var now = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate();
-                    var now_date = new Date(now);
-                    console.log("当前日期：" + now_date);
-                    console.log(now);
-
-                    var start_date = new Date(data1.proStartTime);
-                    var end_date = new Date(data1.proEndTime);
-                    var Difference_In_Time = end_date.getTime() - start_date.getTime();
-                    var allTimeSpan = Difference_In_Time / (1000 * 3600 * 24);
-                    console.log("时间跨度：" + allTimeSpan);
-                    var Difference_In_Time = now_date - start_date.getTime();
-                    var nowTimeSpan = Difference_In_Time / (1000 * 3600 * 24);
-                    console.log("已过时间跨度：" + nowTimeSpan);
-                    // console.log(now);
-                    // var allTimeSpan = data1.proEndTime - data1.proStartTime;//整体时间跨度
-                    // console.log("整体时间跨度：" + allTimeSpan);
-                    // var nowTimeSpan = data1.proEndTime - now;
-                    // console.log("当前时间跨度" + nowTimeSpan);
-                    var percent = nowTimeSpan / allTimeSpan;
-                    console.log(Math.round(percent * 100 ) );
-                    percent = Math.round(percent * 100 );
-
-                    $('.layui-progress-bar').attr('lay-percent',percent+'%');
-                    element.init();
-                    element.progress('demoStepX', percent+'%');
-                    $('#timespan').text("" + percent+'%');
-                },
+                success: renderTimebar,
                 error: function (XMLHttpRequest, textStatus, errorThrown) {
                     // 状态码
                     console.log(XMLHttpRequest.status);
@@ -183,6 +154,38 @@
         })
 
     });
+
+    function renderTimebar(data1) {
+        element = layui.element;
+        console.log(data1.proStartTime +" " + data1.proEndTime);
+        var time=new Date();
+        var now = time.getFullYear() + '-' + (time.getMonth() + 1) + '-' + time.getDate();
+        var now_date = new Date(now);
+        console.log("当前日期：" + now_date);
+        console.log(now);
+
+        var start_date = new Date(data1.proStartTime);
+        var end_date = new Date(data1.proEndTime);
+        var Difference_In_Time = end_date.getTime() - start_date.getTime();
+        var allTimeSpan = Difference_In_Time / (1000 * 3600 * 24);
+        console.log("时间跨度：" + allTimeSpan);
+        var Difference_In_Time = now_date - start_date.getTime();
+        var nowTimeSpan = Difference_In_Time / (1000 * 3600 * 24);
+        console.log("已过时间跨度：" + nowTimeSpan);
+        // console.log(now);
+        // var allTimeSpan = data1.proEndTime - data1.proStartTime;//整体时间跨度
+        // console.log("整体时间跨度：" + allTimeSpan);
+        // var nowTimeSpan = data1.proEndTime - now;
+        // console.log("当前时间跨度" + nowTimeSpan);
+        var percent = nowTimeSpan / allTimeSpan;
+        console.log(Math.round(percent * 100 ) );
+        percent = Math.round(percent * 100 );
+
+        $('.layui-progress-bar').attr('lay-percent',percent+'%');
+        element.init();
+        element.progress('demoStepX', percent+'%');
+        $('#timespan').text("" + percent+'%');
+    }
     
     function renderTable(data) {
         var appendHtml = '';
@@ -192,7 +195,7 @@
         for (var i=0; i<data.length; i++){
             if (data[i].itemType == 1){
                 planCount += 1;
-                appendHtml += "<tr style='background-color:grey'>";
+                appendHtml += "<tr style='background-color:#D0D0D0'>";
             }
             if (data[i].itemType == 2) {
                 executeCount += 1;
@@ -219,4 +222,35 @@
         $("#t4").text((executeCount-t1) + '/' +executeCount);
     }
 
+</script>
+
+<script th:inline="javascript">
+    var $ = layui.jquery;
+    $(document).ready(function () {
+        var projectName = [[${projectName}]];
+        console.log(projectName);
+        var data = [[${PlanAndExes}]];
+        console.log(data);
+        renderTable(data);
+
+        $('#name').val(projectName);
+
+        $.ajax({  //直接套用上方的ajax-timegoing
+            url: '/timegoing',
+            type: "POST",
+            data: {'projectName':projectName},
+            dataType:"json",
+            success: renderTimebar,
+            error: function (XMLHttpRequest, textStatus, errorThrown) {
+                // 状态码
+                console.log(XMLHttpRequest.status);
+                // 状态
+                console.log(XMLHttpRequest.readyState);
+                // 错误信息
+                console.log(textStatus);
+                // 打印堆栈
+                //console.log(errorThrown);
+            }
+        });
+    });
 </script>

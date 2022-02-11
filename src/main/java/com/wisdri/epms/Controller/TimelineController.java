@@ -4,6 +4,7 @@ import com.wisdri.epms.Entity.Execute;
 import com.wisdri.epms.Entity.Plan;
 import com.wisdri.epms.Entity.Project;
 import com.wisdri.epms.ResultEntity.ProjectResult;
+import com.wisdri.epms.Service.ProjectService;
 import com.wisdri.epms.Service.TimelineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,6 +25,8 @@ public class TimelineController {
 
     @Autowired
     TimelineService timelineService;
+    @Autowired
+    ProjectService projectService;
 
     /**
      * 显示时间线的画面
@@ -46,9 +49,12 @@ public class TimelineController {
 //    }
 
     @RequestMapping(value="epmsview/ProjectAccomplish")
-    public ModelAndView ShowAccomplish(){
-        //System.out.println("Timeline：id=" + id);
+    public ModelAndView ShowAccomplish(@RequestParam(value = "id",required = false) String id){
         ModelAndView view = new ModelAndView();
+        if (id != null){
+            view.addObject("PlanAndExes", timelineService.GetPlanAndExesByProjectId(id));
+            view.addObject("projectName", projectService.GetProjectById(Integer.parseInt(id)).getName());
+        }
         view.setViewName("epmsview/board/accomplish.html");
         return view;
     }

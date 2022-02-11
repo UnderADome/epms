@@ -74,7 +74,7 @@
               "target": "_self"
             },
             {
-              "title": "查看计划",
+              "title": "查看阶段",
               "href": "epmsview/ReadPlanInfo",
               "icon": "fa fa-tachometer",
               "target": "_self"

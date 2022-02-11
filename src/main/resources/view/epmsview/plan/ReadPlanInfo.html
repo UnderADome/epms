@@ -3,7 +3,7 @@
 
 
         <fieldset class="table-search-fieldset">
-            <legend>计划检索</legend>
+            <legend>阶段检索</legend>
             <div style="margin: 10px 10px 10px 10px">
                 <form class="layui-form layui-form-pane" action="">
                     <div class="layui-form-item">
@@ -14,25 +14,25 @@
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">计划名称</label>
+                            <label class="layui-form-label">阶段名称</label>
                             <div class="layui-input-inline">
                                 <input type="text" id="name" name="name" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">计划负责人</label>
+                            <label class="layui-form-label">阶段负责人</label>
                             <div class="layui-input-inline">
                                 <input type="text" id="leader" name="leader" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">计划开始时间</label>
+                            <label class="layui-form-label">阶段开始时间</label>
                             <div class="layui-input-inline">
                                 <input type="text" id="planStartTime" name="planStartTime" autocomplete="off" class="layui-input">
                             </div>
                         </div>
                         <div class="layui-inline">
-                            <label class="layui-form-label">计划结束时间</label>
+                            <label class="layui-form-label">阶段结束时间</label>
                             <div class="layui-input-inline">
                                 <input type="text" id="planEndTime" name="planEndTime" autocomplete="off" class="layui-input">
                             </div>
@@ -57,7 +57,7 @@
         </script>
 
         <div class="layui-btn-container">
-            <button id="addPlan" type="button" class="layui-btn layui-btn-normal layui-btn-radius">新增临时计划</button>
+            <button id="addPlan" type="button" class="layui-btn layui-btn-normal layui-btn-radius">新增临时阶段</button>
         </div>
     </div>
 </div>
@@ -95,9 +95,9 @@ https://www.cnblogs.com/dingxu/p/9594295.html
                 //{type: "checkbox", width: 50},
                 {field: 'id', title: 'ID', hide:true},
                 {field: 'projectId', title: 'projectId', hide:true},
-                {field: 'name',     width: 120, title: '计划项'},
-                {field: 'proStartTime', width: 120, title: '计划开始时间',  sort: true},
-                {field: 'proEndTime', width: 120, title: '计划结束时间',  sort: true},
+                {field: 'name',     width: 120, title: '阶段项'},
+                {field: 'proStartTime', width: 120, title: '阶段开始时间',  sort: true},
+                {field: 'proEndTime', width: 120, title: '阶段结束时间',  sort: true},
                 {field: 'leader',    width: 150, title: '项目负责人', sort: true},
                 {field: 'content',    width: 200, title: '项目内容', align: "center"},
                 {title: '操作', minWidth: 150, toolbar: '#currentTableBar', align: "center"}
@@ -227,7 +227,7 @@ https://www.cnblogs.com/dingxu/p/9594295.html
                 return false;
             }
             else if(obj.event === 'finish'){
-                layer.confirm('计划（阶段）是否已结束？', function (index) {
+                layer.confirm('阶段（阶段）是否已结束？', function (index) {
                     data =  obj.data.id;
                     console.log(data)
                     //执行相关删除逻辑
@@ -263,7 +263,7 @@ https://www.cnblogs.com/dingxu/p/9594295.html
             var content = miniPage.getHrefContent(str);
             var openWH = miniPage.getOpenWidthHeight();
             var index = layer.open({  //layui.open弹窗功能
-                title:'新增计划',
+                title:'新增阶段',
                 type:1,
                 shade:0.2,
                 maxmin:true,
