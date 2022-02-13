@@ -228,9 +228,9 @@
     var $ = layui.jquery;
     $(document).ready(function () {
         var projectName = [[${projectName}]];
-        console.log(projectName);
+        console.log("projectName : " + projectName);
         var data = [[${PlanAndExes}]];
-        console.log(data);
+        console.log("PlanAndExes : " + data);
         renderTable(data);
 
         $('#name').val(projectName);
