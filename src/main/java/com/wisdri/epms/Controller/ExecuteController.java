@@ -3,6 +3,7 @@ package com.wisdri.epms.Controller;
 import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
 import com.wisdri.epms.Entity.Execute;
+import com.wisdri.epms.Entity.Plan;
 import com.wisdri.epms.Entity.Receive.SearchExecute;
 import com.wisdri.epms.Service.ExecuteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -20,8 +22,16 @@ public class ExecuteController {
     public ExecuteService executeService;
 
     @RequestMapping(value="epmsview/ReadExecuteInfo")
-    public String ShowReadExecuteInfo(){
-        return "epmsview/execute/ReadExecuteInfo";
+    public ModelAndView ShowReadExecuteInfo(@RequestParam(required = false) String planId){
+        ModelAndView view = new ModelAndView();
+        if (planId != null && (!planId.equals(""))){
+            System.out.println("通过plan id查找实施");
+            //查询
+            List<Execute> executes = executeService.GetExecutesByPlanId(planId);
+            view.addObject("executes", executes);
+        }
+        view.setViewName("epmsview/execute/ReadExecuteInfo");
+        return view;
     }
     @RequestMapping(value="epmsview/AddExecute")
     public ModelAndView ShowAddExecute(@RequestParam String planId){
@@ -125,5 +135,16 @@ public class ExecuteController {
     @ResponseBody
     public String FinishExecute(@RequestParam String id){
         return executeService.FinishExecute(id);
+    }
+
+    /**
+     * 表示当前的计实施更改为未完成的状态
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "execute/NotdoneExecute", method = RequestMethod.POST)
+    @ResponseBody
+    public String NotdoneExecute(@RequestParam String id){
+        return executeService.NotdoneExecute(id);
     }
 }

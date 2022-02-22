@@ -61,4 +61,11 @@ public interface PlanMapper {
 
     @Select("select * from plan where projectid = #{projectid} order by plan.infoCreateTime desc")
     List<Plan> GetPlansByProjectId(int projectid);
+
+    @Update("<script> " +
+            "<foreach collection='plans' item='item' index='index' separator=';'>" +
+            "update plan set overdue = #{item.overdue} , finished = #{item.finished} where id = #{item.id}" +
+            "</foreach>" +
+            "</script>")
+    void SetOverdueAndFinished(Page<Plan> plans);
 }

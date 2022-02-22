@@ -80,7 +80,7 @@
                 <label class="layui-form-label">项目启动日期</label>
                 <div class="layui-input-inline">
                     <input id="proStartTime" name="proStartTime" class="layui-input timeelement" type="text" lay-verity="date"
-                           placeholder="yyyy-MM-dd" autocomplete="off" >
+                           placeholder="yyyy-MM-dd" autocomplete="off" th:value="*{proStartTime}">
                 </div>
             </div>
             <!--项目结束日期
@@ -90,7 +90,7 @@
                 <label class="layui-form-label">项目结束日期</label>
                 <div class="layui-input-inline">
                     <input id="proEndTime" name="proEndTime" class="layui-input timeelement" type="text" lay-verity="date"
-                           placeholder="yyyy-MM-dd" autocomplete="off" >
+                           placeholder="yyyy-MM-dd" autocomplete="off" th:value="*{proEndTime}">
                 </div>
             </div>
             <!--立即提交和重置-->

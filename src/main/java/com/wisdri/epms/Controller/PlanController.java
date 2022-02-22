@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
 import com.wisdri.epms.Entity.Execute;
 import com.wisdri.epms.Entity.Plan;
+import com.wisdri.epms.Entity.Project;
 import com.wisdri.epms.Entity.Receive.SearchPlan;
 import com.wisdri.epms.Service.ExecuteService;
 import com.wisdri.epms.Service.PlanService;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -22,8 +24,16 @@ public class PlanController {
     public PlanService planService;
 
     @RequestMapping(value="epmsview/ReadPlanInfo")
-    public String ShowReadPlanInfo(){
-        return "epmsview/plan/ReadPlanInfo";
+    public ModelAndView ShowReadPlanInfo(@RequestParam(required = false) String projectId){
+        ModelAndView view = new ModelAndView();
+        if (projectId != null && (!projectId.equals(""))){
+            System.out.println("通过project id查找计划");
+            //查询
+            List<Plan> plans = planService.GetPlansByProjectId(projectId);
+            view.addObject("plans", plans);
+        }
+        view.setViewName("epmsview/plan/ReadPlanInfo");
+        return view;
     }
     @RequestMapping(value="epmsview/AddPlan")
     public ModelAndView ShowAddPlan(@RequestParam String projectId){

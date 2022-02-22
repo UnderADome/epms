@@ -10,6 +10,9 @@ import com.wisdri.epms.Entity.Receive.SearchPlan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.List;
+
 @Service
 public class ExecuteService {
     @Autowired
@@ -31,23 +34,53 @@ public class ExecuteService {
      */
     public Page<Execute> GetExecuteByPage(int page, int pagesize){
         PageHelper.startPage(page, pagesize);
-        return executeMapper.GetExecuteByPage();
+        Page<Execute> exes = executeMapper.GetExecuteByPage();
+        exes = CalIfOverdue(exes);
+        return exes;
     }
 
     public Page<Execute> GetExecuteByPageAndCondition(int page, int pagesize, SearchExecute execute){
         PageHelper.startPage(page, pagesize);
         //分三种情况：
         //1、只对项目名称等字符串进行匹配
-        if (execute.getExeStartTime() == null && execute.getExeEndTime() == null)
-            return executeMapper.GetExecuteByPageAndNormalCondition(execute);
+        Page<Execute> exes = new Page<Execute>();
+        if (execute.getExeStartTime() == null && execute.getExeEndTime() == null){
+            exes = executeMapper.GetExecuteByPageAndNormalCondition(execute);
+            exes = CalIfOverdue(exes);
+            return exes;
+        }
         //2、有一个时间，直接匹配
         if ((execute.getExeStartTime() == null && execute.getExeEndTime() != null) ||
-                (execute.getExeStartTime() != null && execute.getExeEndTime() == null))
+                (execute.getExeStartTime() != null && execute.getExeEndTime() == null)){
             //调用的方法同上面的
-            return executeMapper.GetExecuteByPageAndNormalCondition(execute);
+            exes = executeMapper.GetExecuteByPageAndNormalCondition(execute);
+            exes = CalIfOverdue(exes);
+            return exes;
+        }
+
             //3、有两个时间，范围查询
-        else //都不为null，就是时间范围查询
-            return executeMapper.GetExecuteByPageAndTimeRange(execute);
+        else { //都不为null，就是时间范围查询
+            exes =  executeMapper.GetExecuteByPageAndTimeRange(execute);
+            exes = CalIfOverdue(exes);
+            return exes;
+        }
+    }
+
+    public Page<Execute> CalIfOverdue(Page<Execute> exes){
+        for (Execute execute: exes) {
+            if (execute.getExeEndTime()!=null && execute.getExeRealEndTime()!=null)
+            if (execute.getExeRealEndTime().isAfter(execute.getExeEndTime())){
+                System.out.println(execute.getId());
+                execute.setOverdue(1);
+            }
+            if (execute.getExeEndTime()!=null)
+            if (LocalDate.now().isAfter(execute.getExeEndTime()) && execute.getFinished() == 0){
+                execute.setOverdue(1);
+            }
+        }
+        //调用dao来对overdue进行回写
+        executeMapper.SetOverdue(exes);
+        return exes;
     }
 
     /**
@@ -73,7 +106,13 @@ public class ExecuteService {
      * @param execute
      */
     public void UpdateExecute(Execute execute){
-        executeMapper.UpdateExecute(execute);
+        if (execute.getExeRealEndTime() != null){
+            //如果实际结束时间不为空，则表示已完成
+            executeMapper.UpdateExecuteWithDone(execute);
+        }else{
+            //如果实际结束时间为空，则表示未完成
+            executeMapper.UpdateExecuteWithNotDone(execute);
+        }
     }
 
     /**
@@ -88,6 +127,23 @@ public class ExecuteService {
         }catch (Exception e){
             return "0";
         }
+    }
 
+    /**
+     * 更新为未完成的状态
+     * @param id
+     * @return
+     */
+    public String NotdoneExecute(String id){
+        try{
+            executeMapper.NotdoneExecute(Integer.parseInt(id));
+            return "1";
+        }catch (Exception e){
+            return "0";
+        }
+    }
+
+    public List<Execute> GetExecutesByPlanId(String planId){
+        return executeMapper.GetExecutesByPlanId(Integer.parseInt(planId));
     }
 }

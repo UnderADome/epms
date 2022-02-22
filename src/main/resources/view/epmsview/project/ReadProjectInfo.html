@@ -49,11 +49,12 @@
         <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
 
         <script type="text/html" id="currentTableBar">
-            <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="info">详情</a>
+            <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="info">项目总览</a>
             <a class="layui-btn layui-btn-xs" lay-event="addplan">新增阶段</a>
             <a class="layui-btn layui-btn-normal layui-btn-xs data-count-edit" lay-event="edit">编辑</a>
             <a class="layui-btn layui-btn-xs layui-btn-danger data-count-delete" lay-event="delete">删除</a>
-            <a class="layui-btn layui-btn-xs data-count-update" lay-event="finish">完成</a>
+<!--            <a class="layui-btn layui-btn-xs data-count-update" lay-event="finish">完成</a>-->
+            <a class="layui-btn layui-btn-xs data-count-update" lay-event="plan">查询阶段信息</a>
         </script>
 
         <div class="layui-btn-container">
@@ -109,12 +110,12 @@ https://www.cnblogs.com/dingxu/p/9594295.html
                 done:function (res, curr, count) {
                     // res.data.forEach(function (item, index)
                     $.each(res['data'], function (i, j) {
-                        console.log(j['finished'].toString()==='1');
                         if (j['finished'].toString()==='1'){
-                            console.log("修改行色");
                             //j.attr({"style":"background:#99ff99"})
                             $('.layui-table').find('tr[data-index="' + i + '"]').css("background", "#99ff99");
-                            console.log("修改行色完毕");
+                        }
+                        if (j['finished'].toString()==='0' && j['overdue'].toString()==='1'){
+                            $('.layui-table').find('tr[data-index="' + i + '"]').css("background", "red");
                         }
                     })
                 },
@@ -257,6 +258,10 @@ https://www.cnblogs.com/dingxu/p/9594295.html
                             }
                         });
                     });
+                }
+                else if(obj.event === 'plan'){  //查看阶段信息
+                    var str = '#/epmsview/ReadPlanInfo' + "?projectId=" + obj.data.id;
+                    $(window).attr('location', str);
                 }
             });
         })

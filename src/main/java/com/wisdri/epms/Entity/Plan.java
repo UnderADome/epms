@@ -48,4 +48,8 @@ public class Plan {
      * 表示是否完成 0未完成 1完成
      */
     private int finished;
+    /**
+     * 是否超时了 0表示未超时 1表示超时
+     */
+    private int overdue;
 }

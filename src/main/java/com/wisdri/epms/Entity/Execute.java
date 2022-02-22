@@ -44,7 +44,16 @@ public class Execute {
         @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd",timezone = "GMT+8")
         private LocalDate exeEndTime;
         /**
+         * 实施真正结束的时间
+         */
+        @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd",timezone = "GMT+8")
+        private LocalDate exeRealEndTime;
+        /**
          * 表示是否完成 0未完成 1完成
          */
         private int finished;
+        /**
+         * 表示是否逾期 0未逾期 1逾期
+         */
+        private int overdue;
 }

@@ -53,9 +53,31 @@ public interface ExecuteMapper {
             "where id = #{id}")
     void UpdateExecute(Execute execute);
 
+    @Update("update execute set leader = #{leader}, content = #{content}, question = #{question}, " +
+            "exeStartTime = #{exeStartTime}, exeEndTime = #{exeEndTime}, " +
+            "exeRealEndTime = #{exeRealEndTime}, finished = 1 " +
+            "where id = #{id}")
+    void UpdateExecuteWithDone(Execute execute);
+
+    @Update("update execute set leader = #{leader}, content = #{content}, question = #{question}, " +
+            "exeStartTime = #{exeStartTime}, exeEndTime = #{exeEndTime}, " +
+            "exeRealEndTime = #{exeRealEndTime}, finished = 0 " +
+            "where id = #{id}")
+    void UpdateExecuteWithNotDone(Execute execute);
+
     @Update("update execute set finished = 1 where id = #{id}")
     void FinishExecute(int id);
 
+    @Update("update execute set finished = 0, exeRealEndTime = null where id = #{id}")
+    void NotdoneExecute(int id);
+
     @Select("select * from execute where planid = #{planid} order by execute.infoCreateTime desc")
-    List<Execute> GetPlansByPlanId(int planid);
+    List<Execute> GetExecutesByPlanId(int planid);
+
+    @Update("<script> " +
+            "<foreach collection='executes' item='item' index='index' separator=';'>" +
+            "update execute set overdue = #{item.overdue} where id = #{item.id}" +
+            "</foreach>" +
+            "</script>")
+    void SetOverdue(Page<Execute> executes);
 }

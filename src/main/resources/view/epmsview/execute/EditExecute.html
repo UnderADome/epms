@@ -52,27 +52,38 @@
                 <label class="layui-form-label">实施落实人</label>
                 <div class="layui-input-block">
                     <input id="leader" name="leader" type="text"  lay-verify="title" autocomplete="off"
-                           placeholder="实施落实人" class="layui-input" th:text="*{leader}">
+                           placeholder="实施落实人" class="layui-input" th:value="*{leader}">
                 </div>
             </div>
             <!--实施启动日期
             exeStartTime
             -->
             <div class="layui-inline">
-                <label class="layui-form-label">实施启动日期</label>
+                <label class="layui-form-label">预计启动日期</label>
                 <div class="layui-input-inline">
                     <input id="exeStartTime" name="exeStartTime" class="layui-input timeelement" type="text" lay-verity="date"
-                           placeholder="yyyy-MM-dd" autocomplete="off"  th:text="*{exeStartTime}">
+                           placeholder="yyyy-MM-dd" autocomplete="off"  th:value="*{exeStartTime}">
                 </div>
             </div>
             <!--实施结束日期
             exeEndTime
             -->
             <div class="layui-inline">
-                <label class="layui-form-label">实施结束日期</label>
+                <label class="layui-form-label">预计结束日期</label>
                 <div class="layui-input-inline">
                     <input id="exeEndTime" name="exeEndTime" class="layui-input timeelement" type="text" lay-verity="date"
-                           placeholder="yyyy-MM-dd" autocomplete="off" th:text="*{exeEndTime}">
+                           placeholder="yyyy-MM-dd" autocomplete="off" th:value="*{exeEndTime}">
+                </div>
+            </div>
+
+            <!--实施结束日期
+            exeRealEndTime
+            -->
+            <div class="layui-inline">
+                <label class="layui-form-label">实际结束日期（填写表示已完成）</label>
+                <div class="layui-input-inline">
+                    <input id="exeRealEndTime" name="exeRealEndTime" class="layui-input timeelement" type="text" lay-verity="date"
+                           placeholder="yyyy-MM-dd" autocomplete="off" th:value="*{exeRealEndTime}">
                 </div>
             </div>
             <!--立即提交和重置-->

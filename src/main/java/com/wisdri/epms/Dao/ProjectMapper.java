@@ -1,6 +1,7 @@
 package com.wisdri.epms.Dao;
 
 import com.github.pagehelper.Page;
+import com.wisdri.epms.Entity.Execute;
 import com.wisdri.epms.Entity.Project;
 import org.apache.ibatis.annotations.*;
 
@@ -62,4 +63,11 @@ public interface ProjectMapper {
 
     @Select("select * from project where name = #{projectName} order by project.infoCreateTime desc")
     Project FindProjectByProjectName(String projectName);
+
+    @Update("<script> " +
+            "<foreach collection='projects' item='item' index='index' separator=';'>" +
+            "update project set overdue = #{item.overdue}, finished = #{item.finished} where id = #{item.id}" +
+            "</foreach>" +
+            "</script>")
+    void SetOverdueAndFinished(Page<Project> projects);
 }

@@ -63,7 +63,7 @@ public class TimelineService {
             projectResult.setEndTime(plans.get(i).getPlanEndTime());
             projectResult.setItemType(1);
             result.add(projectResult);
-            List<Execute> executes = executeMapper.GetPlansByPlanId(Integer.parseInt(plans.get(i).getId()));
+            List<Execute> executes = executeMapper.GetExecutesByPlanId(Integer.parseInt(plans.get(i).getId()));
             for (int j=0; j<executes.size(); j++){
                 projectResult = new ProjectResult();
                 projectResult.setName("");//executes.get(j).getName()
@@ -116,7 +116,7 @@ public class TimelineService {
             projectResult.setEndTime(plans.get(i).getPlanEndTime());
             projectResult.setItemType(1);
             result.add(projectResult);
-            List<Execute> executes = executeMapper.GetPlansByPlanId(Integer.parseInt(plans.get(i).getId()));
+            List<Execute> executes = executeMapper.GetExecutesByPlanId(Integer.parseInt(plans.get(i).getId()));
             for (int j=0; j<executes.size(); j++){
                 projectResult = new ProjectResult();
                 projectResult.setName("");//executes.get(j).getName()
