@@ -15,10 +15,10 @@ import java.util.*;
 @Controller
 public class AppController {
 
-    @RequestMapping("/")
-    public String app(){
-        return "index.html";
-    }
+//    @RequestMapping("/")
+//    public String app(){
+//        return "epmsview/project/ReadProjectInfo";
+//    }
 
     @RequestMapping("page/{content}")
     public String test1(@PathVariable("content") String content){
