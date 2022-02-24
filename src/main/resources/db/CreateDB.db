@@ -117,5 +117,6 @@ select * from execute;
 update execute set overdue = 0 where id = '39';
 
 select * from project;
+select * from plan where projectid=8;
 
 
