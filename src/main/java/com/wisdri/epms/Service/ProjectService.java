@@ -104,6 +104,21 @@ public class ProjectService {
      * @param id
      */
     public void DeleteProject(String id){
+        //查询project id下关联的plan
+        List<Plan> plans = planMapper.GetPlansByProjectId(Integer.parseInt(id));
+        for (int i=0; i<plans.size(); i++){
+            //查询plan id下包含的execute
+            List<Execute> executeList = executeMapper.GetExecutesByPlanId(Integer.parseInt(plans.get(i).getId()));
+            for (int j=0; j<executeList.size(); j++){
+                //删除查询到的execute
+                System.out.println("执行删除exe exeid=" + executeList.get(j).getId());
+                executeMapper.DeleteExecuteById(Integer.parseInt(executeList.get(j).getId()));
+            }
+            //删除plan
+            System.out.println("执行删除plan planid=" + plans.get(i).getId());
+            planMapper.DeletePlanById(Integer.parseInt(plans.get(i).getId()));
+        }
+        //删除project
         projectMapper.DeleteProjectById(Integer.parseInt(id));
     }
 

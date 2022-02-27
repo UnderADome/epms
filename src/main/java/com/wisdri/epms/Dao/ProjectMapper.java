@@ -40,11 +40,15 @@ public interface ProjectMapper {
     @ResultType(Project.class)                                           //原因是mybatis采用的什么ongl，会把<当成标签符号，所以需要转义
     Page<Project> GetProjectByPageAndTimeRange(Project project);
 
-    @Delete("delete plan, execute, project from " +
-            "plan left join execute on execute.planid = plan.id  " +
-            "    right join project on project.id = plan.projectid " +
-            "where projectid = #{id}")
+//    @Delete("delete plan, execute, project from " +
+//            "plan left join execute on execute.planid = plan.id  " +
+//            "    right join project on project.id = plan.projectid " +
+//            "where projectid = #{id}")
+//    void DeleteProjectById(int id);
+    //解释这里为什么不要这么写 => 如果project底下没有关联的内容，则删不掉project
+    @Delete("delete from project where id = #{id}")
     void DeleteProjectById(int id);
+
 
     @Select("select * from project where id = #{id} order by project.infoCreateTime desc")
     Project GetProjectById(int id);

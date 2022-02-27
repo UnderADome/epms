@@ -45,7 +45,8 @@ public interface PlanMapper {
     Page<Plan> GetPlanByPageAndTimeRange(SearchPlan plan);
 
     //@Delete("delete from plan, execute where plan.id = #{id} and execute.planid = plan.id")
-    @Delete("delete plan, execute from plan left join execute on execute.planid = plan.id where plan.id = #{id}")
+    //@Delete("delete plan, execute from plan left join execute on execute.planid = plan.id where plan.id = #{id}")
+    @Delete("delete from plan where id = #{id}")
     void DeletePlanById(int id);
 
     @Select("select * from plan where id = #{id} order by plan.infoCreateTime desc")

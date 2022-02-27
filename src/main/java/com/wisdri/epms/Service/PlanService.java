@@ -103,6 +103,15 @@ public class PlanService {
      * @param id
      */
     public void DeletePlan(String id){
+        //查询plan id下包含的execute
+        List<Execute> executeList = executeMapper.GetExecutesByPlanId(Integer.parseInt(id));
+        for (int j=0; j<executeList.size(); j++){
+            //删除查询到的execute
+            System.out.println("执行删除exe exeid=" + executeList.get(j).getId());
+            executeMapper.DeleteExecuteById(Integer.parseInt(executeList.get(j).getId()));
+        }
+        //删除plan
+        System.out.println("执行删除plan planid=" + Integer.parseInt(id));
         planMapper.DeletePlanById(Integer.parseInt(id));
     }
 
