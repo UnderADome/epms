@@ -27,13 +27,13 @@
                         <div class="layui-inline">
                             <label class="layui-form-label">项目开始时间</label>
                             <div class="layui-input-inline">
-                                <input type="text" id="proStartTime" name="proStartTime" autocomplete="off" class="layui-input">
+                                <input type="text" id="proStartTime" name="proStartTime" autocomplete="off" class="layui-input timeelement">
                             </div>
                         </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">项目结束时间</label>
                             <div class="layui-input-inline">
-                                <input type="text" id="proEndTime" name="proEndTime" autocomplete="off" class="layui-input">
+                                <input type="text" id="proEndTime" name="proEndTime" autocomplete="off" class="layui-input timeelement">
                             </div>
                         </div>
                         <div class="layui-inline">
@@ -68,7 +68,19 @@
 https://www.cnblogs.com/dingxu/p/9594295.html
 -->
 
-
+<script type="text/javascript">
+    layui.use(['form', 'laydate'], function () {
+        var laydate = layui.laydate;
+        <!--处理日期的显示-->
+        //加上触发器，利用相同的class进行取dom渲染
+        lay('.timeelement').each(function () {
+            laydate.render({
+                elem:this,
+                trigger:'click'
+            })
+        })
+    })
+</script>
 
 <!--
     因为col后面的[[表达式 在thymeleaf被认为是内联表达式,所以渲染错误
