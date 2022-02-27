@@ -4,8 +4,10 @@ import com.github.pagehelper.Page;
 import com.wisdri.epms.Entity.Execute;
 import com.wisdri.epms.Entity.Plan;
 import com.wisdri.epms.Entity.Receive.SearchExecute;
+import com.wisdri.epms.ResultEntity.MonthInfo;
 import org.apache.ibatis.annotations.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Mapper
@@ -80,4 +82,18 @@ public interface ExecuteMapper {
             "</foreach>" +
             "</script>")
     void SetOverdue(Page<Execute> executes);
+
+    @Select("select count(id) from execute where year(exeRealEndTime) = #{year}")
+    int GetExecuteCountByYear(String year);
+
+    @Select("select date_format(exeRealEndTime, '%m') as time, count(id) as executeCount from execute " +
+            "where year(exeRealEndTime) = #{year} group by month(exeRealEndTime)")
+    List<MonthInfo> GetExecuteCountByYearMonth(String year);
+
+    @Select("select time from (" +
+            "select max(exeCount) as count, exeRealEndTime as time from " +
+            "(select count(id) as exeCount, date_format(exeRealEndTime, '%Y-%m') as exeRealEndTime from execute " +
+            " where year(exeRealEndTime) = #{year} group by month(exeRealEndTime)) as a " +
+            ") as b")
+    String GetExeMostMonthByYear(String year);
 }

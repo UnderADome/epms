@@ -127,4 +127,15 @@ public class AppController {
         System.out.println(wangEditor.toString());
         return wangEditor;
     }
+
+
+    @RequestMapping("ShowAnnualProSum")
+    public String ShowAnnualProSum(){
+        return "epmsview/board/AnnualProSum";
+    }
+
+    @RequestMapping("epmsview/AnnualProSum")
+    public String ShowAnnualProSum1(){
+        return "epmsview/board/AnnualProSum";
+    }
 }

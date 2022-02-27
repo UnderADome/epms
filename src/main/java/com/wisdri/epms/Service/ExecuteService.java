@@ -7,10 +7,12 @@ import com.wisdri.epms.Entity.Execute;
 import com.wisdri.epms.Entity.Plan;
 import com.wisdri.epms.Entity.Receive.SearchExecute;
 import com.wisdri.epms.Entity.Receive.SearchPlan;
+import com.wisdri.epms.ResultEntity.MonthInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -143,7 +145,33 @@ public class ExecuteService {
         }
     }
 
+    /**
+     * 根据plan id查询所属的实施
+     * @param planId
+     * @return
+     */
     public List<Execute> GetExecutesByPlanId(String planId){
         return executeMapper.GetExecutesByPlanId(Integer.parseInt(planId));
+    }
+
+    /**
+     * 通过年份查询该年有多少个实施
+     * @param year
+     * @return
+     */
+    public int GetExecuteCountByYear(String year){
+        return executeMapper.GetExecuteCountByYear(year);
+    }
+
+    public List<MonthInfo> GetExecuteCountByYearMonth(String year){
+        return executeMapper.GetExecuteCountByYearMonth(year);
+    }
+    /**
+     * 计算年度实施最多的一个月
+     * @param year
+     * @return
+     */
+    public String GetExeMostMonthByYear(String year){
+        return executeMapper.GetExeMostMonthByYear(year);
     }
 }

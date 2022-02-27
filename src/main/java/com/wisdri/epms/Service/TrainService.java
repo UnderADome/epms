@@ -4,8 +4,11 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.wisdri.epms.Dao.TrainMapper;
 import com.wisdri.epms.Entity.Train;
+import com.wisdri.epms.ResultEntity.MonthInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class TrainService {
@@ -55,5 +58,14 @@ public class TrainService {
      */
     public void UpdateTrain(Train train){
         trainMapper.UpdateTrain(train);
+    }
+
+    /**
+     * 获得年度-月 会议的数量
+     * @param year
+     * @return
+     */
+    public List<MonthInfo> GetTrainCountByYearMonth(String year){
+        return trainMapper.GetTrainCountByYearMonth(year);
     }
 }

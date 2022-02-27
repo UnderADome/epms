@@ -152,4 +152,13 @@ public class ProjectService {
             return "0";
         }
     }
+
+    /**
+     * 通过年份查询该年有多少个项目
+     * @param year
+     * @return
+     */
+    public int GetProjectCountByYear(String year){
+        return projectMapper.GetProjectCountByYear(year);
+    }
 }

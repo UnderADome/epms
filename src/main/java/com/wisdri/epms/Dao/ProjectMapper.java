@@ -5,6 +5,8 @@ import com.wisdri.epms.Entity.Execute;
 import com.wisdri.epms.Entity.Project;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 @Mapper
 public interface ProjectMapper {
 
@@ -74,4 +76,7 @@ public interface ProjectMapper {
             "</foreach>" +
             "</script>")
     void SetOverdueAndFinished(Page<Project> projects);
+
+    @Select("select count(id) from project where year(proStartTime) = #{year}")
+    int GetProjectCountByYear(String year);
 }

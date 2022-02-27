@@ -106,6 +106,14 @@ select * from execute, plan where 1=1       and execute.planId = plan.id and pla
 
 # 更新测试
 select * from execute;
+select date_format(exeRealEndTime, '%Y-%m') as time, count(id) as id from execute
+where year(execute.exeRealEndTime) = '2022' group by month(exeRealEndTime);
+
+select * from meeting;
+select date_format(meetingTime, '%Y-%m') as time, count(id) as id from meeting
+where year(meetingTime) = '2022' group by month(meetingTime);
+
+
 describe execute;
 update execute set exeRealEndTime = null , finished = 0 where id = 40;
 
@@ -119,4 +127,10 @@ update execute set overdue = 0 where id = '39';
 select * from project;
 select * from plan where projectid=8;
 
+delete from execute where id = 1000;
+select * from train order by trainTime desc;
+select * from meeting order by meetingTime desc;
 
+select count(id) from project where year(proStartTime) = '2022';
+select max(exeCount) as count, date_format(exeRealEndTime, '%Y-%m') from 
+(select count(id) as exeCount, date_format(exeRealEndTime, '%Y-%m') as exeRealEndTime from execute where year(exeRealEndTime) = '2022') as a;

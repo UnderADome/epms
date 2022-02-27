@@ -1,9 +1,12 @@
 package com.wisdri.epms.Dao;
 
 import com.wisdri.epms.Entity.Meeting;
+import com.wisdri.epms.ResultEntity.MonthInfo;
 import org.apache.ibatis.annotations.*;
 import com.github.pagehelper.Page;
 import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.List;
 
 @Mapper
 public interface MeetingMapper {
@@ -28,4 +31,8 @@ public interface MeetingMapper {
             "meetingTime = #{meetingTime}, infoCreateTime = #{infoCreateTime}, organize = #{organize}, type = #{type} " +
             "where id = #{id}")
     void UpdateMeeting(Meeting meeting);
+
+    @Select("select date_format(meetingTime, '%m') as time, count(id) as meetingCount from meeting " +
+            "where year(meetingTime) = #{year} group by month(meetingTime)")
+    List<MonthInfo> GetMeetingCountByYearMonth(String year);
 }

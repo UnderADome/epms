@@ -94,8 +94,14 @@
           "target": "_self",
           "child": [
             {
-              "title": "进度表",
+              "title": "具体项目进度",
               "href": "epmsview/ProjectAccomplish",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "年度项目信息",
+              "href": "epmsview/AnnualProSum",
               "icon": "fa fa-tachometer",
               "target": "_self"
             }

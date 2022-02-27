@@ -1,11 +1,13 @@
 package com.wisdri.epms.Controller;
 
+import com.wisdri.epms.Dao.ExecuteMapper;
 import com.wisdri.epms.Entity.Execute;
 import com.wisdri.epms.Entity.Plan;
 import com.wisdri.epms.Entity.Project;
+import com.wisdri.epms.ResultEntity.AnnualProject;
+import com.wisdri.epms.ResultEntity.MonthInfo;
 import com.wisdri.epms.ResultEntity.ProjectResult;
-import com.wisdri.epms.Service.ProjectService;
-import com.wisdri.epms.Service.TimelineService;
+import com.wisdri.epms.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +29,12 @@ public class TimelineController {
     TimelineService timelineService;
     @Autowired
     ProjectService projectService;
+    @Autowired
+    MeetingService meetingService;
+    @Autowired
+    TrainService trainService;
+    @Autowired
+    ExecuteService executeService;
 
     /**
      * 显示时间线的画面
@@ -101,4 +109,61 @@ public class TimelineController {
         //
         return timelineService.FindProjectByProjectName(projectName);
     }
+
+    @RequestMapping(value = "GetAnnualInfo", method = RequestMethod.POST)
+    @ResponseBody
+    public AnnualProject GetAnnualInfo(String year){
+        AnnualProject annualProject = new AnnualProject();
+        //查询项目信息
+        //在查询的过程中对项目中完成、未完成；逾期、未逾期的数据进行重计算
+        int projectNum = projectService.GetProjectCountByYear(year);
+        int executeNum = executeService.GetExecuteCountByYear(year);
+
+        //查询执行信息
+        List<MonthInfo> executeMonthInfo = executeService.GetExecuteCountByYearMonth(year);
+
+        //查询会议信息
+        List<MonthInfo> meetingMonthInfo = meetingService.GetMeetingCountByYearMonth(year);
+        int meetingNum = meetingMonthInfo.size();
+
+        //查询培训信息
+        List<MonthInfo> trainMonthInfo = trainService.GetTrainCountByYearMonth(year);
+        int trainNum = trainMonthInfo.size();
+
+        //查询年度实施最多的一个月
+        String exeMostMonth = executeService.GetExeMostMonthByYear(year);
+
+        //对会议、培训等信息进行整合
+        List<MonthInfo> monthInfoList = new ArrayList<MonthInfo>();
+        for (int month = 1; month <=12; month++){
+            MonthInfo monthInfo = new MonthInfo();
+            monthInfo.setTime(month + "");
+
+            for (int i=0; i<meetingMonthInfo.size(); i++){
+                if (month == Integer.parseInt(meetingMonthInfo.get(i).getTime())){
+                    monthInfo.setMeetingCount(meetingMonthInfo.get(i).getMeetingCount());
+                }
+            }
+            for (int i=0; i<trainMonthInfo.size(); i++){
+                if (month == Integer.parseInt(trainMonthInfo.get(i).getTime())){
+                    monthInfo.setTrainCount(trainMonthInfo.get(i).getTrainCount());
+                }
+            }
+            for (int i=0; i<executeMonthInfo.size(); i++){
+                if (month == Integer.parseInt(executeMonthInfo.get(i).getTime())){
+                    monthInfo.setExecuteCount(executeMonthInfo.get(i).getExecuteCount());
+                }
+            }
+
+            monthInfoList.add(monthInfo);
+        }
+        annualProject.setProjectNum(projectNum);
+        annualProject.setExecuteNum(executeNum);
+        annualProject.setMeetingNum(meetingNum);
+        annualProject.setTrainNum(trainNum);
+        annualProject.setExeMostMonth(exeMostMonth);
+        annualProject.setMonthInfoList(monthInfoList);
+        return annualProject;
+    }
+
 }

@@ -4,8 +4,11 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.wisdri.epms.Dao.MeetingMapper;
 import com.wisdri.epms.Entity.Meeting;
+import com.wisdri.epms.ResultEntity.MonthInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class MeetingService {
@@ -55,5 +58,14 @@ public class MeetingService {
      */
     public void UpdateMeeting(Meeting meeting){
         meetingMapper.UpdateMeeting(meeting);
+    }
+
+    /**
+     * 获得年度-月 会议的数量
+     * @param year
+     * @return
+     */
+    public List<MonthInfo> GetMeetingCountByYearMonth(String year){
+        return meetingMapper.GetMeetingCountByYearMonth(year);
     }
 }
