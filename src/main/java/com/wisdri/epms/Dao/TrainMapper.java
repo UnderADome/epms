@@ -13,7 +13,7 @@ public interface TrainMapper {
             "#{organize}, #{type})")
     void SaveTrain(Train train);
 
-    @Select("select * from train")
+    @Select("select * from train order by trainTime desc")
     @ResultType(Train.class)
     Page<Train> GetTrainByPage();
 

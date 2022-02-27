@@ -14,7 +14,7 @@ public interface MeetingMapper {
             "#{organize}, #{type})")
     void SaveMeeting(Meeting meeting);
 
-    @Select("select * from meeting")
+    @Select("select * from meeting order by meetingTime desc")
     @ResultType(Meeting.class)
     Page<Meeting> GetMeetingByPage();
 
