@@ -44,4 +44,7 @@ public interface MeetingMapper {
     @Select("select date_format(meetingTime, '%m') as time, count(id) as meetingCount from meeting " +
             "where year(meetingTime) = #{year} group by month(meetingTime)")
     List<MonthInfo> GetMeetingCountByYearMonth(String year);
+
+    @Select("select count(id) from meeting")
+    int GetAllCountOfMeeting();
 }

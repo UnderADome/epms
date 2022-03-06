@@ -77,7 +77,7 @@ public class MeetingController {
         Map<String, Object> map = new HashMap<>();
         map.put("code", 0);
         map.put("msg", "消息传递成功");
-        map.put("count", mResultList.size());
+        map.put("count", meetingService.GetAllCountOfMeeting());
         map.put("data", mResultList);
 
         return  map;

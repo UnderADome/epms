@@ -174,4 +174,12 @@ public class ExecuteService {
     public String GetExeMostMonthByYear(String year){
         return executeMapper.GetExeMostMonthByYear(year);
     }
+
+    /**
+     * 得到总数
+     * @return
+     */
+    public int GetAllCountOfExecute(){
+        return executeMapper.GetAllCountOfExecute();
+    }
 }

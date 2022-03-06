@@ -111,6 +111,16 @@ public class TimelineController {
         return timelineService.FindProjectByProjectName(projectName);
     }
 
+    @RequestMapping("ShowAnnualProSum")
+    public String ShowAnnualProSum(){
+        return "epmsview/board/AnnualProSum";
+    }
+
+    @RequestMapping("epmsview/AnnualProSum")
+    public String ShowAnnualProSum1(){
+        return "epmsview/board/AnnualProSum";
+    }
+
     @RequestMapping(value = "GetAnnualInfo", method = RequestMethod.POST)
     @ResponseBody
     public AnnualProject GetAnnualInfo(String year){

@@ -148,4 +148,12 @@ public class PlanService {
     public List<Plan> GetPlansByProjectId(String projectId){
         return planMapper.GetPlansByProjectId(Integer.parseInt(projectId));
     }
+
+    /**
+     * 得到总数
+     * @return
+     */
+    public int GetAllCountOfPlan(){
+        return planMapper.GetAllCountOfPlan();
+    }
 }

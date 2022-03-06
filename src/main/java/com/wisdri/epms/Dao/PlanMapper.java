@@ -69,4 +69,7 @@ public interface PlanMapper {
             "</foreach>" +
             "</script>")
     void SetOverdueAndFinished(Page<Plan> plans);
+
+    @Select("select count(id) from plan")
+    int GetAllCountOfPlan();
 }

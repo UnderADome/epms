@@ -80,4 +80,12 @@ public class MeetingService {
     public List<MonthInfo> GetMeetingCountByYearMonth(String year){
         return meetingMapper.GetMeetingCountByYearMonth(year);
     }
+
+    /**
+     * 得到总数
+     * @return
+     */
+    public int GetAllCountOfMeeting(){
+        return meetingMapper.GetAllCountOfMeeting();
+    }
 }

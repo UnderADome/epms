@@ -97,4 +97,7 @@ public interface ExecuteMapper {
             " where year(exeRealEndTime) = #{year} group by month(exeRealEndTime)) as a " +
             ") as b")
     String GetExeMostMonthByYear(String year);
+
+    @Select("select count(id) from execute")
+    int GetAllCountOfExecute();
 }

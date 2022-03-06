@@ -79,4 +79,7 @@ public interface ProjectMapper {
 
     @Select("select count(id) from project where year(proStartTime) = #{year}")
     int GetProjectCountByYear(String year);
+
+    @Select("select count(id) from project")
+    int GetAllCountOfProject();
 }

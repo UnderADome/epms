@@ -81,4 +81,12 @@ public class TrainService {
     public List<MonthInfo> GetTrainCountByYearMonth(String year){
         return trainMapper.GetTrainCountByYearMonth(year);
     }
+
+    /**
+     * 得到总数
+     * @return
+     */
+    public int GetAllCountOfTrain(){
+        return trainMapper.GetAllCountOfTrain();
+    }
 }

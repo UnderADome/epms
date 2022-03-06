@@ -44,4 +44,7 @@ public interface TrainMapper {
     @Select("select date_format(trainTime, '%m') as time, count(id) as trainCount from train " +
             "where year(trainTime) = #{year} group by month(trainTime)")
     List<MonthInfo> GetTrainCountByYearMonth(String year);
+
+    @Select("select count(id) from train")
+    int GetAllCountOfTrain();
 }
