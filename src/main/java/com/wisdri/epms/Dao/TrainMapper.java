@@ -1,6 +1,7 @@
 package com.wisdri.epms.Dao;
 
 import com.github.pagehelper.Page;
+import com.wisdri.epms.Entity.Meeting;
 import com.wisdri.epms.Entity.Train;
 import com.wisdri.epms.ResultEntity.MonthInfo;
 import org.apache.ibatis.annotations.*;
@@ -19,6 +20,15 @@ public interface TrainMapper {
     @Select("select * from train order by trainTime desc")
     @ResultType(Train.class)
     Page<Train> GetTrainByPage();
+
+    @Select("<script>" +
+            "select * from train where 1=1 " +
+            "<if test='organize!=null and organize!=\"\"'> and organize like concat('%',#{organize},'%') </if> " +
+            "<if test='type!=null and type!=\"\"'> and type like concat('%',#{type},'%') </if> " +
+            "<if test='trainTime!=null'> and trainTime like concat('%',#{trainTime},'%') </if> " +
+            "order by train.infoCreateTime desc" +
+            "</script>")
+    Page<Train> GetTrainByPageAndCondition(Train train);
 
     @Delete("delete from train where id = #{id}")
     void DeleteTrainById(int id);

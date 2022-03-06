@@ -1,6 +1,8 @@
 package com.wisdri.epms.Controller;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
+import com.wisdri.epms.Entity.Meeting;
 import com.wisdri.epms.Entity.Train;
 import com.wisdri.epms.Service.TrainService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,10 +65,15 @@ public class TrainController {
      */
     @RequestMapping(value="train/ReadTrainInfo", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> ReadTrainInfo(@RequestParam("page") String page, @RequestParam("limit") String limit){
+    public Map<String, Object> ReadTrainInfo(@RequestParam("page") String page, @RequestParam("limit") String limit,
+                                             @RequestParam(value = "train", required = false)String train){
         System.out.println("查询培训基本信息");
-
-        Page<Train> mResultList = trainService.GetTrainByPage(Integer.parseInt(page), Integer.parseInt(limit));
+        Train train1 = JSON.parseObject(train, Train.class);
+        Page<Train> mResultList = new Page<Train>();
+        if (train1 == null)
+            mResultList = trainService.GetTrainByPage(Integer.parseInt(page), Integer.parseInt(limit));
+        else
+            mResultList = trainService.GetTrainByPageAndCondition(Integer.parseInt(page), Integer.parseInt(limit), train1);
         //按照layui需要的标准格式进行封装
         Map<String, Object> map = new HashMap<>();
         map.put("code", 0);

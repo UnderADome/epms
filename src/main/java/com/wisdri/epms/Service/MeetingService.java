@@ -35,6 +35,18 @@ public class MeetingService {
     }
 
     /**
+     * 带条件查询会议相关信息
+     * @param page
+     * @param pagesize
+     * @param meeting
+     * @return
+     */
+    public Page<Meeting> GetMeetingByPageAndCondition(int page, int pagesize, Meeting meeting){
+        PageHelper.startPage(page, pagesize);
+        return meetingMapper.GetMeetingByPageAndCondition(meeting);
+    }
+
+    /**
      * 删除会议信息
      * id string->int
      * @param id

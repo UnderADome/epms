@@ -10,3 +10,17 @@
 2022-03-04 16:06:06,210 INFO  - Starting java -jar "F:\Java WorkSpace\epms\epms.jar"
 2022-03-04 16:06:06,335 INFO  - Started process 8692
 2022-03-04 16:06:06,341 DEBUG - Forwarding logs of the process System.Diagnostics.Process (java) to WinSW.SizeBasedRollingLogAppender
+2022-03-06 16:40:02,609 INFO  - Stopping test
+2022-03-06 16:40:02,609 DEBUG - ProcessKill 8692
+2022-03-06 16:40:02,609 DEBUG - Stopping process 8692...
+2022-03-06 16:40:02,812 DEBUG - Process 8692 canceled with code 130.
+2022-03-06 16:40:02,827 INFO  - Finished test
+2022-03-06 16:40:54,679 DEBUG - Starting WinSW in service mode
+2022-03-06 16:40:54,695 INFO  - Starting java -jar "F:\Java WorkSpace\epms\epms.jar"
+2022-03-06 16:40:54,851 INFO  - Started process 23468
+2022-03-06 16:40:54,866 DEBUG - Forwarding logs of the process System.Diagnostics.Process (java) to WinSW.SizeBasedRollingLogAppender
+2022-03-06 16:42:18,720 INFO  - Stopping test
+2022-03-06 16:42:18,720 DEBUG - ProcessKill 23468
+2022-03-06 16:42:18,722 DEBUG - Stopping process 23468...
+2022-03-06 16:42:18,912 DEBUG - Process 23468 canceled with code 130.
+2022-03-06 16:42:18,916 INFO  - Finished test

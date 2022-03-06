@@ -1,6 +1,37 @@
 <div class="layuimini-container layuimini-page-anim">
   <div class="layuimini-main">
 
+    <fieldset class="table-search-fieldset">
+      <legend>会议检索</legend>
+      <div style="margin: 10px 10px 10px 10px">
+        <form class="layui-form layui-form-pane" action="">
+          <div class="layui-form-item">
+            <div class="layui-inline">
+              <label class="layui-form-label">组织者</label>
+              <div class="layui-input-inline">
+                <input type="text" id="organize" name="organize" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-inline">
+              <label class="layui-form-label">培训类型</label>
+              <div class="layui-input-inline">
+                <input type="text" id="type" name="type" autocomplete="off" class="layui-input">
+              </div>
+            </div>
+            <div class="layui-inline">
+              <label class="layui-form-label">培训时间</label>
+              <div class="layui-input-inline">
+                <input type="text" id="trainTime" name="trainTime" autocomplete="off" class="layui-input timeelement">
+              </div>
+            </div>
+            <div class="layui-inline">
+              <button id="search" type="submit" class="layui-btn layui-btn-primary"  lay-submit lay-filter="data-search-btn"><i class="layui-icon"></i> 搜 索</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </fieldset>
+
     <table class="layui-hide" id="currentTableId" lay-filter="currentTableFilter"></table>
 
     <script type="text/html" id="currentTableBar">
@@ -15,7 +46,19 @@
 https://www.cnblogs.com/dingxu/p/9594295.html
 -->
 
-
+<script type="text/javascript">
+  layui.use(['form', 'laydate'], function () {
+    var laydate = layui.laydate;
+    <!--处理日期的显示-->
+    //加上触发器，利用相同的class进行取dom渲染
+    lay('.timeelement').each(function () {
+      laydate.render({
+        elem:this,
+        trigger:'click'
+      })
+    })
+  })
+</script>
 
 <!--
     因为col后面的[[表达式 在thymeleaf被认为是内联表达式,所以渲染错误
@@ -54,6 +97,20 @@ https://www.cnblogs.com/dingxu/p/9594295.html
       limit: 15,
       page: true,
       skin: 'line'
+    });
+    form.on('submit(data-search-btn)', function (data) {
+      //表单数据
+      var condition = JSON.stringify(data.field); //这里是不是field？？
+      console.log("form-reload : " + condition);
+      console.log(data.field.name);
+      table.reload('currentTableId', {
+        page: {
+          curr : 1
+        }, where: {
+          train : condition
+        }
+      }, 'data');
+      return false;
     });
 
     //对点击事件进行监听

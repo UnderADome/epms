@@ -3,6 +3,7 @@ package com.wisdri.epms.Service;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.wisdri.epms.Dao.TrainMapper;
+import com.wisdri.epms.Entity.Meeting;
 import com.wisdri.epms.Entity.Train;
 import com.wisdri.epms.ResultEntity.MonthInfo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,18 @@ public class TrainService {
     public Page<Train> GetTrainByPage(int page, int pagesize){
         PageHelper.startPage(page, pagesize);
         return trainMapper.GetTrainByPage();
+    }
+
+    /**
+     * 带条件查询会议相关信息
+     * @param page
+     * @param pagesize
+     * @param train
+     * @return
+     */
+    public Page<Train> GetTrainByPageAndCondition(int page, int pagesize, Train train){
+        PageHelper.startPage(page, pagesize);
+        return trainMapper.GetTrainByPageAndCondition(train);
     }
 
     /**

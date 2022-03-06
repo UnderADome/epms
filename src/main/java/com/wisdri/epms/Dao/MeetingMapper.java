@@ -21,6 +21,15 @@ public interface MeetingMapper {
     @ResultType(Meeting.class)
     Page<Meeting> GetMeetingByPage();
 
+    @Select("<script>" +
+            "select * from meeting where 1=1 " +
+            "<if test='organize!=null and organize!=\"\"'> and organize like concat('%',#{organize},'%') </if> " +
+            "<if test='type!=null and type!=\"\"'> and type like concat('%',#{type},'%') </if> " +
+            "<if test='meetingTime!=null'> and meetingTime like concat('%',#{meetingTime},'%') </if> " +
+            "order by meeting.infoCreateTime desc" +
+            "</script>")
+    Page<Meeting> GetMeetingByPageAndCondition(Meeting meeting);
+
     @Delete("delete from meeting where id = #{id}")
     void DeleteMeetingById(int id);
 

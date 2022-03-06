@@ -1,5 +1,6 @@
 package com.wisdri.epms.Controller;
 
+import com.alibaba.fastjson.JSON;
 import com.github.pagehelper.Page;
 import com.wisdri.epms.Entity.Meeting;
 import com.wisdri.epms.Service.MeetingService;
@@ -63,10 +64,15 @@ public class MeetingController {
      */
     @RequestMapping(value="meeting/ReadMeetingInfo", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> ReadMeetingInfo(@RequestParam("page") String page, @RequestParam("limit") String limit){
+    public Map<String, Object> ReadMeetingInfo(@RequestParam("page") String page, @RequestParam("limit") String limit,
+                                               @RequestParam(value = "meeting", required = false)String meeting){
         System.out.println("查询会议基本信息");
-
-        Page<Meeting> mResultList = meetingService.GetMeetingByPage(Integer.parseInt(page), Integer.parseInt(limit));
+        Meeting meeting1 = JSON.parseObject(meeting, Meeting.class);
+        Page<Meeting> mResultList = new Page<Meeting>();
+        if (meeting1 == null)
+            mResultList = meetingService.GetMeetingByPage(Integer.parseInt(page), Integer.parseInt(limit));
+        else
+            mResultList = meetingService.GetMeetingByPageAndCondition(Integer.parseInt(page), Integer.parseInt(limit), meeting1);
         //按照layui需要的标准格式进行封装
         Map<String, Object> map = new HashMap<>();
         map.put("code", 0);

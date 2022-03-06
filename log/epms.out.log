@@ -1094,3 +1094,1077 @@
 2022-03-06 14:56:33.678  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=51m32s302?s400ns).
 2022-03-06 16:03:08.853  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h6m35s175ms172?s400ns).
 2022-03-06 16:28:38.908  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=25m30s56ms482?s700ns).
+查询项目基本信息
+2022-03-06 16:39:10.969 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.P.GetProjectByPage_COUNT         : ==>  Preparing: SELECT count(0) FROM project
+2022-03-06 16:39:10.969 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.P.GetProjectByPage_COUNT         : ==> Parameters: 
+2022-03-06 16:39:10.970 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.P.GetProjectByPage_COUNT         : <==      Total: 1
+2022-03-06 16:39:10.970 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.ProjectMapper.GetProjectByPage   : ==>  Preparing: select * from project order by project.infoCreateTime desc LIMIT ?
+2022-03-06 16:39:10.970 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.ProjectMapper.GetProjectByPage   : ==> Parameters: 15(Integer)
+2022-03-06 16:39:10.971 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.ProjectMapper.GetProjectByPage   : <==      Total: 11
+2022-03-06 16:39:10.971 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:10.971 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 15(Integer)
+2022-03-06 16:39:10.972 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:39:10.972 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:10.972 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 30(Integer)
+2022-03-06 16:39:10.972 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:10.973 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:10.973 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 29(Integer)
+2022-03-06 16:39:10.973 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:10.973 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:10.973 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 28(Integer)
+2022-03-06 16:39:10.974 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:10.974 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:10.974 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 14(Integer)
+2022-03-06 16:39:10.974 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:39:10.974 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:10.975 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 27(Integer)
+2022-03-06 16:39:10.975 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:10.975 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:10.975 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 26(Integer)
+2022-03-06 16:39:10.975 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:10.975 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:10.976 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 25(Integer)
+2022-03-06 16:39:10.976 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:10.976 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:10.976 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 13(Integer)
+2022-03-06 16:39:10.976 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:39:10.976 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:10.977 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 24(Integer)
+2022-03-06 16:39:10.977 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:10.977 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:10.977 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 23(Integer)
+2022-03-06 16:39:10.977 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:10.977 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:10.977 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 22(Integer)
+2022-03-06 16:39:10.977 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:10.978 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:10.978 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 1(Integer)
+2022-03-06 16:39:10.978 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:39:10.978 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:10.978 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 2(Integer)
+2022-03-06 16:39:10.978 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:39:10.978 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:10.978 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 5(Integer)
+2022-03-06 16:39:10.979 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:39:10.979 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:10.979 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 13(Integer)
+2022-03-06 16:39:10.979 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:39:10.979 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:10.979 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 14(Integer)
+2022-03-06 16:39:10.980 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:39:10.980 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:10.980 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 15(Integer)
+2022-03-06 16:39:10.981 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:39:10.981 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:10.981 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 6(Integer)
+2022-03-06 16:39:10.981 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:39:10.982 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:10.982 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 7(Integer)
+2022-03-06 16:39:10.983 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:39:10.983 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:10.984 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-06 16:39:10.984 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+2022-03-06 16:39:10.984 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:10.984 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-06 16:39:10.985 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:39:10.985 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:10.985 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 20(Integer)
+2022-03-06 16:39:10.985 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:39:10.985 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:10.986 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 8(Integer)
+2022-03-06 16:39:10.986 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:39:10.986 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:10.986 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 9(Integer)
+2022-03-06 16:39:10.986 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:39:10.986 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:10.986 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 10(Integer)
+2022-03-06 16:39:10.986 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:39:10.987 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.P.SetOverdueAndFinished          : ==>  Preparing: update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ?
+2022-03-06 16:39:10.987 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.P.SetOverdueAndFinished          : ==> Parameters: 0(Integer), 0(Integer), 15(String), 0(Integer), 0(Integer), 14(String), 0(Integer), 0(Integer), 13(String), 0(Integer), 0(Integer), 1(String), 0(Integer), 0(Integer), 2(String), 0(Integer), 0(Integer), 5(String), 0(Integer), 0(Integer), 6(String), 1(Integer), 1(Integer), 7(String), 0(Integer), 0(Integer), 8(String), 0(Integer), 0(Integer), 9(String), 0(Integer), 0(Integer), 10(String)
+2022-03-06 16:39:10.988 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.P.SetOverdueAndFinished          : <==    Updates: 1
+查询培训基本信息
+2022-03-06 16:39:14.651 DEBUG 8692 --- [nio-8800-exec-2] c.w.e.D.T.GetTrainByPage_COUNT           : ==>  Preparing: SELECT count(0) FROM train
+2022-03-06 16:39:14.651 DEBUG 8692 --- [nio-8800-exec-2] c.w.e.D.T.GetTrainByPage_COUNT           : ==> Parameters: 
+2022-03-06 16:39:14.652 DEBUG 8692 --- [nio-8800-exec-2] c.w.e.D.T.GetTrainByPage_COUNT           : <==      Total: 1
+2022-03-06 16:39:14.652 DEBUG 8692 --- [nio-8800-exec-2] c.w.epms.Dao.TrainMapper.GetTrainByPage  : ==>  Preparing: select * from train order by trainTime desc LIMIT ?
+2022-03-06 16:39:14.652 DEBUG 8692 --- [nio-8800-exec-2] c.w.epms.Dao.TrainMapper.GetTrainByPage  : ==> Parameters: 15(Integer)
+2022-03-06 16:39:14.652 DEBUG 8692 --- [nio-8800-exec-2] c.w.epms.Dao.TrainMapper.GetTrainByPage  : <==      Total: 2
+查询培训基本信息
+2022-03-06 16:39:18.793 DEBUG 8692 --- [nio-8800-exec-7] c.w.e.D.T.GetTrainByPage_COUNT           : ==>  Preparing: SELECT count(0) FROM train
+2022-03-06 16:39:18.793 DEBUG 8692 --- [nio-8800-exec-7] c.w.e.D.T.GetTrainByPage_COUNT           : ==> Parameters: 
+2022-03-06 16:39:18.793 DEBUG 8692 --- [nio-8800-exec-7] c.w.e.D.T.GetTrainByPage_COUNT           : <==      Total: 1
+2022-03-06 16:39:18.793 DEBUG 8692 --- [nio-8800-exec-7] c.w.epms.Dao.TrainMapper.GetTrainByPage  : ==>  Preparing: select * from train order by trainTime desc LIMIT ?
+2022-03-06 16:39:18.793 DEBUG 8692 --- [nio-8800-exec-7] c.w.epms.Dao.TrainMapper.GetTrainByPage  : ==> Parameters: 15(Integer)
+2022-03-06 16:39:18.794 DEBUG 8692 --- [nio-8800-exec-7] c.w.epms.Dao.TrainMapper.GetTrainByPage  : <==      Total: 2
+2022-03-06 16:39:21.071 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.P.GetProjectCountByYear          : ==>  Preparing: select count(id) from project where year(proStartTime) = ?
+2022-03-06 16:39:21.071 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.P.GetProjectCountByYear          : ==> Parameters: 2022(String)
+2022-03-06 16:39:21.071 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.P.GetProjectCountByYear          : <==      Total: 1
+2022-03-06 16:39:21.072 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecuteCountByYear          : ==>  Preparing: select count(id) from execute where year(exeRealEndTime) = ?
+2022-03-06 16:39:21.072 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecuteCountByYear          : ==> Parameters: 2022(String)
+2022-03-06 16:39:21.072 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecuteCountByYear          : <==      Total: 1
+2022-03-06 16:39:21.072 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecuteCountByYearMonth     : ==>  Preparing: select date_format(exeRealEndTime, '%m') as time, count(id) as executeCount from execute where year(exeRealEndTime) = ? group by month(exeRealEndTime)
+2022-03-06 16:39:21.072 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecuteCountByYearMonth     : ==> Parameters: 2022(String)
+2022-03-06 16:39:21.072 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecuteCountByYearMonth     : <==      Total: 2
+2022-03-06 16:39:21.073 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.M.GetMeetingCountByYearMonth     : ==>  Preparing: select date_format(meetingTime, '%m') as time, count(id) as meetingCount from meeting where year(meetingTime) = ? group by month(meetingTime)
+2022-03-06 16:39:21.073 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.M.GetMeetingCountByYearMonth     : ==> Parameters: 2022(String)
+2022-03-06 16:39:21.073 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.M.GetMeetingCountByYearMonth     : <==      Total: 6
+2022-03-06 16:39:21.073 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.T.GetTrainCountByYearMonth       : ==>  Preparing: select date_format(trainTime, '%m') as time, count(id) as trainCount from train where year(trainTime) = ? group by month(trainTime)
+2022-03-06 16:39:21.073 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.T.GetTrainCountByYearMonth       : ==> Parameters: 2022(String)
+2022-03-06 16:39:21.074 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.T.GetTrainCountByYearMonth       : <==      Total: 2
+2022-03-06 16:39:21.074 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExeMostMonthByYear          : ==>  Preparing: select time from (select max(exeCount) as count, exeRealEndTime as time from (select count(id) as exeCount, date_format(exeRealEndTime, '%Y-%m') as exeRealEndTime from execute where year(exeRealEndTime) = ? group by month(exeRealEndTime)) as a ) as b
+2022-03-06 16:39:21.074 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExeMostMonthByYear          : ==> Parameters: 2022(String)
+2022-03-06 16:39:21.074 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExeMostMonthByYear          : <==      Total: 1
+查询会议基本信息
+2022-03-06 16:39:22.998 DEBUG 8692 --- [nio-8800-exec-9] c.w.e.D.M.GetMeetingByPage_COUNT         : ==>  Preparing: SELECT count(0) FROM meeting
+2022-03-06 16:39:22.998 DEBUG 8692 --- [nio-8800-exec-9] c.w.e.D.M.GetMeetingByPage_COUNT         : ==> Parameters: 
+2022-03-06 16:39:22.999 DEBUG 8692 --- [nio-8800-exec-9] c.w.e.D.M.GetMeetingByPage_COUNT         : <==      Total: 1
+2022-03-06 16:39:22.999 DEBUG 8692 --- [nio-8800-exec-9] c.w.e.D.MeetingMapper.GetMeetingByPage   : ==>  Preparing: select * from meeting order by meetingTime desc LIMIT ?
+2022-03-06 16:39:22.999 DEBUG 8692 --- [nio-8800-exec-9] c.w.e.D.MeetingMapper.GetMeetingByPage   : ==> Parameters: 15(Integer)
+2022-03-06 16:39:23.000 DEBUG 8692 --- [nio-8800-exec-9] c.w.e.D.MeetingMapper.GetMeetingByPage   : <==      Total: 15
+查询实施基本信息
+2022-03-06 16:39:25.189 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.E.GetExecuteByPage_COUNT         : ==>  Preparing: select count(0) from ( select * from execute order by execute.infoCreateTime desc ) tmp_count
+2022-03-06 16:39:25.189 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.E.GetExecuteByPage_COUNT         : ==> Parameters: 
+2022-03-06 16:39:25.189 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.E.GetExecuteByPage_COUNT         : <==      Total: 1
+2022-03-06 16:39:25.189 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.ExecuteMapper.GetExecuteByPage   : ==>  Preparing: select * from execute order by execute.infoCreateTime desc LIMIT ?
+2022-03-06 16:39:25.189 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.ExecuteMapper.GetExecuteByPage   : ==> Parameters: 15(Integer)
+2022-03-06 16:39:25.190 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.ExecuteMapper.GetExecuteByPage   : <==      Total: 15
+41
+27
+28
+32
+34
+2022-03-06 16:39:25.191 DEBUG 8692 --- [nio-8800-exec-1] c.w.epms.Dao.ExecuteMapper.SetOverdue    : ==>  Preparing: update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ?
+2022-03-06 16:39:25.191 DEBUG 8692 --- [nio-8800-exec-1] c.w.epms.Dao.ExecuteMapper.SetOverdue    : ==> Parameters: 0(Integer), 43(String), 0(Integer), 42(String), 1(Integer), 41(String), 1(Integer), 40(String), 0(Integer), 39(String), 0(Integer), 3(String), 1(Integer), 27(String), 1(Integer), 28(String), 0(Integer), 29(String), 0(Integer), 30(String), 0(Integer), 31(String), 1(Integer), 32(String), 0(Integer), 33(String), 1(Integer), 34(String), 0(Integer), 35(String)
+2022-03-06 16:39:25.193 DEBUG 8692 --- [nio-8800-exec-1] c.w.epms.Dao.ExecuteMapper.SetOverdue    : <==    Updates: 1
+查询项目基本信息
+2022-03-06 16:39:25.970 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.P.GetProjectByPage_COUNT         : ==>  Preparing: SELECT count(0) FROM project
+2022-03-06 16:39:25.971 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.P.GetProjectByPage_COUNT         : ==> Parameters: 
+2022-03-06 16:39:25.971 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.P.GetProjectByPage_COUNT         : <==      Total: 1
+2022-03-06 16:39:25.971 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.ProjectMapper.GetProjectByPage   : ==>  Preparing: select * from project order by project.infoCreateTime desc LIMIT ?
+2022-03-06 16:39:25.971 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.ProjectMapper.GetProjectByPage   : ==> Parameters: 15(Integer)
+2022-03-06 16:39:25.972 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.ProjectMapper.GetProjectByPage   : <==      Total: 11
+2022-03-06 16:39:25.972 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:25.972 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 15(Integer)
+2022-03-06 16:39:25.973 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:39:25.973 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:25.973 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 30(Integer)
+2022-03-06 16:39:25.973 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:25.973 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:25.973 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 29(Integer)
+2022-03-06 16:39:25.973 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:25.973 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:25.974 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 28(Integer)
+2022-03-06 16:39:25.974 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:25.974 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:25.974 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 14(Integer)
+2022-03-06 16:39:25.974 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:39:25.974 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:25.974 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 27(Integer)
+2022-03-06 16:39:25.975 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:25.975 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:25.975 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 26(Integer)
+2022-03-06 16:39:25.975 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:25.975 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:25.975 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 25(Integer)
+2022-03-06 16:39:25.976 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:25.976 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:25.976 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 13(Integer)
+2022-03-06 16:39:25.976 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:39:25.977 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:25.977 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 24(Integer)
+2022-03-06 16:39:25.977 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:25.977 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:25.977 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 23(Integer)
+2022-03-06 16:39:25.978 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:25.978 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:25.978 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 22(Integer)
+2022-03-06 16:39:25.978 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:25.978 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:25.978 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 1(Integer)
+2022-03-06 16:39:25.979 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:39:25.979 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:25.979 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 2(Integer)
+2022-03-06 16:39:25.979 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:39:25.979 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:25.979 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 5(Integer)
+2022-03-06 16:39:25.980 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:39:25.980 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:25.980 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 13(Integer)
+2022-03-06 16:39:25.980 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:39:25.980 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:25.980 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 14(Integer)
+2022-03-06 16:39:25.981 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:39:25.981 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:25.981 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 15(Integer)
+2022-03-06 16:39:25.981 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:39:25.982 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:25.982 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 6(Integer)
+2022-03-06 16:39:25.982 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:39:25.982 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:25.982 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 7(Integer)
+2022-03-06 16:39:25.983 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:39:25.983 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:25.984 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-06 16:39:25.985 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+2022-03-06 16:39:25.985 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:25.985 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-06 16:39:25.985 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:39:25.986 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:25.986 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 20(Integer)
+2022-03-06 16:39:25.986 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:39:25.986 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:25.986 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 8(Integer)
+2022-03-06 16:39:25.987 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:39:25.987 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:25.987 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 9(Integer)
+2022-03-06 16:39:25.987 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:39:25.987 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:25.987 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 10(Integer)
+2022-03-06 16:39:25.987 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:39:25.988 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.P.SetOverdueAndFinished          : ==>  Preparing: update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ?
+2022-03-06 16:39:25.988 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.P.SetOverdueAndFinished          : ==> Parameters: 0(Integer), 0(Integer), 15(String), 0(Integer), 0(Integer), 14(String), 0(Integer), 0(Integer), 13(String), 0(Integer), 0(Integer), 1(String), 0(Integer), 0(Integer), 2(String), 0(Integer), 0(Integer), 5(String), 0(Integer), 0(Integer), 6(String), 1(Integer), 1(Integer), 7(String), 0(Integer), 0(Integer), 8(String), 0(Integer), 0(Integer), 9(String), 0(Integer), 0(Integer), 10(String)
+2022-03-06 16:39:25.990 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.P.SetOverdueAndFinished          : <==    Updates: 1
+2022-03-06 16:39:29.579 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:29.579 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 7(Integer)
+2022-03-06 16:39:29.580 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:39:29.581 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:29.581 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-06 16:39:29.581 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+2022-03-06 16:39:29.581 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:29.581 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-06 16:39:29.582 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:39:29.582 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:29.582 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 20(Integer)
+2022-03-06 16:39:29.583 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+ 2022-02-01 2022-02-28 1 1 最后阶段 
+<p>最后阶段1</p> 2022-02-01 2022-02-28 1 2  
+<p>1、初步设计要尽可能详细</p><p><span style="font-weight: bold;">2、建模要达到初步设计要求的深度</span></p> 2022-01-01 2022-01-13 1 1 初步设计阶段 
+<p>1、通风模块建模完成</p><p>2、通风插件完成</p> 2022-01-01 2022-01-04 1 2  
+<p>1、除尘模型完成</p> 2022-01-10 2022-01-13 1 2  
+<p>1、模型要达到详细设计阶段要求</p> 2022-01-13 2022-02-28 1 1 详细设计阶段 
+<p>2</p> 2022-02-08 2022-02-16 1 2  
+<p>1</p> 2022-01-04 2022-02-15 1 2  
+2022-03-06 16:39:29.583 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.Dao.ProjectMapper.GetProjectById   : ==>  Preparing: select * from project where id = ? order by project.infoCreateTime desc
+2022-03-06 16:39:29.584 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.Dao.ProjectMapper.GetProjectById   : ==> Parameters: 7(Integer)
+2022-03-06 16:39:29.584 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.Dao.ProjectMapper.GetProjectById   : <==      Total: 1
+查询培训基本信息
+2022-03-06 16:39:33.667 DEBUG 8692 --- [nio-8800-exec-2] c.w.e.D.T.GetTrainByPage_COUNT           : ==>  Preparing: SELECT count(0) FROM train
+2022-03-06 16:39:33.667 DEBUG 8692 --- [nio-8800-exec-2] c.w.e.D.T.GetTrainByPage_COUNT           : ==> Parameters: 
+2022-03-06 16:39:33.668 DEBUG 8692 --- [nio-8800-exec-2] c.w.e.D.T.GetTrainByPage_COUNT           : <==      Total: 1
+2022-03-06 16:39:33.668 DEBUG 8692 --- [nio-8800-exec-2] c.w.epms.Dao.TrainMapper.GetTrainByPage  : ==>  Preparing: select * from train order by trainTime desc LIMIT ?
+2022-03-06 16:39:33.668 DEBUG 8692 --- [nio-8800-exec-2] c.w.epms.Dao.TrainMapper.GetTrainByPage  : ==> Parameters: 15(Integer)
+2022-03-06 16:39:33.668 DEBUG 8692 --- [nio-8800-exec-2] c.w.epms.Dao.TrainMapper.GetTrainByPage  : <==      Total: 2
+查询会议基本信息
+2022-03-06 16:39:37.319 DEBUG 8692 --- [nio-8800-exec-9] c.w.e.D.M.GetMeetingByPage_COUNT         : ==>  Preparing: SELECT count(0) FROM meeting
+2022-03-06 16:39:37.319 DEBUG 8692 --- [nio-8800-exec-9] c.w.e.D.M.GetMeetingByPage_COUNT         : ==> Parameters: 
+2022-03-06 16:39:37.319 DEBUG 8692 --- [nio-8800-exec-9] c.w.e.D.M.GetMeetingByPage_COUNT         : <==      Total: 1
+2022-03-06 16:39:37.319 DEBUG 8692 --- [nio-8800-exec-9] c.w.e.D.MeetingMapper.GetMeetingByPage   : ==>  Preparing: select * from meeting order by meetingTime desc LIMIT ?
+2022-03-06 16:39:37.319 DEBUG 8692 --- [nio-8800-exec-9] c.w.e.D.MeetingMapper.GetMeetingByPage   : ==> Parameters: 15(Integer)
+2022-03-06 16:39:37.320 DEBUG 8692 --- [nio-8800-exec-9] c.w.e.D.MeetingMapper.GetMeetingByPage   : <==      Total: 15
+查询培训基本信息
+2022-03-06 16:39:37.994 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.T.GetTrainByPage_COUNT           : ==>  Preparing: SELECT count(0) FROM train
+2022-03-06 16:39:37.994 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.T.GetTrainByPage_COUNT           : ==> Parameters: 
+2022-03-06 16:39:37.995 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.T.GetTrainByPage_COUNT           : <==      Total: 1
+2022-03-06 16:39:37.995 DEBUG 8692 --- [nio-8800-exec-1] c.w.epms.Dao.TrainMapper.GetTrainByPage  : ==>  Preparing: select * from train order by trainTime desc LIMIT ?
+2022-03-06 16:39:37.995 DEBUG 8692 --- [nio-8800-exec-1] c.w.epms.Dao.TrainMapper.GetTrainByPage  : ==> Parameters: 15(Integer)
+2022-03-06 16:39:37.995 DEBUG 8692 --- [nio-8800-exec-1] c.w.epms.Dao.TrainMapper.GetTrainByPage  : <==      Total: 2
+查询实施基本信息
+2022-03-06 16:39:39.710 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecuteByPage_COUNT         : ==>  Preparing: select count(0) from ( select * from execute order by execute.infoCreateTime desc ) tmp_count
+2022-03-06 16:39:39.710 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecuteByPage_COUNT         : ==> Parameters: 
+2022-03-06 16:39:39.711 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecuteByPage_COUNT         : <==      Total: 1
+2022-03-06 16:39:39.711 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.ExecuteMapper.GetExecuteByPage   : ==>  Preparing: select * from execute order by execute.infoCreateTime desc LIMIT ?
+2022-03-06 16:39:39.711 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.ExecuteMapper.GetExecuteByPage   : ==> Parameters: 15(Integer)
+2022-03-06 16:39:39.712 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.ExecuteMapper.GetExecuteByPage   : <==      Total: 15
+41
+27
+28
+32
+34
+2022-03-06 16:39:39.712 DEBUG 8692 --- [nio-8800-exec-5] c.w.epms.Dao.ExecuteMapper.SetOverdue    : ==>  Preparing: update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ?
+2022-03-06 16:39:39.713 DEBUG 8692 --- [nio-8800-exec-5] c.w.epms.Dao.ExecuteMapper.SetOverdue    : ==> Parameters: 0(Integer), 43(String), 0(Integer), 42(String), 1(Integer), 41(String), 1(Integer), 40(String), 0(Integer), 39(String), 0(Integer), 3(String), 1(Integer), 27(String), 1(Integer), 28(String), 0(Integer), 29(String), 0(Integer), 30(String), 0(Integer), 31(String), 1(Integer), 32(String), 0(Integer), 33(String), 1(Integer), 34(String), 0(Integer), 35(String)
+2022-03-06 16:39:39.714 DEBUG 8692 --- [nio-8800-exec-5] c.w.epms.Dao.ExecuteMapper.SetOverdue    : <==    Updates: 1
+查询项目基本信息
+2022-03-06 16:39:40.206 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.P.GetProjectByPage_COUNT         : ==>  Preparing: SELECT count(0) FROM project
+2022-03-06 16:39:40.206 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.P.GetProjectByPage_COUNT         : ==> Parameters: 
+2022-03-06 16:39:40.206 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.P.GetProjectByPage_COUNT         : <==      Total: 1
+2022-03-06 16:39:40.206 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.ProjectMapper.GetProjectByPage   : ==>  Preparing: select * from project order by project.infoCreateTime desc LIMIT ?
+2022-03-06 16:39:40.206 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.ProjectMapper.GetProjectByPage   : ==> Parameters: 15(Integer)
+2022-03-06 16:39:40.207 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.ProjectMapper.GetProjectByPage   : <==      Total: 11
+2022-03-06 16:39:40.207 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:40.207 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 15(Integer)
+2022-03-06 16:39:40.208 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:39:40.208 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:40.208 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 30(Integer)
+2022-03-06 16:39:40.208 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:40.208 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:40.208 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 29(Integer)
+2022-03-06 16:39:40.208 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:40.208 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:40.208 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 28(Integer)
+2022-03-06 16:39:40.209 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:40.209 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:40.209 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 14(Integer)
+2022-03-06 16:39:40.209 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:39:40.209 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:40.210 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 27(Integer)
+2022-03-06 16:39:40.210 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:40.210 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:40.210 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 26(Integer)
+2022-03-06 16:39:40.210 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:40.210 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:40.210 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 25(Integer)
+2022-03-06 16:39:40.210 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:40.211 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:40.211 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 13(Integer)
+2022-03-06 16:39:40.211 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:39:40.211 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:40.211 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 24(Integer)
+2022-03-06 16:39:40.212 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:40.212 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:40.212 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 23(Integer)
+2022-03-06 16:39:40.212 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:40.212 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:40.212 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 22(Integer)
+2022-03-06 16:39:40.212 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:39:40.213 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:40.213 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 1(Integer)
+2022-03-06 16:39:40.213 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:39:40.213 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:40.213 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 2(Integer)
+2022-03-06 16:39:40.213 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:39:40.213 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:40.213 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 5(Integer)
+2022-03-06 16:39:40.214 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:39:40.214 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:40.214 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 13(Integer)
+2022-03-06 16:39:40.214 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:39:40.214 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:40.215 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 14(Integer)
+2022-03-06 16:39:40.215 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:39:40.215 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:40.215 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 15(Integer)
+2022-03-06 16:39:40.216 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:39:40.216 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:40.216 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 6(Integer)
+2022-03-06 16:39:40.216 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:39:40.216 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:40.216 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 7(Integer)
+2022-03-06 16:39:40.217 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:39:40.217 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:40.217 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-06 16:39:40.217 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+2022-03-06 16:39:40.217 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:40.217 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-06 16:39:40.218 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:39:40.218 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:40.218 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 20(Integer)
+2022-03-06 16:39:40.218 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:39:40.218 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:40.219 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 8(Integer)
+2022-03-06 16:39:40.219 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:39:40.219 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:40.219 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 9(Integer)
+2022-03-06 16:39:40.219 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:39:40.219 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:40.219 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 10(Integer)
+2022-03-06 16:39:40.220 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:39:40.220 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.P.SetOverdueAndFinished          : ==>  Preparing: update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ?
+2022-03-06 16:39:40.220 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.P.SetOverdueAndFinished          : ==> Parameters: 0(Integer), 0(Integer), 15(String), 0(Integer), 0(Integer), 14(String), 0(Integer), 0(Integer), 13(String), 0(Integer), 0(Integer), 1(String), 0(Integer), 0(Integer), 2(String), 0(Integer), 0(Integer), 5(String), 0(Integer), 0(Integer), 6(String), 1(Integer), 1(Integer), 7(String), 0(Integer), 0(Integer), 8(String), 0(Integer), 0(Integer), 9(String), 0(Integer), 0(Integer), 10(String)
+2022-03-06 16:39:40.222 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.P.SetOverdueAndFinished          : <==    Updates: 1
+2022-03-06 16:39:41.822 DEBUG 8692 --- [nio-8800-exec-2] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:39:41.822 DEBUG 8692 --- [nio-8800-exec-2] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 7(Integer)
+2022-03-06 16:39:41.823 DEBUG 8692 --- [nio-8800-exec-2] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:39:41.823 DEBUG 8692 --- [nio-8800-exec-2] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:41.823 DEBUG 8692 --- [nio-8800-exec-2] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-06 16:39:41.824 DEBUG 8692 --- [nio-8800-exec-2] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+2022-03-06 16:39:41.824 DEBUG 8692 --- [nio-8800-exec-2] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:41.824 DEBUG 8692 --- [nio-8800-exec-2] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-06 16:39:41.825 DEBUG 8692 --- [nio-8800-exec-2] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:39:41.825 DEBUG 8692 --- [nio-8800-exec-2] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:39:41.825 DEBUG 8692 --- [nio-8800-exec-2] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 20(Integer)
+2022-03-06 16:39:41.826 DEBUG 8692 --- [nio-8800-exec-2] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+ 2022-02-01 2022-02-28 1 1 最后阶段 
+<p>最后阶段1</p> 2022-02-01 2022-02-28 1 2  
+<p>1、初步设计要尽可能详细</p><p><span style="font-weight: bold;">2、建模要达到初步设计要求的深度</span></p> 2022-01-01 2022-01-13 1 1 初步设计阶段 
+<p>1、通风模块建模完成</p><p>2、通风插件完成</p> 2022-01-01 2022-01-04 1 2  
+<p>1、除尘模型完成</p> 2022-01-10 2022-01-13 1 2  
+<p>1、模型要达到详细设计阶段要求</p> 2022-01-13 2022-02-28 1 1 详细设计阶段 
+<p>2</p> 2022-02-08 2022-02-16 1 2  
+<p>1</p> 2022-01-04 2022-02-15 1 2  
+2022-03-06 16:39:41.826 DEBUG 8692 --- [nio-8800-exec-2] c.w.e.Dao.ProjectMapper.GetProjectById   : ==>  Preparing: select * from project where id = ? order by project.infoCreateTime desc
+2022-03-06 16:39:41.826 DEBUG 8692 --- [nio-8800-exec-2] c.w.e.Dao.ProjectMapper.GetProjectById   : ==> Parameters: 7(Integer)
+2022-03-06 16:39:41.826 DEBUG 8692 --- [nio-8800-exec-2] c.w.e.Dao.ProjectMapper.GetProjectById   : <==      Total: 1
+2022-03-06 16:40:02.781  INFO 8692 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-03-06 16:40:02.781  INFO 8692 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.6.2)
+
+2022-03-06 16:40:55.579  INFO 23468 --- [           main] com.wisdri.epms.EpmsApplication          : Starting EpmsApplication v0.0.1-SNAPSHOT using Java 1.8.0_301 on P-14530 with PID 23468 (F:\Java WorkSpace\epms\epms.jar started by P-14530$ in F:\Java WorkSpace\epms)
+2022-03-06 16:40:55.579  INFO 23468 --- [           main] com.wisdri.epms.EpmsApplication          : No active profile set, falling back to default profiles: default
+2022-03-06 16:40:56.064  INFO 23468 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-03-06 16:40:56.064  INFO 23468 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 JDBC repository interfaces.
+2022-03-06 16:40:56.673  INFO 23468 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8800 (http)
+2022-03-06 16:40:56.673  INFO 23468 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-06 16:40:56.673  INFO 23468 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-03-06 16:40:56.985  INFO 23468 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-03-06 16:40:56.985  INFO 23468 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1374 ms
+2022-03-06 16:40:57.485  INFO 23468 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-03-06 16:40:57.626  INFO 23468 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-03-06 16:40:58.249  INFO 23468 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-03-06 16:40:58.290  WARN 23468 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from class java.time.OffsetDateTime to class org.springframework.data.jdbc.core.convert.JdbcValue as writing converter although it doesn't convert to a store-supported type! You might want to check your annotation setup at the converter implementation.
+2022-03-06 16:40:58.383  INFO 23468 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8800 (http) with context path ''
+2022-03-06 16:40:58.393  INFO 23468 --- [           main] com.wisdri.epms.EpmsApplication          : Started EpmsApplication in 3.135 seconds (JVM running for 3.501)
+2022-03-06 16:41:02.381  INFO 23468 --- [nio-8800-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-06 16:41:02.381  INFO 23468 --- [nio-8800-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-06 16:41:02.381  INFO 23468 --- [nio-8800-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+查询项目基本信息
+2022-03-06 16:41:02.881 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.P.GetProjectByPage_COUNT         : ==>  Preparing: SELECT count(0) FROM project
+2022-03-06 16:41:02.899 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.P.GetProjectByPage_COUNT         : ==> Parameters: 
+2022-03-06 16:41:02.915 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.P.GetProjectByPage_COUNT         : <==      Total: 1
+2022-03-06 16:41:02.916 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.ProjectMapper.GetProjectByPage   : ==>  Preparing: select * from project order by project.infoCreateTime desc LIMIT ?
+2022-03-06 16:41:02.917 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.ProjectMapper.GetProjectByPage   : ==> Parameters: 15(Integer)
+2022-03-06 16:41:02.922 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.ProjectMapper.GetProjectByPage   : <==      Total: 11
+2022-03-06 16:41:02.924 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:02.924 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 15(Integer)
+2022-03-06 16:41:02.925 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:41:02.926 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:02.926 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 30(Integer)
+2022-03-06 16:41:02.927 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:02.927 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:02.927 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 29(Integer)
+2022-03-06 16:41:02.928 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:02.928 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:02.928 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 28(Integer)
+2022-03-06 16:41:02.929 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:02.929 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:02.929 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 14(Integer)
+2022-03-06 16:41:02.930 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:41:02.930 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:02.930 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 27(Integer)
+2022-03-06 16:41:02.931 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:02.931 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:02.931 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 26(Integer)
+2022-03-06 16:41:02.932 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:02.932 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:02.932 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 25(Integer)
+2022-03-06 16:41:02.933 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:02.933 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:02.933 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 13(Integer)
+2022-03-06 16:41:02.935 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:41:02.935 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:02.936 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 24(Integer)
+2022-03-06 16:41:02.937 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:02.937 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:02.937 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 23(Integer)
+2022-03-06 16:41:02.938 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:02.938 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:02.939 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 22(Integer)
+2022-03-06 16:41:02.939 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:02.939 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:02.940 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 1(Integer)
+2022-03-06 16:41:02.940 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:02.940 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:02.941 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 2(Integer)
+2022-03-06 16:41:02.942 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:02.943 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:02.943 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 5(Integer)
+2022-03-06 16:41:02.944 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:41:02.945 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:02.945 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 13(Integer)
+2022-03-06 16:41:02.946 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:41:02.946 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:02.946 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 14(Integer)
+2022-03-06 16:41:02.947 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:41:02.947 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:02.948 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 15(Integer)
+2022-03-06 16:41:02.948 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:41:02.949 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:02.949 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 6(Integer)
+2022-03-06 16:41:02.950 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:02.951 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:02.951 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 7(Integer)
+2022-03-06 16:41:02.953 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:41:02.953 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:02.954 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-06 16:41:02.954 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+2022-03-06 16:41:02.955 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:02.955 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-06 16:41:02.955 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:41:02.956 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:02.956 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 20(Integer)
+2022-03-06 16:41:02.956 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:41:02.957 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:02.957 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 8(Integer)
+2022-03-06 16:41:02.957 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:02.957 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:02.957 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 9(Integer)
+2022-03-06 16:41:02.958 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:02.958 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:02.958 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 10(Integer)
+2022-03-06 16:41:02.958 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:02.986 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.P.SetOverdueAndFinished          : ==>  Preparing: update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ?
+2022-03-06 16:41:02.987 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.P.SetOverdueAndFinished          : ==> Parameters: 0(Integer), 0(Integer), 15(String), 0(Integer), 0(Integer), 14(String), 0(Integer), 0(Integer), 13(String), 0(Integer), 0(Integer), 1(String), 0(Integer), 0(Integer), 2(String), 0(Integer), 0(Integer), 5(String), 0(Integer), 0(Integer), 6(String), 1(Integer), 1(Integer), 7(String), 0(Integer), 0(Integer), 8(String), 0(Integer), 0(Integer), 9(String), 0(Integer), 0(Integer), 10(String)
+2022-03-06 16:41:02.989 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.P.SetOverdueAndFinished          : <==    Updates: 1
+2022-03-06 16:41:08.419 DEBUG 23468 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:08.419 DEBUG 23468 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 7(Integer)
+2022-03-06 16:41:08.422 DEBUG 23468 --- [nio-8800-exec-8] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:41:08.422 DEBUG 23468 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:08.423 DEBUG 23468 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-06 16:41:08.423 DEBUG 23468 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+2022-03-06 16:41:08.424 DEBUG 23468 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:08.424 DEBUG 23468 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-06 16:41:08.425 DEBUG 23468 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:41:08.425 DEBUG 23468 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:08.425 DEBUG 23468 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 20(Integer)
+2022-03-06 16:41:08.426 DEBUG 23468 --- [nio-8800-exec-8] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+ 2022-02-01 2022-02-28 1 1 最后阶段 
+<p>最后阶段1</p> 2022-02-01 2022-02-28 1 2  
+<p>1、初步设计要尽可能详细</p><p><span style="font-weight: bold;">2、建模要达到初步设计要求的深度</span></p> 2022-01-01 2022-01-13 1 1 初步设计阶段 
+<p>1、通风模块建模完成</p><p>2、通风插件完成</p> 2022-01-01 2022-01-04 1 2  
+<p>1、除尘模型完成</p> 2022-01-10 2022-01-13 1 2  
+<p>1、模型要达到详细设计阶段要求</p> 2022-01-13 2022-02-28 1 1 详细设计阶段 
+<p>2</p> 2022-02-08 2022-02-16 1 2  
+<p>1</p> 2022-01-04 2022-02-15 1 2  
+2022-03-06 16:41:08.427 DEBUG 23468 --- [nio-8800-exec-8] c.w.e.Dao.ProjectMapper.GetProjectById   : ==>  Preparing: select * from project where id = ? order by project.infoCreateTime desc
+2022-03-06 16:41:08.427 DEBUG 23468 --- [nio-8800-exec-8] c.w.e.Dao.ProjectMapper.GetProjectById   : ==> Parameters: 7(Integer)
+2022-03-06 16:41:08.428 DEBUG 23468 --- [nio-8800-exec-8] c.w.e.Dao.ProjectMapper.GetProjectById   : <==      Total: 1
+2022-03-06 16:41:08.470 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.P.FindProjectByProjectName       : ==>  Preparing: select * from project where name = ? order by project.infoCreateTime desc
+2022-03-06 16:41:08.470 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.P.FindProjectByProjectName       : ==> Parameters: 玉昆项目群(String)
+2022-03-06 16:41:08.471 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.P.FindProjectByProjectName       : <==      Total: 1
+2022-03-06 16:41:18.905 DEBUG 23468 --- [nio-8800-exec-4] c.w.e.D.P.GetProjectCountByYear          : ==>  Preparing: select count(id) from project where year(proStartTime) = ?
+2022-03-06 16:41:18.905 DEBUG 23468 --- [nio-8800-exec-4] c.w.e.D.P.GetProjectCountByYear          : ==> Parameters: 2022(String)
+2022-03-06 16:41:18.906 DEBUG 23468 --- [nio-8800-exec-4] c.w.e.D.P.GetProjectCountByYear          : <==      Total: 1
+2022-03-06 16:41:18.906 DEBUG 23468 --- [nio-8800-exec-4] c.w.e.D.E.GetExecuteCountByYear          : ==>  Preparing: select count(id) from execute where year(exeRealEndTime) = ?
+2022-03-06 16:41:18.906 DEBUG 23468 --- [nio-8800-exec-4] c.w.e.D.E.GetExecuteCountByYear          : ==> Parameters: 2022(String)
+2022-03-06 16:41:18.906 DEBUG 23468 --- [nio-8800-exec-4] c.w.e.D.E.GetExecuteCountByYear          : <==      Total: 1
+2022-03-06 16:41:18.907 DEBUG 23468 --- [nio-8800-exec-4] c.w.e.D.E.GetExecuteCountByYearMonth     : ==>  Preparing: select date_format(exeRealEndTime, '%m') as time, count(id) as executeCount from execute where year(exeRealEndTime) = ? group by month(exeRealEndTime)
+2022-03-06 16:41:18.907 DEBUG 23468 --- [nio-8800-exec-4] c.w.e.D.E.GetExecuteCountByYearMonth     : ==> Parameters: 2022(String)
+2022-03-06 16:41:18.907 DEBUG 23468 --- [nio-8800-exec-4] c.w.e.D.E.GetExecuteCountByYearMonth     : <==      Total: 2
+2022-03-06 16:41:18.908 DEBUG 23468 --- [nio-8800-exec-4] c.w.e.D.M.GetMeetingCountByYearMonth     : ==>  Preparing: select date_format(meetingTime, '%m') as time, count(id) as meetingCount from meeting where year(meetingTime) = ? group by month(meetingTime)
+2022-03-06 16:41:18.908 DEBUG 23468 --- [nio-8800-exec-4] c.w.e.D.M.GetMeetingCountByYearMonth     : ==> Parameters: 2022(String)
+2022-03-06 16:41:18.909 DEBUG 23468 --- [nio-8800-exec-4] c.w.e.D.M.GetMeetingCountByYearMonth     : <==      Total: 6
+2022-03-06 16:41:18.909 DEBUG 23468 --- [nio-8800-exec-4] c.w.e.D.T.GetTrainCountByYearMonth       : ==>  Preparing: select date_format(trainTime, '%m') as time, count(id) as trainCount from train where year(trainTime) = ? group by month(trainTime)
+2022-03-06 16:41:18.909 DEBUG 23468 --- [nio-8800-exec-4] c.w.e.D.T.GetTrainCountByYearMonth       : ==> Parameters: 2022(String)
+2022-03-06 16:41:18.910 DEBUG 23468 --- [nio-8800-exec-4] c.w.e.D.T.GetTrainCountByYearMonth       : <==      Total: 2
+2022-03-06 16:41:18.910 DEBUG 23468 --- [nio-8800-exec-4] c.w.e.D.E.GetExeMostMonthByYear          : ==>  Preparing: select time from (select max(exeCount) as count, exeRealEndTime as time from (select count(id) as exeCount, date_format(exeRealEndTime, '%Y-%m') as exeRealEndTime from execute where year(exeRealEndTime) = ? group by month(exeRealEndTime)) as a ) as b
+2022-03-06 16:41:18.910 DEBUG 23468 --- [nio-8800-exec-4] c.w.e.D.E.GetExeMostMonthByYear          : ==> Parameters: 2022(String)
+2022-03-06 16:41:18.911 DEBUG 23468 --- [nio-8800-exec-4] c.w.e.D.E.GetExeMostMonthByYear          : <==      Total: 1
+2022-03-06 16:41:39.772 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.P.GetProjectCountByYear          : ==>  Preparing: select count(id) from project where year(proStartTime) = ?
+2022-03-06 16:41:39.772 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.P.GetProjectCountByYear          : ==> Parameters: 2022(String)
+2022-03-06 16:41:39.772 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.P.GetProjectCountByYear          : <==      Total: 1
+2022-03-06 16:41:39.773 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecuteCountByYear          : ==>  Preparing: select count(id) from execute where year(exeRealEndTime) = ?
+2022-03-06 16:41:39.773 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecuteCountByYear          : ==> Parameters: 2022(String)
+2022-03-06 16:41:39.773 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecuteCountByYear          : <==      Total: 1
+2022-03-06 16:41:39.773 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecuteCountByYearMonth     : ==>  Preparing: select date_format(exeRealEndTime, '%m') as time, count(id) as executeCount from execute where year(exeRealEndTime) = ? group by month(exeRealEndTime)
+2022-03-06 16:41:39.773 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecuteCountByYearMonth     : ==> Parameters: 2022(String)
+2022-03-06 16:41:39.774 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecuteCountByYearMonth     : <==      Total: 2
+2022-03-06 16:41:39.774 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.M.GetMeetingCountByYearMonth     : ==>  Preparing: select date_format(meetingTime, '%m') as time, count(id) as meetingCount from meeting where year(meetingTime) = ? group by month(meetingTime)
+2022-03-06 16:41:39.774 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.M.GetMeetingCountByYearMonth     : ==> Parameters: 2022(String)
+2022-03-06 16:41:39.775 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.M.GetMeetingCountByYearMonth     : <==      Total: 6
+2022-03-06 16:41:39.775 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.T.GetTrainCountByYearMonth       : ==>  Preparing: select date_format(trainTime, '%m') as time, count(id) as trainCount from train where year(trainTime) = ? group by month(trainTime)
+2022-03-06 16:41:39.776 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.T.GetTrainCountByYearMonth       : ==> Parameters: 2022(String)
+2022-03-06 16:41:39.776 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.T.GetTrainCountByYearMonth       : <==      Total: 2
+2022-03-06 16:41:39.776 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExeMostMonthByYear          : ==>  Preparing: select time from (select max(exeCount) as count, exeRealEndTime as time from (select count(id) as exeCount, date_format(exeRealEndTime, '%Y-%m') as exeRealEndTime from execute where year(exeRealEndTime) = ? group by month(exeRealEndTime)) as a ) as b
+2022-03-06 16:41:39.777 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExeMostMonthByYear          : ==> Parameters: 2022(String)
+2022-03-06 16:41:39.777 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExeMostMonthByYear          : <==      Total: 1
+查询项目基本信息
+2022-03-06 16:41:43.626 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.P.GetProjectByPage_COUNT         : ==>  Preparing: SELECT count(0) FROM project
+2022-03-06 16:41:43.626 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.P.GetProjectByPage_COUNT         : ==> Parameters: 
+2022-03-06 16:41:43.626 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.P.GetProjectByPage_COUNT         : <==      Total: 1
+2022-03-06 16:41:43.626 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.ProjectMapper.GetProjectByPage   : ==>  Preparing: select * from project order by project.infoCreateTime desc LIMIT ?
+2022-03-06 16:41:43.627 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.ProjectMapper.GetProjectByPage   : ==> Parameters: 15(Integer)
+2022-03-06 16:41:43.629 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.ProjectMapper.GetProjectByPage   : <==      Total: 11
+2022-03-06 16:41:43.630 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:43.630 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 15(Integer)
+2022-03-06 16:41:43.631 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:41:43.631 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:43.632 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 30(Integer)
+2022-03-06 16:41:43.632 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:43.633 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:43.633 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 29(Integer)
+2022-03-06 16:41:43.634 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:43.635 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:43.635 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 28(Integer)
+2022-03-06 16:41:43.636 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:43.636 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:43.636 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 14(Integer)
+2022-03-06 16:41:43.637 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:41:43.637 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:43.637 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 27(Integer)
+2022-03-06 16:41:43.638 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:43.638 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:43.638 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 26(Integer)
+2022-03-06 16:41:43.638 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:43.638 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:43.638 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 25(Integer)
+2022-03-06 16:41:43.639 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:43.639 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:43.639 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 13(Integer)
+2022-03-06 16:41:43.639 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:41:43.640 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:43.640 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 24(Integer)
+2022-03-06 16:41:43.640 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:43.640 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:43.640 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 23(Integer)
+2022-03-06 16:41:43.641 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:43.641 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:43.641 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 22(Integer)
+2022-03-06 16:41:43.641 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:43.642 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:43.642 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 1(Integer)
+2022-03-06 16:41:43.642 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:43.642 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:43.642 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 2(Integer)
+2022-03-06 16:41:43.643 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:43.643 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:43.643 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 5(Integer)
+2022-03-06 16:41:43.644 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:41:43.644 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:43.644 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 13(Integer)
+2022-03-06 16:41:43.645 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:41:43.645 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:43.646 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 14(Integer)
+2022-03-06 16:41:43.646 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:41:43.646 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:43.647 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 15(Integer)
+2022-03-06 16:41:43.647 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:41:43.648 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:43.648 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 6(Integer)
+2022-03-06 16:41:43.649 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:43.649 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:43.649 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 7(Integer)
+2022-03-06 16:41:43.650 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:41:43.650 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:43.650 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-06 16:41:43.651 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+2022-03-06 16:41:43.652 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:43.652 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-06 16:41:43.653 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:41:43.653 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:43.653 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 20(Integer)
+2022-03-06 16:41:43.654 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:41:43.654 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:43.655 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 8(Integer)
+2022-03-06 16:41:43.655 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:43.655 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:43.655 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 9(Integer)
+2022-03-06 16:41:43.656 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:43.656 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:43.656 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 10(Integer)
+2022-03-06 16:41:43.656 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:43.658 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.P.SetOverdueAndFinished          : ==>  Preparing: update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ?
+2022-03-06 16:41:43.658 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.P.SetOverdueAndFinished          : ==> Parameters: 0(Integer), 0(Integer), 15(String), 0(Integer), 0(Integer), 14(String), 0(Integer), 0(Integer), 13(String), 0(Integer), 0(Integer), 1(String), 0(Integer), 0(Integer), 2(String), 0(Integer), 0(Integer), 5(String), 0(Integer), 0(Integer), 6(String), 1(Integer), 1(Integer), 7(String), 0(Integer), 0(Integer), 8(String), 0(Integer), 0(Integer), 9(String), 0(Integer), 0(Integer), 10(String)
+2022-03-06 16:41:43.659 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.P.SetOverdueAndFinished          : <==    Updates: 1
+查询计划基本信息
+2022-03-06 16:41:44.942 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlanByPage_COUNT   : ==>  Preparing: SELECT count(0) FROM plan
+2022-03-06 16:41:44.942 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlanByPage_COUNT   : ==> Parameters: 
+2022-03-06 16:41:44.942 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlanByPage_COUNT   : <==      Total: 1
+2022-03-06 16:41:44.943 DEBUG 23468 --- [nio-8800-exec-5] c.w.epms.Dao.PlanMapper.GetPlanByPage    : ==>  Preparing: select * from plan order by plan.infoCreateTime desc LIMIT ?
+2022-03-06 16:41:44.943 DEBUG 23468 --- [nio-8800-exec-5] c.w.epms.Dao.PlanMapper.GetPlanByPage    : ==> Parameters: 15(Integer)
+2022-03-06 16:41:44.944 DEBUG 23468 --- [nio-8800-exec-5] c.w.epms.Dao.PlanMapper.GetPlanByPage    : <==      Total: 15
+2022-03-06 16:41:44.945 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:44.945 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-06 16:41:44.946 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+1 1
+2022-03-06 16:41:44.946 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:44.946 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 31(Integer)
+2022-03-06 16:41:44.947 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:44.947 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:44.947 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 30(Integer)
+2022-03-06 16:41:44.948 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:44.949 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:44.949 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 29(Integer)
+2022-03-06 16:41:44.949 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:44.949 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:44.949 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 28(Integer)
+2022-03-06 16:41:44.949 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:44.949 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:44.949 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 27(Integer)
+2022-03-06 16:41:44.950 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:44.950 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:44.950 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 26(Integer)
+2022-03-06 16:41:44.950 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:44.951 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:44.951 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 25(Integer)
+2022-03-06 16:41:44.951 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:44.952 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:44.952 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 24(Integer)
+2022-03-06 16:41:44.953 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:44.953 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:44.953 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 23(Integer)
+2022-03-06 16:41:44.954 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:44.954 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:44.954 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 22(Integer)
+2022-03-06 16:41:44.954 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:44.955 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:44.955 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 13(Integer)
+2022-03-06 16:41:44.955 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2 2
+2022-03-06 16:41:44.956 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:44.956 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 14(Integer)
+2022-03-06 16:41:44.957 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+0 2
+2022-03-06 16:41:44.957 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:44.957 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 15(Integer)
+2022-03-06 16:41:44.958 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2 2
+2022-03-06 16:41:44.958 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:44.958 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-06 16:41:44.959 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2 2
+2022-03-06 16:41:44.961 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.P.SetOverdueAndFinished          : ==>  Preparing: update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ?
+2022-03-06 16:41:44.961 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.P.SetOverdueAndFinished          : ==> Parameters: 0(Integer), 1(Integer), 32(String), 0(Integer), 0(Integer), 31(String), 0(Integer), 0(Integer), 30(String), 0(Integer), 0(Integer), 29(String), 0(Integer), 0(Integer), 28(String), 0(Integer), 0(Integer), 27(String), 0(Integer), 0(Integer), 26(String), 0(Integer), 0(Integer), 25(String), 0(Integer), 0(Integer), 24(String), 0(Integer), 0(Integer), 23(String), 0(Integer), 0(Integer), 22(String), 0(Integer), 1(Integer), 13(String), 0(Integer), 0(Integer), 14(String), 1(Integer), 1(Integer), 15(String), 1(Integer), 1(Integer), 19(String)
+2022-03-06 16:41:44.963 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.P.SetOverdueAndFinished          : <==    Updates: 1
+查询实施基本信息
+2022-03-06 16:41:45.633 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecuteByPage_COUNT         : ==>  Preparing: select count(0) from ( select * from execute order by execute.infoCreateTime desc ) tmp_count
+2022-03-06 16:41:45.633 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecuteByPage_COUNT         : ==> Parameters: 
+2022-03-06 16:41:45.633 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.E.GetExecuteByPage_COUNT         : <==      Total: 1
+2022-03-06 16:41:45.633 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.ExecuteMapper.GetExecuteByPage   : ==>  Preparing: select * from execute order by execute.infoCreateTime desc LIMIT ?
+2022-03-06 16:41:45.634 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.ExecuteMapper.GetExecuteByPage   : ==> Parameters: 15(Integer)
+2022-03-06 16:41:45.635 DEBUG 23468 --- [nio-8800-exec-7] c.w.e.D.ExecuteMapper.GetExecuteByPage   : <==      Total: 15
+41
+27
+28
+32
+34
+2022-03-06 16:41:45.636 DEBUG 23468 --- [nio-8800-exec-7] c.w.epms.Dao.ExecuteMapper.SetOverdue    : ==>  Preparing: update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ?
+2022-03-06 16:41:45.637 DEBUG 23468 --- [nio-8800-exec-7] c.w.epms.Dao.ExecuteMapper.SetOverdue    : ==> Parameters: 0(Integer), 43(String), 0(Integer), 42(String), 1(Integer), 41(String), 1(Integer), 40(String), 0(Integer), 39(String), 0(Integer), 3(String), 1(Integer), 27(String), 1(Integer), 28(String), 0(Integer), 29(String), 0(Integer), 30(String), 0(Integer), 31(String), 1(Integer), 32(String), 0(Integer), 33(String), 1(Integer), 34(String), 0(Integer), 35(String)
+2022-03-06 16:41:45.638 DEBUG 23468 --- [nio-8800-exec-7] c.w.epms.Dao.ExecuteMapper.SetOverdue    : <==    Updates: 1
+查询计划基本信息
+2022-03-06 16:41:46.354 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.PlanMapper.GetPlanByPage_COUNT   : ==>  Preparing: SELECT count(0) FROM plan
+2022-03-06 16:41:46.354 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.PlanMapper.GetPlanByPage_COUNT   : ==> Parameters: 
+2022-03-06 16:41:46.354 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.PlanMapper.GetPlanByPage_COUNT   : <==      Total: 1
+2022-03-06 16:41:46.354 DEBUG 23468 --- [nio-8800-exec-9] c.w.epms.Dao.PlanMapper.GetPlanByPage    : ==>  Preparing: select * from plan order by plan.infoCreateTime desc LIMIT ?
+2022-03-06 16:41:46.355 DEBUG 23468 --- [nio-8800-exec-9] c.w.epms.Dao.PlanMapper.GetPlanByPage    : ==> Parameters: 15(Integer)
+2022-03-06 16:41:46.356 DEBUG 23468 --- [nio-8800-exec-9] c.w.epms.Dao.PlanMapper.GetPlanByPage    : <==      Total: 15
+2022-03-06 16:41:46.356 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.356 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-06 16:41:46.357 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+1 1
+2022-03-06 16:41:46.357 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.357 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 31(Integer)
+2022-03-06 16:41:46.358 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:46.358 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.358 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 30(Integer)
+2022-03-06 16:41:46.359 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:46.359 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.359 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 29(Integer)
+2022-03-06 16:41:46.359 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:46.359 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.360 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 28(Integer)
+2022-03-06 16:41:46.361 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:46.361 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.362 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 27(Integer)
+2022-03-06 16:41:46.362 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:46.362 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.363 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 26(Integer)
+2022-03-06 16:41:46.363 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:46.363 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.363 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 25(Integer)
+2022-03-06 16:41:46.364 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:46.364 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.364 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 24(Integer)
+2022-03-06 16:41:46.364 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:46.365 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.365 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 23(Integer)
+2022-03-06 16:41:46.365 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:46.365 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.365 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 22(Integer)
+2022-03-06 16:41:46.366 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:46.366 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.366 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 13(Integer)
+2022-03-06 16:41:46.367 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2 2
+2022-03-06 16:41:46.367 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.367 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 14(Integer)
+2022-03-06 16:41:46.368 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+0 2
+2022-03-06 16:41:46.368 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.368 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 15(Integer)
+2022-03-06 16:41:46.369 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2 2
+2022-03-06 16:41:46.370 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.370 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-06 16:41:46.371 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2 2
+2022-03-06 16:41:46.372 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.P.SetOverdueAndFinished          : ==>  Preparing: update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ?
+2022-03-06 16:41:46.373 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.P.SetOverdueAndFinished          : ==> Parameters: 0(Integer), 1(Integer), 32(String), 0(Integer), 0(Integer), 31(String), 0(Integer), 0(Integer), 30(String), 0(Integer), 0(Integer), 29(String), 0(Integer), 0(Integer), 28(String), 0(Integer), 0(Integer), 27(String), 0(Integer), 0(Integer), 26(String), 0(Integer), 0(Integer), 25(String), 0(Integer), 0(Integer), 24(String), 0(Integer), 0(Integer), 23(String), 0(Integer), 0(Integer), 22(String), 0(Integer), 1(Integer), 13(String), 0(Integer), 0(Integer), 14(String), 1(Integer), 1(Integer), 15(String), 1(Integer), 1(Integer), 19(String)
+2022-03-06 16:41:46.374 DEBUG 23468 --- [nio-8800-exec-9] c.w.e.D.P.SetOverdueAndFinished          : <==    Updates: 1
+查询项目基本信息
+2022-03-06 16:41:46.834 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.P.GetProjectByPage_COUNT         : ==>  Preparing: SELECT count(0) FROM project
+2022-03-06 16:41:46.835 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.P.GetProjectByPage_COUNT         : ==> Parameters: 
+2022-03-06 16:41:46.835 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.P.GetProjectByPage_COUNT         : <==      Total: 1
+2022-03-06 16:41:46.836 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.ProjectMapper.GetProjectByPage   : ==>  Preparing: select * from project order by project.infoCreateTime desc LIMIT ?
+2022-03-06 16:41:46.836 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.ProjectMapper.GetProjectByPage   : ==> Parameters: 15(Integer)
+2022-03-06 16:41:46.837 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.ProjectMapper.GetProjectByPage   : <==      Total: 11
+2022-03-06 16:41:46.837 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:46.837 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 15(Integer)
+2022-03-06 16:41:46.838 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:41:46.838 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.838 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 30(Integer)
+2022-03-06 16:41:46.839 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:46.839 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.839 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 29(Integer)
+2022-03-06 16:41:46.839 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:46.839 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.839 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 28(Integer)
+2022-03-06 16:41:46.840 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:46.840 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:46.840 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 14(Integer)
+2022-03-06 16:41:46.841 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:41:46.841 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.841 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 27(Integer)
+2022-03-06 16:41:46.842 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:46.842 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.842 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 26(Integer)
+2022-03-06 16:41:46.843 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:46.843 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.844 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 25(Integer)
+2022-03-06 16:41:46.845 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:46.846 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:46.846 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 13(Integer)
+2022-03-06 16:41:46.847 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:41:46.847 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.847 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 24(Integer)
+2022-03-06 16:41:46.847 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:46.848 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.848 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 23(Integer)
+2022-03-06 16:41:46.848 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:46.849 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.849 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 22(Integer)
+2022-03-06 16:41:46.849 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:46.849 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:46.849 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 1(Integer)
+2022-03-06 16:41:46.850 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:46.850 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:46.850 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 2(Integer)
+2022-03-06 16:41:46.850 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:46.850 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:46.851 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 5(Integer)
+2022-03-06 16:41:46.851 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:41:46.852 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.852 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 13(Integer)
+2022-03-06 16:41:46.853 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:41:46.853 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.854 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 14(Integer)
+2022-03-06 16:41:46.855 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:41:46.855 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.856 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 15(Integer)
+2022-03-06 16:41:46.856 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:41:46.857 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:46.857 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 6(Integer)
+2022-03-06 16:41:46.857 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:46.857 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:46.857 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 7(Integer)
+2022-03-06 16:41:46.858 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:41:46.859 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.859 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-06 16:41:46.859 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+2022-03-06 16:41:46.859 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.859 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-06 16:41:46.860 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:41:46.860 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:46.860 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 20(Integer)
+2022-03-06 16:41:46.861 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:41:46.861 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:46.861 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 8(Integer)
+2022-03-06 16:41:46.862 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:46.862 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:46.862 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 9(Integer)
+2022-03-06 16:41:46.862 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:46.862 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:46.863 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 10(Integer)
+2022-03-06 16:41:46.863 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:46.864 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.P.SetOverdueAndFinished          : ==>  Preparing: update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ?
+2022-03-06 16:41:46.864 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.P.SetOverdueAndFinished          : ==> Parameters: 0(Integer), 0(Integer), 15(String), 0(Integer), 0(Integer), 14(String), 0(Integer), 0(Integer), 13(String), 0(Integer), 0(Integer), 1(String), 0(Integer), 0(Integer), 2(String), 0(Integer), 0(Integer), 5(String), 0(Integer), 0(Integer), 6(String), 1(Integer), 1(Integer), 7(String), 0(Integer), 0(Integer), 8(String), 0(Integer), 0(Integer), 9(String), 0(Integer), 0(Integer), 10(String)
+2022-03-06 16:41:46.866 DEBUG 23468 --- [nio-8800-exec-1] c.w.e.D.P.SetOverdueAndFinished          : <==    Updates: 1
+查询计划基本信息
+2022-03-06 16:41:47.184 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlanByPage_COUNT   : ==>  Preparing: SELECT count(0) FROM plan
+2022-03-06 16:41:47.184 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlanByPage_COUNT   : ==> Parameters: 
+2022-03-06 16:41:47.185 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlanByPage_COUNT   : <==      Total: 1
+2022-03-06 16:41:47.185 DEBUG 23468 --- [nio-8800-exec-3] c.w.epms.Dao.PlanMapper.GetPlanByPage    : ==>  Preparing: select * from plan order by plan.infoCreateTime desc LIMIT ?
+2022-03-06 16:41:47.185 DEBUG 23468 --- [nio-8800-exec-3] c.w.epms.Dao.PlanMapper.GetPlanByPage    : ==> Parameters: 15(Integer)
+2022-03-06 16:41:47.186 DEBUG 23468 --- [nio-8800-exec-3] c.w.epms.Dao.PlanMapper.GetPlanByPage    : <==      Total: 15
+2022-03-06 16:41:47.186 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.186 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-06 16:41:47.187 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+1 1
+2022-03-06 16:41:47.187 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.187 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 31(Integer)
+2022-03-06 16:41:47.188 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:47.188 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.188 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 30(Integer)
+2022-03-06 16:41:47.188 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:47.189 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.189 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 29(Integer)
+2022-03-06 16:41:47.189 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:47.189 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.189 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 28(Integer)
+2022-03-06 16:41:47.190 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:47.190 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.190 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 27(Integer)
+2022-03-06 16:41:47.191 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:47.191 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.191 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 26(Integer)
+2022-03-06 16:41:47.192 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:47.192 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.192 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 25(Integer)
+2022-03-06 16:41:47.193 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:47.193 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.193 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 24(Integer)
+2022-03-06 16:41:47.194 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:47.194 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.194 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 23(Integer)
+2022-03-06 16:41:47.194 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:47.195 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.195 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 22(Integer)
+2022-03-06 16:41:47.195 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-06 16:41:47.195 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.195 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 13(Integer)
+2022-03-06 16:41:47.196 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2 2
+2022-03-06 16:41:47.196 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.196 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 14(Integer)
+2022-03-06 16:41:47.196 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+0 2
+2022-03-06 16:41:47.197 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.197 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 15(Integer)
+2022-03-06 16:41:47.197 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2 2
+2022-03-06 16:41:47.197 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.198 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-06 16:41:47.198 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2 2
+2022-03-06 16:41:47.199 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.P.SetOverdueAndFinished          : ==>  Preparing: update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ?
+2022-03-06 16:41:47.199 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.P.SetOverdueAndFinished          : ==> Parameters: 0(Integer), 1(Integer), 32(String), 0(Integer), 0(Integer), 31(String), 0(Integer), 0(Integer), 30(String), 0(Integer), 0(Integer), 29(String), 0(Integer), 0(Integer), 28(String), 0(Integer), 0(Integer), 27(String), 0(Integer), 0(Integer), 26(String), 0(Integer), 0(Integer), 25(String), 0(Integer), 0(Integer), 24(String), 0(Integer), 0(Integer), 23(String), 0(Integer), 0(Integer), 22(String), 0(Integer), 1(Integer), 13(String), 0(Integer), 0(Integer), 14(String), 1(Integer), 1(Integer), 15(String), 1(Integer), 1(Integer), 19(String)
+2022-03-06 16:41:47.201 DEBUG 23468 --- [nio-8800-exec-3] c.w.e.D.P.SetOverdueAndFinished          : <==    Updates: 1
+查询项目基本信息
+2022-03-06 16:41:47.745 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.P.GetProjectByPage_COUNT         : ==>  Preparing: SELECT count(0) FROM project
+2022-03-06 16:41:47.745 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.P.GetProjectByPage_COUNT         : ==> Parameters: 
+2022-03-06 16:41:47.746 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.P.GetProjectByPage_COUNT         : <==      Total: 1
+2022-03-06 16:41:47.746 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.ProjectMapper.GetProjectByPage   : ==>  Preparing: select * from project order by project.infoCreateTime desc LIMIT ?
+2022-03-06 16:41:47.746 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.ProjectMapper.GetProjectByPage   : ==> Parameters: 15(Integer)
+2022-03-06 16:41:47.747 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.ProjectMapper.GetProjectByPage   : <==      Total: 11
+2022-03-06 16:41:47.747 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:47.747 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 15(Integer)
+2022-03-06 16:41:47.748 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:41:47.748 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.748 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 30(Integer)
+2022-03-06 16:41:47.749 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:47.749 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.749 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 29(Integer)
+2022-03-06 16:41:47.750 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:47.750 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.750 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 28(Integer)
+2022-03-06 16:41:47.751 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:47.751 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:47.751 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 14(Integer)
+2022-03-06 16:41:47.751 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:41:47.752 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.752 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 27(Integer)
+2022-03-06 16:41:47.752 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:47.752 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.752 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 26(Integer)
+2022-03-06 16:41:47.753 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:47.753 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.753 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 25(Integer)
+2022-03-06 16:41:47.753 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:47.754 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:47.754 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 13(Integer)
+2022-03-06 16:41:47.754 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:41:47.755 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.755 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 24(Integer)
+2022-03-06 16:41:47.755 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:47.755 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.755 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 23(Integer)
+2022-03-06 16:41:47.756 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:47.756 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.756 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 22(Integer)
+2022-03-06 16:41:47.756 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-06 16:41:47.757 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:47.757 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 1(Integer)
+2022-03-06 16:41:47.757 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:47.757 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:47.757 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 2(Integer)
+2022-03-06 16:41:47.758 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:47.758 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:47.758 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 5(Integer)
+2022-03-06 16:41:47.759 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:41:47.759 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.759 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 13(Integer)
+2022-03-06 16:41:47.760 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:41:47.760 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.760 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 14(Integer)
+2022-03-06 16:41:47.761 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:41:47.761 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.761 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 15(Integer)
+2022-03-06 16:41:47.762 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:41:47.762 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:47.762 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 6(Integer)
+2022-03-06 16:41:47.763 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:47.763 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:47.763 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 7(Integer)
+2022-03-06 16:41:47.763 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:41:47.764 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.764 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-06 16:41:47.764 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+2022-03-06 16:41:47.764 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.765 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-06 16:41:47.765 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:41:47.765 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-06 16:41:47.765 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 20(Integer)
+2022-03-06 16:41:47.766 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-06 16:41:47.766 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:47.766 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 8(Integer)
+2022-03-06 16:41:47.767 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:47.767 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:47.767 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 9(Integer)
+2022-03-06 16:41:47.767 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:47.768 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:47.768 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 10(Integer)
+2022-03-06 16:41:47.768 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-06 16:41:47.769 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.P.SetOverdueAndFinished          : ==>  Preparing: update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ?
+2022-03-06 16:41:47.770 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.P.SetOverdueAndFinished          : ==> Parameters: 0(Integer), 0(Integer), 15(String), 0(Integer), 0(Integer), 14(String), 0(Integer), 0(Integer), 13(String), 0(Integer), 0(Integer), 1(String), 0(Integer), 0(Integer), 2(String), 0(Integer), 0(Integer), 5(String), 0(Integer), 0(Integer), 6(String), 1(Integer), 1(Integer), 7(String), 0(Integer), 0(Integer), 8(String), 0(Integer), 0(Integer), 9(String), 0(Integer), 0(Integer), 10(String)
+2022-03-06 16:41:47.771 DEBUG 23468 --- [nio-8800-exec-5] c.w.e.D.P.SetOverdueAndFinished          : <==    Updates: 1
+通过project id查找计划
+2022-03-06 16:41:52.298 DEBUG 23468 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-06 16:41:52.298 DEBUG 23468 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 7(Integer)
+2022-03-06 16:41:52.299 DEBUG 23468 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-06 16:42:18.879  INFO 23468 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-03-06 16:42:18.882  INFO 23468 --- [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
