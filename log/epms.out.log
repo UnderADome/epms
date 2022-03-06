@@ -1,0 +1,1096 @@
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.6.2)
+
+2022-03-03 09:33:47.551  INFO 25072 --- [           main] com.wisdri.epms.EpmsApplication          : Starting EpmsApplication v0.0.1-SNAPSHOT using Java 1.8.0_301 on P-14530 with PID 25072 (F:\Java WorkSpace\epms\epms.jar started by P-14530$ in F:\Java WorkSpace\epms)
+2022-03-03 09:33:47.553  INFO 25072 --- [           main] com.wisdri.epms.EpmsApplication          : No active profile set, falling back to default profiles: default
+2022-03-03 09:33:48.216  INFO 25072 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-03-03 09:33:48.231  INFO 25072 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 0 JDBC repository interfaces.
+2022-03-03 09:33:49.057  INFO 25072 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8800 (http)
+2022-03-03 09:33:49.074  INFO 25072 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-03 09:33:49.075  INFO 25072 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-03-03 09:33:49.544  INFO 25072 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-03-03 09:33:49.545  INFO 25072 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1944 ms
+2022-03-03 09:33:50.192  INFO 25072 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-03-03 09:33:50.341  INFO 25072 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-03-03 09:33:51.195  INFO 25072 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-03-03 09:33:51.233  WARN 25072 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from class java.time.OffsetDateTime to class org.springframework.data.jdbc.core.convert.JdbcValue as writing converter although it doesn't convert to a store-supported type! You might want to check your annotation setup at the converter implementation.
+2022-03-03 09:33:51.330  INFO 25072 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8800 (http) with context path ''
+2022-03-03 09:33:51.343  INFO 25072 --- [           main] com.wisdri.epms.EpmsApplication          : Started EpmsApplication in 4.259 seconds (JVM running for 4.899)
+2022-03-03 09:34:03.898  INFO 25072 --- [nio-8800-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-03 09:34:03.898  INFO 25072 --- [nio-8800-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-03 09:34:03.899  INFO 25072 --- [nio-8800-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+查询项目基本信息
+2022-03-03 09:34:05.191 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.P.GetProjectByPage_COUNT         : ==>  Preparing: SELECT count(0) FROM project
+2022-03-03 09:34:05.218 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.P.GetProjectByPage_COUNT         : ==> Parameters: 
+2022-03-03 09:34:05.239 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.P.GetProjectByPage_COUNT         : <==      Total: 1
+2022-03-03 09:34:05.240 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.ProjectMapper.GetProjectByPage   : ==>  Preparing: select * from project order by project.infoCreateTime desc LIMIT ?
+2022-03-03 09:34:05.241 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.ProjectMapper.GetProjectByPage   : ==> Parameters: 15(Integer)
+2022-03-03 09:34:05.248 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.ProjectMapper.GetProjectByPage   : <==      Total: 11
+2022-03-03 09:34:05.251 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-03 09:34:05.251 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 15(Integer)
+2022-03-03 09:34:05.253 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-03 09:34:05.254 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-03 09:34:05.254 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 30(Integer)
+2022-03-03 09:34:05.255 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-03 09:34:05.256 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-03 09:34:05.256 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 29(Integer)
+2022-03-03 09:34:05.257 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-03 09:34:05.257 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-03 09:34:05.257 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 28(Integer)
+2022-03-03 09:34:05.258 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-03 09:34:05.258 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-03 09:34:05.258 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 14(Integer)
+2022-03-03 09:34:05.259 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-03 09:34:05.260 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-03 09:34:05.260 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 27(Integer)
+2022-03-03 09:34:05.261 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-03 09:34:05.261 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-03 09:34:05.261 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 26(Integer)
+2022-03-03 09:34:05.262 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-03 09:34:05.263 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-03 09:34:05.263 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 25(Integer)
+2022-03-03 09:34:05.264 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-03 09:34:05.264 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-03 09:34:05.265 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 13(Integer)
+2022-03-03 09:34:05.266 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-03 09:34:05.266 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-03 09:34:05.266 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 24(Integer)
+2022-03-03 09:34:05.267 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-03 09:34:05.267 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-03 09:34:05.267 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 23(Integer)
+2022-03-03 09:34:05.268 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-03 09:34:05.268 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-03 09:34:05.268 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 22(Integer)
+2022-03-03 09:34:05.269 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-03 09:34:05.270 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-03 09:34:05.270 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 1(Integer)
+2022-03-03 09:34:05.271 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-03 09:34:05.271 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-03 09:34:05.272 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 2(Integer)
+2022-03-03 09:34:05.273 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-03 09:34:05.274 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-03 09:34:05.275 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 5(Integer)
+2022-03-03 09:34:05.276 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-03 09:34:05.276 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-03 09:34:05.276 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 13(Integer)
+2022-03-03 09:34:05.278 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-03 09:34:05.279 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-03 09:34:05.279 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 14(Integer)
+2022-03-03 09:34:05.280 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-03 09:34:05.280 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-03 09:34:05.281 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 15(Integer)
+2022-03-03 09:34:05.282 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-03 09:34:05.283 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-03 09:34:05.283 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 6(Integer)
+2022-03-03 09:34:05.284 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-03 09:34:05.284 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-03 09:34:05.284 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 7(Integer)
+2022-03-03 09:34:05.285 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-03 09:34:05.286 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-03 09:34:05.286 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-03 09:34:05.287 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+2022-03-03 09:34:05.287 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-03 09:34:05.287 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-03 09:34:05.289 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-03 09:34:05.289 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-03 09:34:05.289 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 20(Integer)
+2022-03-03 09:34:05.290 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-03 09:34:05.291 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-03 09:34:05.291 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 8(Integer)
+2022-03-03 09:34:05.291 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-03 09:34:05.292 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-03 09:34:05.292 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 9(Integer)
+2022-03-03 09:34:05.292 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-03 09:34:05.293 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-03 09:34:05.293 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 10(Integer)
+2022-03-03 09:34:05.293 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-03 09:34:05.332 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.P.SetOverdueAndFinished          : ==>  Preparing: update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ?
+2022-03-03 09:34:05.333 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.P.SetOverdueAndFinished          : ==> Parameters: 0(Integer), 0(Integer), 15(String), 0(Integer), 0(Integer), 14(String), 0(Integer), 0(Integer), 13(String), 0(Integer), 0(Integer), 1(String), 0(Integer), 0(Integer), 2(String), 0(Integer), 0(Integer), 5(String), 0(Integer), 0(Integer), 6(String), 1(Integer), 1(Integer), 7(String), 0(Integer), 0(Integer), 8(String), 0(Integer), 0(Integer), 9(String), 0(Integer), 0(Integer), 10(String)
+2022-03-03 09:34:05.336 DEBUG 25072 --- [nio-8800-exec-5] c.w.e.D.P.SetOverdueAndFinished          : <==    Updates: 1
+2022-03-03 17:45:50.066  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m20s905ms618?s500ns).
+2022-03-03 17:54:16.842  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m26s775ms409?s500ns).
+2022-03-03 18:07:49.411  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13m32s568ms814?s200ns).
+2022-03-03 18:13:12.093  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m22s681ms932?s300ns).
+2022-03-03 18:16:37.889  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m25s796ms440?s200ns).
+2022-03-03 18:21:22.000  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m44s111ms88?s).
+2022-03-03 18:24:31.064  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m9s64ms83?s200ns).
+2022-03-03 18:32:15.892  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m44s827ms527?s400ns).
+2022-03-03 18:35:21.493  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m5s601ms272?s500ns).
+2022-03-03 18:39:17.369  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m25s876ms487?s400ns).
+2022-03-03 18:40:40.978  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m23s608ms747?s300ns).
+2022-03-03 18:42:55.889  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m14s911ms634?s500ns).
+2022-03-03 18:44:19.011  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m23s121ms654?s).
+2022-03-03 18:48:46.168  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m27s157ms130?s300ns).
+2022-03-03 18:52:19.317  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m33s148ms866?s500ns).
+2022-03-03 18:57:26.024  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m6s706ms963?s600ns).
+2022-03-03 19:08:23.269  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10m57s245ms57?s500ns).
+2022-03-03 19:12:28.311  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m5s43ms145?s).
+2022-03-03 19:13:59.185  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m30s872ms747?s400ns).
+2022-03-03 19:15:48.851  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m49s666ms649?s200ns).
+2022-03-03 19:20:23.163  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m4s307ms803?s900ns).
+2022-03-03 19:26:43.302  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m20s139ms108?s200ns).
+2022-03-03 19:29:33.262  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m49s959ms687?s900ns).
+2022-03-03 19:33:00.597  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m27s335ms144?s800ns).
+2022-03-03 19:34:45.921  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m15s319ms689?s800ns).
+2022-03-03 19:41:04.982  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m19s61ms920?s).
+2022-03-03 19:44:10.991  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m6s8ms370?s800ns).
+2022-03-03 19:51:31.767  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m20s776ms354?s300ns).
+2022-03-03 19:53:38.046  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m6s278ms946?s500ns).
+2022-03-03 19:55:41.244  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m3s197ms796?s).
+2022-03-03 19:57:06.861  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m25s616ms664?s900ns).
+2022-03-03 20:01:31.792  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m24s930ms914?s).
+2022-03-03 20:02:48.379  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m16s587ms604?s900ns).
+2022-03-03 20:06:51.965  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m3s586ms331?s600ns).
+2022-03-03 20:10:16.509  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m24s543ms518?s400ns).
+2022-03-03 20:15:14.739  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m58s229ms778?s300ns).
+2022-03-03 20:28:11.868  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=12m57s130ms21?s200ns).
+2022-03-03 20:41:19.133  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13m7s264ms205?s).
+2022-03-03 20:51:19.479  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10m346ms40?s800ns).
+2022-03-03 20:54:46.402  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m26s923ms283?s300ns).
+2022-03-03 21:06:04.993  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10m48s587ms26?s500ns).
+2022-03-03 21:09:11.760  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m6s766ms674?s400ns).
+2022-03-03 21:14:22.108  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m10s348ms299?s100ns).
+2022-03-03 21:21:39.985  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m17s877ms285?s).
+2022-03-03 21:26:55.232  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m15s247ms42?s200ns).
+2022-03-03 21:35:36.932  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m41s699ms887?s400ns).
+2022-03-03 21:39:31.351  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m54s418ms675?s800ns).
+2022-03-03 21:41:08.055  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m36s704ms975?s600ns).
+2022-03-03 21:48:14.344  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m36s198ms116?s100ns).
+2022-03-03 21:51:34.216  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m19s871ms819?s400ns).
+2022-03-03 21:56:51.450  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m17s234ms89?s700ns).
+2022-03-03 21:57:52.328  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m878ms342?s300ns).
+2022-03-03 21:59:35.889  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m43s560ms763?s500ns).
+2022-03-03 22:03:01.848  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m25s958ms829?s200ns).
+2022-03-03 22:06:36.472  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m34s623ms645?s100ns).
+2022-03-03 22:07:53.890  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m17s418ms645?s400ns).
+2022-03-03 22:11:58.134  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m4s243ms577?s900ns).
+2022-03-03 22:15:08.681  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m10s547ms8?s700ns).
+2022-03-03 22:19:12.725  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m4s44ms542?s100ns).
+2022-03-03 22:21:24.502  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m11s776ms793?s700ns).
+2022-03-03 22:22:46.529  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m22s26ms882?s800ns).
+2022-03-03 22:26:38.455  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m21s921ms995?s100ns).
+2022-03-03 22:30:22.184  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m43s729ms154?s600ns).
+2022-03-03 22:38:19.641  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m57s457ms294?s200ns).
+2022-03-03 22:42:26.956  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m7s315ms306?s700ns).
+2022-03-03 22:44:46.182  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m19s225ms390?s700ns).
+2022-03-03 22:45:44.575  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=58s393ms686?s400ns).
+2022-03-03 22:57:35.453  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=11m50s877ms635?s).
+2022-03-03 23:00:46.076  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m10s624ms372?s800ns).
+2022-03-03 23:03:10.493  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m24s416ms705?s600ns).
+2022-03-03 23:04:35.145  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m24s652ms465?s400ns).
+2022-03-03 23:06:57.842  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m22s696ms761?s).
+2022-03-03 23:13:29.535  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m31s692ms680?s800ns).
+2022-03-03 23:18:40.901  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m11s366ms695?s300ns).
+2022-03-03 23:27:25.231  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m44s329ms456?s200ns).
+2022-03-03 23:31:31.763  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m6s532ms494?s700ns).
+2022-03-03 23:37:21.334  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m19s569ms913?s900ns).
+2022-03-03 23:39:27.139  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m5s804ms991?s).
+2022-03-03 23:41:22.246  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m55s106ms667?s300ns).
+2022-03-03 23:42:57.077  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m34s830ms658?s800ns).
+2022-03-03 23:52:09.879  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m12s802ms407?s700ns).
+2022-03-03 23:55:36.914  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m27s34ms470?s900ns).
+2022-03-04 00:01:51.289  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m14s375ms705?s).
+2022-03-04 00:06:29.828  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m8s534ms2?s400ns).
+2022-03-04 00:13:02.781  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m32s952ms469?s800ns).
+2022-03-04 00:16:26.409  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m23s628ms240?s400ns).
+2022-03-04 00:26:28.691  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10m2s282ms605?s500ns).
+2022-03-04 00:36:01.664  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m2s956ms787?s400ns).
+2022-03-04 00:43:56.491  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m54s827ms949?s800ns).
+2022-03-04 00:49:30.444  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m3s948ms188?s400ns).
+2022-03-04 00:53:07.225  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m36s781ms294?s100ns).
+2022-03-04 01:02:08.969  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m1s744ms209?s400ns).
+2022-03-04 01:07:46.530  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m37s561ms156?s700ns).
+2022-03-04 01:10:53.623  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m7s92ms670?s400ns).
+2022-03-04 01:20:28.343  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m34s720ms195?s300ns).
+2022-03-04 01:22:38.140  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m9s796ms383?s100ns).
+2022-03-04 01:24:12.301  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m34s161ms902?s500ns).
+2022-03-04 01:27:51.926  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m39s624ms704?s900ns).
+2022-03-04 01:29:37.164  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m45s237ms550?s500ns).
+2022-03-04 01:31:23.144  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m15s631ms521?s100ns).
+2022-03-04 01:41:17.516  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m24s382ms970?s200ns).
+2022-03-04 01:42:03.196  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=45s679ms763?s700ns).
+2022-03-04 01:52:01.965  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m58s769ms551?s).
+2022-03-04 02:00:15.546  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m43s192ms324?s).
+2022-03-04 02:07:53.200  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m37s653ms599?s600ns).
+2022-03-04 02:16:00.692  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m7s492ms236?s700ns).
+2022-03-04 02:25:01.233  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m30s535ms485?s500ns).
+2022-03-04 02:29:49.020  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m47s786ms549?s100ns).
+2022-03-04 02:32:44.861  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m55s841ms969?s).
+2022-03-04 02:37:26.777  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m41s915ms42?s400ns).
+2022-03-04 02:45:38.896  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m12s119ms220?s500ns).
+2022-03-04 02:46:50.406  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m11s511ms207?s200ns).
+2022-03-04 02:53:46.132  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m55s725ms205?s700ns).
+2022-03-04 02:55:55.274  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m9s142ms34?s800ns).
+2022-03-04 02:59:54.124  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m58s849ms293?s400ns).
+2022-03-04 03:01:29.823  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m35s699ms526?s300ns).
+2022-03-04 03:04:09.563  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m39s740ms321?s100ns).
+2022-03-04 03:09:23.130  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m13s566ms595?s900ns).
+2022-03-04 03:12:02.676  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m39s545ms759?s400ns).
+2022-03-04 03:18:20.674  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m17s998ms46?s900ns).
+2022-03-04 03:21:31.581  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m10s907ms11?s400ns).
+2022-03-04 03:30:36.893  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m5s312ms586?s800ns).
+2022-03-04 03:32:02.754  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m25s860ms784?s700ns).
+2022-03-04 03:34:34.835  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m32s81ms271?s400ns).
+2022-03-04 03:43:09.870  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m35s34ms806?s300ns).
+2022-03-04 03:46:17.871  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m8s572?s).
+2022-03-04 03:54:01.176  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m43s304ms660?s).
+2022-03-04 03:59:31.881  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m30s705ms571?s).
+2022-03-04 04:04:16.186  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m44s305ms192?s200ns).
+2022-03-04 04:05:31.576  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m15s389ms719?s100ns).
+2022-03-04 04:08:59.345  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m27s769ms171?s800ns).
+2022-03-04 04:10:58.820  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m59s475ms347?s900ns).
+2022-03-04 04:14:13.781  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m14s961ms179?s200ns).
+2022-03-04 04:15:45.830  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m32s48ms871?s100ns).
+2022-03-04 04:17:47.583  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m1s752ms960?s100ns).
+2022-03-04 04:22:11.862  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m24s278ms819?s700ns).
+2022-03-04 04:23:47.130  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m35s268ms331?s100ns).
+2022-03-04 04:24:55.108  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m7s978ms590?s200ns).
+2022-03-04 04:26:40.290  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m45s181ms131?s200ns).
+2022-03-04 04:33:45.041  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m4s751ms153?s500ns).
+2022-03-04 04:36:13.238  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m28s197ms152?s600ns).
+2022-03-04 04:44:58.137  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m44s898ms800?s200ns).
+2022-03-04 04:46:43.455  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m45s317ms903?s800ns).
+2022-03-04 04:49:11.366  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m57s909ms668?s700ns).
+2022-03-04 04:50:08.193  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=56s827ms115?s).
+2022-03-04 04:55:10.496  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m2s302ms623?s500ns).
+2022-03-04 04:57:21.961  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m11s465ms68?s600ns).
+2022-03-04 05:03:04.054  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m42s93ms624?s900ns).
+2022-03-04 05:05:43.072  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m39s17ms223?s100ns).
+2022-03-04 05:09:43.624  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m552ms862?s700ns).
+2022-03-04 05:12:48.244  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m4s620ms184?s100ns).
+2022-03-04 05:22:30.694  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m42s449ms710?s400ns).
+2022-03-04 05:23:27.745  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=57s50ms914?s900ns).
+2022-03-04 05:25:58.932  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m31s186ms853?s700ns).
+2022-03-04 05:31:09.967  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m11s35ms62?s500ns).
+2022-03-04 05:40:24.301  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m14s333ms422?s300ns).
+2022-03-04 05:45:48.247  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m23s946ms637?s800ns).
+2022-03-04 05:48:49.423  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m1s175ms695?s).
+2022-03-04 05:54:46.018  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m56s595ms66?s400ns).
+2022-03-04 06:03:21.859  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m35s842ms65?s600ns).
+2022-03-04 06:06:10.258  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m48s397ms689?s400ns).
+2022-03-04 06:07:23.306  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m13s48ms561?s800ns).
+2022-03-04 06:09:22.969  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m59s662ms773?s500ns).
+2022-03-04 06:14:10.404  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m47s435ms682?s200ns).
+2022-03-04 06:21:35.453  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m25s48ms921?s600ns).
+2022-03-04 06:24:13.948  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m38s494ms737?s).
+2022-03-04 06:32:36.823  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m22s875ms11?s).
+2022-03-04 06:34:25.641  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m10s563ms782?s).
+2022-03-04 06:42:35.201  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m9s558ms985?s500ns).
+2022-03-04 06:46:53.041  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m17s840ms575?s600ns).
+2022-03-04 06:49:27.300  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m34s259ms182?s400ns).
+2022-03-04 06:51:59.805  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m32s504ms495?s200ns).
+2022-03-04 06:59:37.680  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m37s874ms773?s).
+2022-03-04 07:01:19.310  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m41s629ms912?s600ns).
+2022-03-04 07:02:54.018  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m34s708ms520?s600ns).
+2022-03-04 07:04:01.314  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m7s295ms575?s800ns).
+2022-03-04 07:11:24.437  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m23s122ms805?s200ns).
+2022-03-04 07:14:26.652  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m20s731ms606?s100ns).
+2022-03-04 07:25:01.469  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10m34s818ms704?s900ns).
+2022-03-04 07:29:48.311  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m46s842ms97?s100ns).
+2022-03-04 07:31:04.582  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m16s271ms77?s400ns).
+2022-03-04 07:33:45.288  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m40s706ms50?s900ns).
+2022-03-04 07:36:25.258  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m39s970ms706?s).
+2022-03-04 07:49:58.310  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13m3s50ms195?s900ns).
+2022-03-04 07:54:32.640  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m34s329ms547?s500ns).
+2022-03-04 07:56:14.236  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m41s596ms634?s700ns).
+2022-03-04 08:01:05.189  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m50s952ms173?s).
+2022-03-04 08:06:19.092  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m13s903ms195?s400ns).
+2022-03-04 08:07:35.816  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m16s723ms853?s500ns).
+2022-03-04 08:09:11.770  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m35s954ms340?s300ns).
+2022-03-04 08:11:13.920  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m2s149ms936?s400ns).
+2022-03-04 08:14:02.310  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m48s390ms107?s200ns).
+2022-03-04 08:15:30.698  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m28s388ms266?s200ns).
+2022-03-04 08:19:00.522  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m29s824ms11?s100ns).
+2022-03-04 08:20:45.889  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m45s366ms959?s700ns).
+2022-03-04 08:23:25.460  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m39s570ms655?s900ns).
+2022-03-04 08:30:47.093  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m21s634ms856?s700ns).
+2022-03-04 08:35:33.929  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m46s817ms301?s200ns).
+2022-03-04 08:36:33.533  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=59s604ms405?s200ns).
+2022-03-04 08:41:45.004  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m11s470ms498?s100ns).
+2022-03-04 08:42:57.235  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m12s231ms303?s300ns).
+2022-03-04 08:44:24.456  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m27s220ms418?s800ns).
+2022-03-04 08:46:34.458  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m10s2ms67?s300ns).
+2022-03-04 08:49:06.098  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m31s640ms24?s800ns).
+2022-03-04 08:52:04.101  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m57s988ms618?s).
+2022-03-04 08:53:30.273  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m26s171ms820?s200ns).
+2022-03-04 08:58:10.713  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m40s440ms422?s200ns).
+2022-03-04 09:00:34.042  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m23s328ms919?s600ns).
+2022-03-04 09:07:55.660  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m51s604ms515?s700ns).
+2022-03-04 09:14:27.630  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m31s970ms671?s100ns).
+2022-03-04 09:15:24.240  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=56s609ms450?s600ns).
+2022-03-04 09:17:35.030  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m10s790ms823?s600ns).
+2022-03-04 09:24:46.561  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m11s530ms490?s800ns).
+2022-03-04 09:34:58.848  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=10m12s286ms585?s100ns).
+2022-03-04 09:36:55.855  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m57s7ms477?s500ns).
+2022-03-04 09:40:20.596  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m24s741ms286?s300ns).
+2022-03-04 09:47:24.944  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m4s321ms180?s600ns).
+2022-03-04 09:52:14.446  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m18s627ms733?s900ns).
+2022-03-04 09:53:30.840  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m16s393ms846?s500ns).
+2022-03-04 09:56:21.865  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m51s25ms763?s500ns).
+2022-03-04 10:00:19.468  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m27s596ms884?s900ns).
+2022-03-04 10:02:59.895  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m40s426ms615?s900ns).
+2022-03-04 10:03:51.191  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=51s296ms566?s).
+2022-03-04 10:06:05.560  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m14s368ms425?s100ns).
+2022-03-04 10:11:15.806  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m10s246ms627?s800ns).
+2022-03-04 10:12:34.138  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m18s331ms666?s700ns).
+2022-03-04 10:13:31.266  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=57s128ms11?s700ns).
+2022-03-04 10:17:04.586  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m33s320ms375?s100ns).
+2022-03-04 10:26:30.937  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=9m26s351ms72?s800ns).
+2022-03-04 10:34:19.891  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m48s953ms761?s400ns).
+2022-03-04 10:38:42.167  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m22s275ms244?s700ns).
+2022-03-04 10:40:56.664  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m14s497ms881?s400ns).
+2022-03-04 10:42:13.334  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m16s669ms290?s700ns).
+2022-03-04 10:43:55.706  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m42s372ms565?s500ns).
+2022-03-04 10:45:36.898  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m41s192ms250?s600ns).
+2022-03-04 10:48:54.304  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m17s405ms176?s200ns).
+2022-03-04 10:51:50.119  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m55s815ms723?s800ns).
+2022-03-04 10:53:22.290  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m32s171ms80?s).
+2022-03-04 11:00:24.270  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m1s979ms277?s100ns).
+2022-03-04 11:07:42.864  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m18s594ms252?s200ns).
+2022-03-04 11:10:21.595  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m38s730ms815?s400ns).
+2022-03-04 11:12:38.115  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m16s520ms722?s400ns).
+2022-03-04 11:17:28.959  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m50s843ms60?s200ns).
+2022-03-04 11:24:08.382  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m39s423ms232?s500ns).
+2022-03-04 11:25:51.129  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m42s746ms996?s700ns).
+2022-03-04 11:27:02.236  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m11s106ms732?s300ns).
+2022-03-04 11:32:09.239  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m5s657ms613?s600ns).
+2022-03-04 11:35:39.480  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m30s240ms906?s700ns).
+2022-03-04 11:36:36.301  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=56s820ms929?s400ns).
+2022-03-04 11:37:27.485  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=51s184ms439?s800ns).
+2022-03-04 11:40:11.707  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m44s221ms436?s100ns).
+2022-03-04 11:41:28.325  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=46s595ms330?s300ns).
+2022-03-04 11:44:12.157  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m43s831ms824?s400ns).
+2022-03-04 11:53:00.173  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m18s8ms796?s100ns).
+2022-03-04 11:56:14.037  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m13s863ms662?s200ns).
+2022-03-04 11:57:45.342  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m31s305ms278?s800ns).
+2022-03-04 12:02:04.733  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m19s390ms754?s700ns).
+2022-03-04 12:08:46.598  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m41s864ms756?s200ns).
+2022-03-04 12:12:10.970  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m24s372ms454?s).
+2022-03-04 12:15:38.948  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m27s978ms350?s700ns).
+2022-03-04 12:16:38.570  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=59s621ms782?s800ns).
+2022-03-04 12:23:45.041  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m6s470ms418?s500ns).
+2022-03-04 12:25:48.719  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m3s678ms286?s300ns).
+2022-03-04 12:32:25.070  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m36s350ms803?s400ns).
+2022-03-04 12:34:00.084  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m35s14ms283?s300ns).
+2022-03-04 12:39:52.460  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m52s375ms955?s200ns).
+2022-03-04 12:45:11.195  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m18s735ms300?s200ns).
+2022-03-04 12:48:01.225  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m50s29ms523?s600ns).
+2022-03-04 12:54:14.477  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m13s252ms270?s300ns).
+2022-03-04 12:57:32.116  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m17s638ms970?s500ns).
+2022-03-04 12:58:48.451  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m16s334ms869?s600ns).
+2022-03-04 13:02:08.434  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m19s983ms44?s400ns).
+2022-03-04 13:03:46.805  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m38s371ms94?s900ns).
+2022-03-04 13:07:20.996  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m3s592ms653?s600ns).
+2022-03-04 13:09:04.802  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m43s806ms87?s600ns).
+2022-03-04 13:12:30.616  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m25s813ms700?s400ns).
+2022-03-04 13:15:27.600  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m56s983ms931?s600ns).
+2022-03-04 13:21:07.064  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m39s464ms662?s800ns).
+2022-03-04 13:27:10.045  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m2s981ms101?s800ns).
+2022-03-04 13:29:49.270  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m39s224ms980?s500ns).
+2022-03-04 13:33:35.630  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m16s349ms285?s300ns).
+2022-03-04 13:40:12.677  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m37s47ms406?s300ns).
+2022-03-04 13:46:53.276  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m40s599ms595?s800ns).
+2022-03-04 13:54:40.300  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m47s22ms851?s900ns).
+2022-03-04 13:57:36.558  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m56s258ms527?s400ns).
+2022-03-04 13:58:52.736  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m16s178ms141?s700ns).
+2022-03-04 14:03:17.998  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m25s261ms238?s400ns).
+2022-03-04 14:06:54.705  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m36s707ms460?s100ns).
+2022-03-04 14:08:49.037  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m54s332ms44?s).
+2022-03-04 14:12:23.940  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m34s902ms661?s800ns).
+2022-03-04 14:18:30.458  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m36s493ms396?s400ns).
+2022-03-04 14:23:09.474  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m39s16ms377?s500ns).
+2022-03-04 14:24:59.580  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m50s106ms269?s600ns).
+2022-03-04 14:27:35.682  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m6s95ms56?s).
+2022-03-04 14:30:05.278  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m29s596ms39?s700ns).
+2022-03-04 14:33:55.202  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m49s923ms927?s200ns).
+2022-03-04 14:37:26.865  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m31s663ms848?s700ns).
+2022-03-04 14:44:08.333  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m41s467ms584?s100ns).
+2022-03-04 14:49:39.842  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m31s508ms960?s200ns).
+2022-03-04 14:52:19.263  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m39s421ms393?s800ns).
+2022-03-04 14:55:49.437  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m30s173ms328?s100ns).
+2022-03-04 15:03:51.641  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m2s204ms463?s600ns).
+2022-03-04 15:05:48.243  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m56s602ms80?s100ns).
+2022-03-04 15:07:25.886  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m37s642ms596?s100ns).
+2022-03-04 15:13:27.069  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m1s183ms138?s800ns).
+2022-03-04 15:16:36.153  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m9s83ms661?s400ns).
+2022-03-04 15:18:50.771  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m14s618ms541?s200ns).
+2022-03-04 15:22:39.363  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m10s845ms256?s400ns).
+2022-03-04 15:31:05.768  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=8m26s404ms367?s700ns).
+2022-03-04 15:35:34.175  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m28s406ms692?s700ns).
+2022-03-04 15:39:13.638  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m39s463ms72?s700ns).
+2022-03-04 15:43:32.848  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m19s209ms899?s900ns).
+2022-03-04 15:46:20.428  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m47s580ms487?s900ns).
+2022-03-04 15:51:47.706  WARN 25072 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m57s276ms314?s700ns).
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v2.6.2)
+
+2022-03-04 16:06:08.283  INFO 8692 --- [           main] com.wisdri.epms.EpmsApplication          : Starting EpmsApplication v0.0.1-SNAPSHOT using Java 1.8.0_301 on P-14530 with PID 8692 (F:\Java WorkSpace\epms\epms.jar started by P-14530$ in F:\Java WorkSpace\epms)
+2022-03-04 16:06:08.283  INFO 8692 --- [           main] com.wisdri.epms.EpmsApplication          : No active profile set, falling back to default profiles: default
+2022-03-04 16:06:09.227  INFO 8692 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-03-04 16:06:09.287  INFO 8692 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 10 ms. Found 0 JDBC repository interfaces.
+2022-03-04 16:06:10.184  INFO 8692 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8800 (http)
+2022-03-04 16:06:10.204  INFO 8692 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-03-04 16:06:10.204  INFO 8692 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.56]
+2022-03-04 16:06:10.293  INFO 8692 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-03-04 16:06:10.293  INFO 8692 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1941 ms
+2022-03-04 16:06:11.100  INFO 8692 --- [           main] o.s.b.a.w.s.WelcomePageHandlerMapping    : Adding welcome page template: index
+2022-03-04 16:06:11.269  INFO 8692 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-03-04 16:06:12.601  INFO 8692 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-03-04 16:06:12.679  WARN 8692 --- [           main] o.s.data.convert.CustomConversions       : Registering converter from class java.time.OffsetDateTime to class org.springframework.data.jdbc.core.convert.JdbcValue as writing converter although it doesn't convert to a store-supported type! You might want to check your annotation setup at the converter implementation.
+2022-03-04 16:06:12.848  INFO 8692 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8800 (http) with context path ''
+2022-03-04 16:06:12.868  INFO 8692 --- [           main] com.wisdri.epms.EpmsApplication          : Started EpmsApplication in 5.166 seconds (JVM running for 6.396)
+2022-03-04 16:07:15.651  INFO 8692 --- [nio-8800-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-03-04 16:07:15.651  INFO 8692 --- [nio-8800-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-03-04 16:07:15.652  INFO 8692 --- [nio-8800-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+查询项目基本信息
+2022-03-04 16:07:16.378 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.P.GetProjectByPage_COUNT         : ==>  Preparing: SELECT count(0) FROM project
+2022-03-04 16:07:16.398 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.P.GetProjectByPage_COUNT         : ==> Parameters: 
+2022-03-04 16:07:16.428 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.P.GetProjectByPage_COUNT         : <==      Total: 1
+2022-03-04 16:07:16.429 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.ProjectMapper.GetProjectByPage   : ==>  Preparing: select * from project order by project.infoCreateTime desc LIMIT ?
+2022-03-04 16:07:16.430 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.ProjectMapper.GetProjectByPage   : ==> Parameters: 15(Integer)
+2022-03-04 16:07:16.436 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.ProjectMapper.GetProjectByPage   : <==      Total: 11
+2022-03-04 16:07:16.438 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:16.438 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 15(Integer)
+2022-03-04 16:07:16.446 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:07:16.447 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:16.447 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 30(Integer)
+2022-03-04 16:07:16.454 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:07:16.454 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:16.454 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 29(Integer)
+2022-03-04 16:07:16.455 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:07:16.455 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:16.456 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 28(Integer)
+2022-03-04 16:07:16.456 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:07:16.456 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:16.457 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 14(Integer)
+2022-03-04 16:07:16.458 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:07:16.458 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:16.458 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 27(Integer)
+2022-03-04 16:07:16.459 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:07:16.459 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:16.459 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 26(Integer)
+2022-03-04 16:07:16.460 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:07:16.460 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:16.460 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 25(Integer)
+2022-03-04 16:07:16.461 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:07:16.461 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:16.461 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 13(Integer)
+2022-03-04 16:07:16.462 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:07:16.462 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:16.463 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 24(Integer)
+2022-03-04 16:07:16.464 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:07:16.464 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:16.465 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 23(Integer)
+2022-03-04 16:07:16.466 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:07:16.466 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:16.466 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 22(Integer)
+2022-03-04 16:07:16.467 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:07:16.467 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:16.468 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 1(Integer)
+2022-03-04 16:07:16.469 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:07:16.469 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:16.469 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 2(Integer)
+2022-03-04 16:07:16.470 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:07:16.472 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:16.472 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 5(Integer)
+2022-03-04 16:07:16.473 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:07:16.474 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:16.474 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 13(Integer)
+2022-03-04 16:07:16.476 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:07:16.476 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:16.476 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 14(Integer)
+2022-03-04 16:07:16.477 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:07:16.478 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:16.478 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 15(Integer)
+2022-03-04 16:07:16.479 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:07:16.480 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:16.480 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 6(Integer)
+2022-03-04 16:07:16.481 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:07:16.481 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:16.481 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 7(Integer)
+2022-03-04 16:07:16.483 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:07:16.483 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:16.483 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-04 16:07:16.485 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+2022-03-04 16:07:16.485 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:16.485 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-04 16:07:16.486 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:07:16.487 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:16.487 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 20(Integer)
+2022-03-04 16:07:16.488 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:07:16.488 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:16.488 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 8(Integer)
+2022-03-04 16:07:16.489 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:07:16.489 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:16.489 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 9(Integer)
+2022-03-04 16:07:16.490 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:07:16.490 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:16.490 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 10(Integer)
+2022-03-04 16:07:16.491 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:07:16.525 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.P.SetOverdueAndFinished          : ==>  Preparing: update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ?
+2022-03-04 16:07:16.526 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.P.SetOverdueAndFinished          : ==> Parameters: 0(Integer), 0(Integer), 15(String), 0(Integer), 0(Integer), 14(String), 0(Integer), 0(Integer), 13(String), 0(Integer), 0(Integer), 1(String), 0(Integer), 0(Integer), 2(String), 0(Integer), 0(Integer), 5(String), 0(Integer), 0(Integer), 6(String), 1(Integer), 1(Integer), 7(String), 0(Integer), 0(Integer), 8(String), 0(Integer), 0(Integer), 9(String), 0(Integer), 0(Integer), 10(String)
+2022-03-04 16:07:16.529 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.P.SetOverdueAndFinished          : <==    Updates: 1
+2022-03-04 16:07:19.888 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:19.888 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 7(Integer)
+2022-03-04 16:07:19.891 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:07:19.892 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:19.893 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-04 16:07:19.894 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+2022-03-04 16:07:19.895 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:19.895 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-04 16:07:19.897 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:07:19.898 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:19.899 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 20(Integer)
+2022-03-04 16:07:19.902 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+ 2022-02-01 2022-02-28 1 1 最后阶段 
+<p>最后阶段1</p> 2022-02-01 2022-02-28 1 2  
+<p>1、初步设计要尽可能详细</p><p><span style="font-weight: bold;">2、建模要达到初步设计要求的深度</span></p> 2022-01-01 2022-01-13 1 1 初步设计阶段 
+<p>1、通风模块建模完成</p><p>2、通风插件完成</p> 2022-01-01 2022-01-04 1 2  
+<p>1、除尘模型完成</p> 2022-01-10 2022-01-13 1 2  
+<p>1、模型要达到详细设计阶段要求</p> 2022-01-13 2022-02-28 1 1 详细设计阶段 
+<p>2</p> 2022-02-08 2022-02-16 1 2  
+<p>1</p> 2022-01-04 2022-02-15 1 2  
+2022-03-04 16:07:19.903 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.Dao.ProjectMapper.GetProjectById   : ==>  Preparing: select * from project where id = ? order by project.infoCreateTime desc
+2022-03-04 16:07:19.903 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.Dao.ProjectMapper.GetProjectById   : ==> Parameters: 7(Integer)
+2022-03-04 16:07:19.905 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.Dao.ProjectMapper.GetProjectById   : <==      Total: 1
+2022-03-04 16:07:19.982 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.P.FindProjectByProjectName       : ==>  Preparing: select * from project where name = ? order by project.infoCreateTime desc
+2022-03-04 16:07:19.983 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.P.FindProjectByProjectName       : ==> Parameters: 玉昆项目群(String)
+2022-03-04 16:07:19.985 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.P.FindProjectByProjectName       : <==      Total: 1
+查询会议基本信息
+2022-03-04 16:07:32.325 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.M.GetMeetingByPage_COUNT         : ==>  Preparing: SELECT count(0) FROM meeting
+2022-03-04 16:07:32.325 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.M.GetMeetingByPage_COUNT         : ==> Parameters: 
+2022-03-04 16:07:32.331 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.M.GetMeetingByPage_COUNT         : <==      Total: 1
+2022-03-04 16:07:32.331 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.MeetingMapper.GetMeetingByPage   : ==>  Preparing: select * from meeting order by meetingTime desc LIMIT ?
+2022-03-04 16:07:32.332 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.MeetingMapper.GetMeetingByPage   : ==> Parameters: 15(Integer)
+2022-03-04 16:07:32.334 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.MeetingMapper.GetMeetingByPage   : <==      Total: 15
+查询实施基本信息
+2022-03-04 16:07:34.156 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecuteByPage_COUNT         : ==>  Preparing: select count(0) from ( select * from execute order by execute.infoCreateTime desc ) tmp_count
+2022-03-04 16:07:34.156 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecuteByPage_COUNT         : ==> Parameters: 
+2022-03-04 16:07:34.157 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecuteByPage_COUNT         : <==      Total: 1
+2022-03-04 16:07:34.157 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.ExecuteMapper.GetExecuteByPage   : ==>  Preparing: select * from execute order by execute.infoCreateTime desc LIMIT ?
+2022-03-04 16:07:34.158 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.ExecuteMapper.GetExecuteByPage   : ==> Parameters: 15(Integer)
+2022-03-04 16:07:34.160 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.ExecuteMapper.GetExecuteByPage   : <==      Total: 15
+41
+27
+28
+32
+34
+2022-03-04 16:07:34.162 DEBUG 8692 --- [nio-8800-exec-8] c.w.epms.Dao.ExecuteMapper.SetOverdue    : ==>  Preparing: update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ?
+2022-03-04 16:07:34.163 DEBUG 8692 --- [nio-8800-exec-8] c.w.epms.Dao.ExecuteMapper.SetOverdue    : ==> Parameters: 0(Integer), 43(String), 0(Integer), 42(String), 1(Integer), 41(String), 1(Integer), 40(String), 0(Integer), 39(String), 0(Integer), 3(String), 1(Integer), 27(String), 1(Integer), 28(String), 0(Integer), 29(String), 0(Integer), 30(String), 0(Integer), 31(String), 1(Integer), 32(String), 0(Integer), 33(String), 1(Integer), 34(String), 0(Integer), 35(String)
+2022-03-04 16:07:34.165 DEBUG 8692 --- [nio-8800-exec-8] c.w.epms.Dao.ExecuteMapper.SetOverdue    : <==    Updates: 1
+查询项目基本信息
+2022-03-04 16:07:37.081 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.P.GetProjectByPage_COUNT         : ==>  Preparing: SELECT count(0) FROM project
+2022-03-04 16:07:37.081 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.P.GetProjectByPage_COUNT         : ==> Parameters: 
+2022-03-04 16:07:37.082 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.P.GetProjectByPage_COUNT         : <==      Total: 1
+2022-03-04 16:07:37.082 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.ProjectMapper.GetProjectByPage   : ==>  Preparing: select * from project order by project.infoCreateTime desc LIMIT ?
+2022-03-04 16:07:37.082 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.ProjectMapper.GetProjectByPage   : ==> Parameters: 15(Integer)
+2022-03-04 16:07:37.084 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.ProjectMapper.GetProjectByPage   : <==      Total: 11
+2022-03-04 16:07:37.084 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:37.085 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 15(Integer)
+2022-03-04 16:07:37.085 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:07:37.085 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:37.085 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 30(Integer)
+2022-03-04 16:07:37.086 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:07:37.086 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:37.086 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 29(Integer)
+2022-03-04 16:07:37.087 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:07:37.087 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:37.087 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 28(Integer)
+2022-03-04 16:07:37.088 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:07:37.088 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:37.088 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 14(Integer)
+2022-03-04 16:07:37.089 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:07:37.089 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:37.089 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 27(Integer)
+2022-03-04 16:07:37.089 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:07:37.090 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:37.090 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 26(Integer)
+2022-03-04 16:07:37.090 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:07:37.090 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:37.091 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 25(Integer)
+2022-03-04 16:07:37.091 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:07:37.091 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:37.091 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 13(Integer)
+2022-03-04 16:07:37.092 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:07:37.092 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:37.092 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 24(Integer)
+2022-03-04 16:07:37.093 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:07:37.093 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:37.093 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 23(Integer)
+2022-03-04 16:07:37.094 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:07:37.094 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:37.094 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 22(Integer)
+2022-03-04 16:07:37.095 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:07:37.095 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:37.095 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 1(Integer)
+2022-03-04 16:07:37.096 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:07:37.096 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:37.096 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 2(Integer)
+2022-03-04 16:07:37.097 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:07:37.097 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:37.097 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 5(Integer)
+2022-03-04 16:07:37.098 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:07:37.098 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:37.098 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 13(Integer)
+2022-03-04 16:07:37.099 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:07:37.099 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:37.100 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 14(Integer)
+2022-03-04 16:07:37.100 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:07:37.101 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:37.101 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 15(Integer)
+2022-03-04 16:07:37.101 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:07:37.102 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:37.102 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 6(Integer)
+2022-03-04 16:07:37.102 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:07:37.102 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:37.102 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 7(Integer)
+2022-03-04 16:07:37.103 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:07:37.103 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:37.103 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-04 16:07:37.104 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+2022-03-04 16:07:37.104 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:37.105 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-04 16:07:37.106 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:07:37.106 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:37.107 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 20(Integer)
+2022-03-04 16:07:37.107 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:07:37.108 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:37.108 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 8(Integer)
+2022-03-04 16:07:37.108 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:07:37.109 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:37.109 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 9(Integer)
+2022-03-04 16:07:37.109 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:07:37.109 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:37.109 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 10(Integer)
+2022-03-04 16:07:37.110 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:07:37.111 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.P.SetOverdueAndFinished          : ==>  Preparing: update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ?
+2022-03-04 16:07:37.111 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.P.SetOverdueAndFinished          : ==> Parameters: 0(Integer), 0(Integer), 15(String), 0(Integer), 0(Integer), 14(String), 0(Integer), 0(Integer), 13(String), 0(Integer), 0(Integer), 1(String), 0(Integer), 0(Integer), 2(String), 0(Integer), 0(Integer), 5(String), 0(Integer), 0(Integer), 6(String), 1(Integer), 1(Integer), 7(String), 0(Integer), 0(Integer), 8(String), 0(Integer), 0(Integer), 9(String), 0(Integer), 0(Integer), 10(String)
+2022-03-04 16:07:37.113 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.P.SetOverdueAndFinished          : <==    Updates: 1
+2022-03-04 16:07:38.832 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:07:38.832 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 7(Integer)
+2022-03-04 16:07:38.833 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:07:38.833 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:38.834 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-04 16:07:38.835 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+2022-03-04 16:07:38.835 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:38.835 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-04 16:07:38.836 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:07:38.836 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:07:38.836 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 20(Integer)
+2022-03-04 16:07:38.837 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+ 2022-02-01 2022-02-28 1 1 最后阶段 
+<p>最后阶段1</p> 2022-02-01 2022-02-28 1 2  
+<p>1、初步设计要尽可能详细</p><p><span style="font-weight: bold;">2、建模要达到初步设计要求的深度</span></p> 2022-01-01 2022-01-13 1 1 初步设计阶段 
+<p>1、通风模块建模完成</p><p>2、通风插件完成</p> 2022-01-01 2022-01-04 1 2  
+<p>1、除尘模型完成</p> 2022-01-10 2022-01-13 1 2  
+<p>1、模型要达到详细设计阶段要求</p> 2022-01-13 2022-02-28 1 1 详细设计阶段 
+<p>2</p> 2022-02-08 2022-02-16 1 2  
+<p>1</p> 2022-01-04 2022-02-15 1 2  
+2022-03-04 16:07:38.837 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.Dao.ProjectMapper.GetProjectById   : ==>  Preparing: select * from project where id = ? order by project.infoCreateTime desc
+2022-03-04 16:07:38.837 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.Dao.ProjectMapper.GetProjectById   : ==> Parameters: 7(Integer)
+2022-03-04 16:07:38.838 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.Dao.ProjectMapper.GetProjectById   : <==      Total: 1
+2022-03-04 16:07:38.849 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.P.FindProjectByProjectName       : ==>  Preparing: select * from project where name = ? order by project.infoCreateTime desc
+2022-03-04 16:07:38.849 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.P.FindProjectByProjectName       : ==> Parameters: 玉昆项目群(String)
+2022-03-04 16:07:38.850 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.P.FindProjectByProjectName       : <==      Total: 1
+2022-03-04 16:07:46.015 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.P.GetProjectCountByYear          : ==>  Preparing: select count(id) from project where year(proStartTime) = ?
+2022-03-04 16:07:46.015 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.P.GetProjectCountByYear          : ==> Parameters: 2022(String)
+2022-03-04 16:07:46.017 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.P.GetProjectCountByYear          : <==      Total: 1
+2022-03-04 16:07:46.018 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecuteCountByYear          : ==>  Preparing: select count(id) from execute where year(exeRealEndTime) = ?
+2022-03-04 16:07:46.018 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecuteCountByYear          : ==> Parameters: 2022(String)
+2022-03-04 16:07:46.019 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecuteCountByYear          : <==      Total: 1
+2022-03-04 16:07:46.019 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecuteCountByYearMonth     : ==>  Preparing: select date_format(exeRealEndTime, '%m') as time, count(id) as executeCount from execute where year(exeRealEndTime) = ? group by month(exeRealEndTime)
+2022-03-04 16:07:46.019 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecuteCountByYearMonth     : ==> Parameters: 2022(String)
+2022-03-04 16:07:46.022 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecuteCountByYearMonth     : <==      Total: 2
+2022-03-04 16:07:46.022 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.M.GetMeetingCountByYearMonth     : ==>  Preparing: select date_format(meetingTime, '%m') as time, count(id) as meetingCount from meeting where year(meetingTime) = ? group by month(meetingTime)
+2022-03-04 16:07:46.022 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.M.GetMeetingCountByYearMonth     : ==> Parameters: 2022(String)
+2022-03-04 16:07:46.023 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.M.GetMeetingCountByYearMonth     : <==      Total: 6
+2022-03-04 16:07:46.023 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.T.GetTrainCountByYearMonth       : ==>  Preparing: select date_format(trainTime, '%m') as time, count(id) as trainCount from train where year(trainTime) = ? group by month(trainTime)
+2022-03-04 16:07:46.023 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.T.GetTrainCountByYearMonth       : ==> Parameters: 2022(String)
+2022-03-04 16:07:46.029 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.T.GetTrainCountByYearMonth       : <==      Total: 2
+2022-03-04 16:07:46.029 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExeMostMonthByYear          : ==>  Preparing: select time from (select max(exeCount) as count, exeRealEndTime as time from (select count(id) as exeCount, date_format(exeRealEndTime, '%Y-%m') as exeRealEndTime from execute where year(exeRealEndTime) = ? group by month(exeRealEndTime)) as a ) as b
+2022-03-04 16:07:46.029 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExeMostMonthByYear          : ==> Parameters: 2022(String)
+2022-03-04 16:07:46.030 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExeMostMonthByYear          : <==      Total: 1
+查询会议基本信息
+2022-03-04 16:08:02.589 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.M.GetMeetingByPage_COUNT         : ==>  Preparing: SELECT count(0) FROM meeting
+2022-03-04 16:08:02.589 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.M.GetMeetingByPage_COUNT         : ==> Parameters: 
+2022-03-04 16:08:02.590 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.M.GetMeetingByPage_COUNT         : <==      Total: 1
+2022-03-04 16:08:02.590 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.MeetingMapper.GetMeetingByPage   : ==>  Preparing: select * from meeting order by meetingTime desc LIMIT ?
+2022-03-04 16:08:02.590 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.MeetingMapper.GetMeetingByPage   : ==> Parameters: 15(Integer)
+2022-03-04 16:08:02.592 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.MeetingMapper.GetMeetingByPage   : <==      Total: 15
+查询会议基本信息
+2022-03-04 16:08:03.284 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.M.GetMeetingByPage_COUNT         : ==>  Preparing: SELECT count(0) FROM meeting
+2022-03-04 16:08:03.284 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.M.GetMeetingByPage_COUNT         : ==> Parameters: 
+2022-03-04 16:08:03.285 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.M.GetMeetingByPage_COUNT         : <==      Total: 1
+2022-03-04 16:08:03.285 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.MeetingMapper.GetMeetingByPage   : ==>  Preparing: select * from meeting order by meetingTime desc LIMIT ?
+2022-03-04 16:08:03.285 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.MeetingMapper.GetMeetingByPage   : ==> Parameters: 15(Integer)
+2022-03-04 16:08:03.286 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.MeetingMapper.GetMeetingByPage   : <==      Total: 15
+查询培训基本信息
+2022-03-04 16:08:13.375 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.T.GetTrainByPage_COUNT           : ==>  Preparing: SELECT count(0) FROM train
+2022-03-04 16:08:13.375 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.T.GetTrainByPage_COUNT           : ==> Parameters: 
+2022-03-04 16:08:13.375 DEBUG 8692 --- [nio-8800-exec-1] c.w.e.D.T.GetTrainByPage_COUNT           : <==      Total: 1
+2022-03-04 16:08:13.376 DEBUG 8692 --- [nio-8800-exec-1] c.w.epms.Dao.TrainMapper.GetTrainByPage  : ==>  Preparing: select * from train order by trainTime desc LIMIT ?
+2022-03-04 16:08:13.376 DEBUG 8692 --- [nio-8800-exec-1] c.w.epms.Dao.TrainMapper.GetTrainByPage  : ==> Parameters: 15(Integer)
+2022-03-04 16:08:13.376 DEBUG 8692 --- [nio-8800-exec-1] c.w.epms.Dao.TrainMapper.GetTrainByPage  : <==      Total: 2
+查询会议基本信息
+2022-03-04 16:08:16.266 DEBUG 8692 --- [nio-8800-exec-7] c.w.e.D.M.GetMeetingByPage_COUNT         : ==>  Preparing: SELECT count(0) FROM meeting
+2022-03-04 16:08:16.266 DEBUG 8692 --- [nio-8800-exec-7] c.w.e.D.M.GetMeetingByPage_COUNT         : ==> Parameters: 
+2022-03-04 16:08:16.266 DEBUG 8692 --- [nio-8800-exec-7] c.w.e.D.M.GetMeetingByPage_COUNT         : <==      Total: 1
+2022-03-04 16:08:16.267 DEBUG 8692 --- [nio-8800-exec-7] c.w.e.D.MeetingMapper.GetMeetingByPage   : ==>  Preparing: select * from meeting order by meetingTime desc LIMIT ?
+2022-03-04 16:08:16.267 DEBUG 8692 --- [nio-8800-exec-7] c.w.e.D.MeetingMapper.GetMeetingByPage   : ==> Parameters: 15(Integer)
+2022-03-04 16:08:16.268 DEBUG 8692 --- [nio-8800-exec-7] c.w.e.D.MeetingMapper.GetMeetingByPage   : <==      Total: 15
+查询项目基本信息
+2022-03-04 16:13:20.952 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.P.GetProjectByPage_COUNT         : ==>  Preparing: SELECT count(0) FROM project
+2022-03-04 16:13:20.953 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.P.GetProjectByPage_COUNT         : ==> Parameters: 
+2022-03-04 16:13:20.954 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.P.GetProjectByPage_COUNT         : <==      Total: 1
+2022-03-04 16:13:20.954 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.ProjectMapper.GetProjectByPage   : ==>  Preparing: select * from project order by project.infoCreateTime desc LIMIT ?
+2022-03-04 16:13:20.954 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.ProjectMapper.GetProjectByPage   : ==> Parameters: 15(Integer)
+2022-03-04 16:13:20.955 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.ProjectMapper.GetProjectByPage   : <==      Total: 11
+2022-03-04 16:13:20.955 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:20.955 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 15(Integer)
+2022-03-04 16:13:20.956 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:13:20.956 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:20.956 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 30(Integer)
+2022-03-04 16:13:20.957 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:13:20.957 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:20.958 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 29(Integer)
+2022-03-04 16:13:20.958 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:13:20.960 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:20.960 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 28(Integer)
+2022-03-04 16:13:20.960 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:13:20.960 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:20.960 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 14(Integer)
+2022-03-04 16:13:20.961 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:13:20.961 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:20.963 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 27(Integer)
+2022-03-04 16:13:20.963 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:13:20.964 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:20.964 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 26(Integer)
+2022-03-04 16:13:20.965 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:13:20.965 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:20.965 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 25(Integer)
+2022-03-04 16:13:20.966 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:13:20.966 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:20.966 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 13(Integer)
+2022-03-04 16:13:20.967 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:13:20.967 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:20.968 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 24(Integer)
+2022-03-04 16:13:20.968 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:13:20.969 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:20.969 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 23(Integer)
+2022-03-04 16:13:20.969 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:13:20.969 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:20.970 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 22(Integer)
+2022-03-04 16:13:20.970 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:13:20.970 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:20.970 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 1(Integer)
+2022-03-04 16:13:20.971 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:13:20.971 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:20.971 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 2(Integer)
+2022-03-04 16:13:20.971 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:13:20.971 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:20.972 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 5(Integer)
+2022-03-04 16:13:20.972 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:13:20.972 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:20.972 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 13(Integer)
+2022-03-04 16:13:20.973 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:13:20.973 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:20.973 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 14(Integer)
+2022-03-04 16:13:20.974 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:13:20.974 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:20.974 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 15(Integer)
+2022-03-04 16:13:20.974 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:13:20.975 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:20.975 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 6(Integer)
+2022-03-04 16:13:20.975 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:13:20.975 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:20.975 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 7(Integer)
+2022-03-04 16:13:20.976 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:13:20.976 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:20.976 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-04 16:13:20.977 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+2022-03-04 16:13:20.977 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:20.977 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-04 16:13:20.977 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:13:20.978 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:20.978 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 20(Integer)
+2022-03-04 16:13:20.978 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:13:20.978 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:20.979 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 8(Integer)
+2022-03-04 16:13:20.979 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:13:20.979 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:20.979 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 9(Integer)
+2022-03-04 16:13:20.979 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:13:20.979 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:20.980 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 10(Integer)
+2022-03-04 16:13:20.981 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:13:20.982 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.P.SetOverdueAndFinished          : ==>  Preparing: update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ?
+2022-03-04 16:13:20.982 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.P.SetOverdueAndFinished          : ==> Parameters: 0(Integer), 0(Integer), 15(String), 0(Integer), 0(Integer), 14(String), 0(Integer), 0(Integer), 13(String), 0(Integer), 0(Integer), 1(String), 0(Integer), 0(Integer), 2(String), 0(Integer), 0(Integer), 5(String), 0(Integer), 0(Integer), 6(String), 1(Integer), 1(Integer), 7(String), 0(Integer), 0(Integer), 8(String), 0(Integer), 0(Integer), 9(String), 0(Integer), 0(Integer), 10(String)
+2022-03-04 16:13:20.984 DEBUG 8692 --- [nio-8800-exec-5] c.w.e.D.P.SetOverdueAndFinished          : <==    Updates: 1
+查询计划基本信息
+2022-03-04 16:13:27.012 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlanByPage_COUNT   : ==>  Preparing: SELECT count(0) FROM plan
+2022-03-04 16:13:27.013 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlanByPage_COUNT   : ==> Parameters: 
+2022-03-04 16:13:27.013 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.PlanMapper.GetPlanByPage_COUNT   : <==      Total: 1
+2022-03-04 16:13:27.013 DEBUG 8692 --- [nio-8800-exec-3] c.w.epms.Dao.PlanMapper.GetPlanByPage    : ==>  Preparing: select * from plan order by plan.infoCreateTime desc LIMIT ?
+2022-03-04 16:13:27.014 DEBUG 8692 --- [nio-8800-exec-3] c.w.epms.Dao.PlanMapper.GetPlanByPage    : ==> Parameters: 15(Integer)
+2022-03-04 16:13:27.015 DEBUG 8692 --- [nio-8800-exec-3] c.w.epms.Dao.PlanMapper.GetPlanByPage    : <==      Total: 15
+2022-03-04 16:13:27.016 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:27.016 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-04 16:13:27.017 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+1 1
+2022-03-04 16:13:27.017 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:27.017 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 31(Integer)
+2022-03-04 16:13:27.018 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-04 16:13:27.018 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:27.018 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 30(Integer)
+2022-03-04 16:13:27.019 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-04 16:13:27.019 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:27.019 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 29(Integer)
+2022-03-04 16:13:27.020 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-04 16:13:27.020 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:27.021 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 28(Integer)
+2022-03-04 16:13:27.021 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-04 16:13:27.021 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:27.021 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 27(Integer)
+2022-03-04 16:13:27.021 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-04 16:13:27.022 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:27.022 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 26(Integer)
+2022-03-04 16:13:27.023 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-04 16:13:27.023 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:27.023 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 25(Integer)
+2022-03-04 16:13:27.025 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-04 16:13:27.025 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:27.025 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 24(Integer)
+2022-03-04 16:13:27.027 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-04 16:13:27.027 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:27.027 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 23(Integer)
+2022-03-04 16:13:27.027 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-04 16:13:27.027 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:27.027 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 22(Integer)
+2022-03-04 16:13:27.028 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+0 0
+2022-03-04 16:13:27.028 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:27.028 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 13(Integer)
+2022-03-04 16:13:27.029 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2 2
+2022-03-04 16:13:27.030 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:27.030 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 14(Integer)
+2022-03-04 16:13:27.031 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+0 2
+2022-03-04 16:13:27.032 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:27.032 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 15(Integer)
+2022-03-04 16:13:27.033 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2 2
+2022-03-04 16:13:27.033 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:27.033 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-04 16:13:27.034 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2 2
+2022-03-04 16:13:27.035 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.P.SetOverdueAndFinished          : ==>  Preparing: update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ? ; update plan set overdue = ? , finished = ? where id = ?
+2022-03-04 16:13:27.036 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.P.SetOverdueAndFinished          : ==> Parameters: 0(Integer), 1(Integer), 32(String), 0(Integer), 0(Integer), 31(String), 0(Integer), 0(Integer), 30(String), 0(Integer), 0(Integer), 29(String), 0(Integer), 0(Integer), 28(String), 0(Integer), 0(Integer), 27(String), 0(Integer), 0(Integer), 26(String), 0(Integer), 0(Integer), 25(String), 0(Integer), 0(Integer), 24(String), 0(Integer), 0(Integer), 23(String), 0(Integer), 0(Integer), 22(String), 0(Integer), 1(Integer), 13(String), 0(Integer), 0(Integer), 14(String), 1(Integer), 1(Integer), 15(String), 1(Integer), 1(Integer), 19(String)
+2022-03-04 16:13:27.038 DEBUG 8692 --- [nio-8800-exec-3] c.w.e.D.P.SetOverdueAndFinished          : <==    Updates: 1
+查询实施基本信息
+2022-03-04 16:13:27.779 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecuteByPage_COUNT         : ==>  Preparing: select count(0) from ( select * from execute order by execute.infoCreateTime desc ) tmp_count
+2022-03-04 16:13:27.779 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecuteByPage_COUNT         : ==> Parameters: 
+2022-03-04 16:13:27.780 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.E.GetExecuteByPage_COUNT         : <==      Total: 1
+2022-03-04 16:13:27.781 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.ExecuteMapper.GetExecuteByPage   : ==>  Preparing: select * from execute order by execute.infoCreateTime desc LIMIT ?
+2022-03-04 16:13:27.781 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.ExecuteMapper.GetExecuteByPage   : ==> Parameters: 15(Integer)
+2022-03-04 16:13:27.782 DEBUG 8692 --- [nio-8800-exec-8] c.w.e.D.ExecuteMapper.GetExecuteByPage   : <==      Total: 15
+41
+27
+28
+32
+34
+2022-03-04 16:13:27.783 DEBUG 8692 --- [nio-8800-exec-8] c.w.epms.Dao.ExecuteMapper.SetOverdue    : ==>  Preparing: update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ? ; update execute set overdue = ? where id = ?
+2022-03-04 16:13:27.784 DEBUG 8692 --- [nio-8800-exec-8] c.w.epms.Dao.ExecuteMapper.SetOverdue    : ==> Parameters: 0(Integer), 43(String), 0(Integer), 42(String), 1(Integer), 41(String), 1(Integer), 40(String), 0(Integer), 39(String), 0(Integer), 3(String), 1(Integer), 27(String), 1(Integer), 28(String), 0(Integer), 29(String), 0(Integer), 30(String), 0(Integer), 31(String), 1(Integer), 32(String), 0(Integer), 33(String), 1(Integer), 34(String), 0(Integer), 35(String)
+2022-03-04 16:13:27.786 DEBUG 8692 --- [nio-8800-exec-8] c.w.epms.Dao.ExecuteMapper.SetOverdue    : <==    Updates: 1
+查询项目基本信息
+2022-03-04 16:13:31.047 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.P.GetProjectByPage_COUNT         : ==>  Preparing: SELECT count(0) FROM project
+2022-03-04 16:13:31.047 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.P.GetProjectByPage_COUNT         : ==> Parameters: 
+2022-03-04 16:13:31.048 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.P.GetProjectByPage_COUNT         : <==      Total: 1
+2022-03-04 16:13:31.048 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.ProjectMapper.GetProjectByPage   : ==>  Preparing: select * from project order by project.infoCreateTime desc LIMIT ?
+2022-03-04 16:13:31.048 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.ProjectMapper.GetProjectByPage   : ==> Parameters: 15(Integer)
+2022-03-04 16:13:31.049 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.ProjectMapper.GetProjectByPage   : <==      Total: 11
+2022-03-04 16:13:31.049 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:31.049 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 15(Integer)
+2022-03-04 16:13:31.050 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:13:31.050 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:31.050 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 30(Integer)
+2022-03-04 16:13:31.051 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:13:31.051 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:31.051 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 29(Integer)
+2022-03-04 16:13:31.051 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:13:31.052 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:31.052 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 28(Integer)
+2022-03-04 16:13:31.052 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:13:31.053 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:31.053 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 14(Integer)
+2022-03-04 16:13:31.053 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:13:31.054 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:31.054 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 27(Integer)
+2022-03-04 16:13:31.054 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:13:31.055 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:31.055 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 26(Integer)
+2022-03-04 16:13:31.055 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:13:31.055 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:31.055 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 25(Integer)
+2022-03-04 16:13:31.056 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:13:31.056 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:31.056 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 13(Integer)
+2022-03-04 16:13:31.057 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:13:31.057 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:31.057 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 24(Integer)
+2022-03-04 16:13:31.057 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:13:31.057 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:31.058 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 23(Integer)
+2022-03-04 16:13:31.058 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:13:31.058 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:31.058 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 22(Integer)
+2022-03-04 16:13:31.058 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 0
+2022-03-04 16:13:31.059 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:31.059 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 1(Integer)
+2022-03-04 16:13:31.059 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:13:31.059 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:31.059 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 2(Integer)
+2022-03-04 16:13:31.060 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:13:31.060 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:31.060 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 5(Integer)
+2022-03-04 16:13:31.060 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:13:31.060 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:31.061 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 13(Integer)
+2022-03-04 16:13:31.061 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:13:31.061 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:31.061 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 14(Integer)
+2022-03-04 16:13:31.062 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:13:31.062 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:31.062 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 15(Integer)
+2022-03-04 16:13:31.062 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:13:31.063 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:31.063 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 6(Integer)
+2022-03-04 16:13:31.063 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:13:31.063 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:31.063 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 7(Integer)
+2022-03-04 16:13:31.065 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:13:31.065 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:31.065 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-04 16:13:31.066 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+2022-03-04 16:13:31.066 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:31.066 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-04 16:13:31.067 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:13:31.067 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:31.067 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 20(Integer)
+2022-03-04 16:13:31.068 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:13:31.068 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:31.069 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 8(Integer)
+2022-03-04 16:13:31.069 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:13:31.069 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:31.069 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 9(Integer)
+2022-03-04 16:13:31.069 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:13:31.070 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:31.070 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 10(Integer)
+2022-03-04 16:13:31.070 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 0
+2022-03-04 16:13:31.071 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.P.SetOverdueAndFinished          : ==>  Preparing: update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ? ; update project set overdue = ?, finished = ? where id = ?
+2022-03-04 16:13:31.071 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.P.SetOverdueAndFinished          : ==> Parameters: 0(Integer), 0(Integer), 15(String), 0(Integer), 0(Integer), 14(String), 0(Integer), 0(Integer), 13(String), 0(Integer), 0(Integer), 1(String), 0(Integer), 0(Integer), 2(String), 0(Integer), 0(Integer), 5(String), 0(Integer), 0(Integer), 6(String), 1(Integer), 1(Integer), 7(String), 0(Integer), 0(Integer), 8(String), 0(Integer), 0(Integer), 9(String), 0(Integer), 0(Integer), 10(String)
+2022-03-04 16:13:31.072 DEBUG 8692 --- [nio-8800-exec-6] c.w.e.D.P.SetOverdueAndFinished          : <==    Updates: 1
+2022-03-04 16:13:33.195 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==>  Preparing: select * from plan where projectid = ? order by plan.infoCreateTime desc
+2022-03-04 16:13:33.195 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : ==> Parameters: 7(Integer)
+2022-03-04 16:13:33.196 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.PlanMapper.GetPlansByProjectId   : <==      Total: 3
+2022-03-04 16:13:33.196 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:33.196 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 32(Integer)
+2022-03-04 16:13:33.197 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 1
+2022-03-04 16:13:33.197 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:33.197 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 19(Integer)
+2022-03-04 16:13:33.198 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+2022-03-04 16:13:33.198 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==>  Preparing: select * from execute where planid = ? order by execute.infoCreateTime desc
+2022-03-04 16:13:33.198 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : ==> Parameters: 20(Integer)
+2022-03-04 16:13:33.199 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.D.E.GetExecutesByPlanId            : <==      Total: 2
+ 2022-02-01 2022-02-28 1 1 最后阶段 
+<p>最后阶段1</p> 2022-02-01 2022-02-28 1 2  
+<p>1、初步设计要尽可能详细</p><p><span style="font-weight: bold;">2、建模要达到初步设计要求的深度</span></p> 2022-01-01 2022-01-13 1 1 初步设计阶段 
+<p>1、通风模块建模完成</p><p>2、通风插件完成</p> 2022-01-01 2022-01-04 1 2  
+<p>1、除尘模型完成</p> 2022-01-10 2022-01-13 1 2  
+<p>1、模型要达到详细设计阶段要求</p> 2022-01-13 2022-02-28 1 1 详细设计阶段 
+<p>2</p> 2022-02-08 2022-02-16 1 2  
+<p>1</p> 2022-01-04 2022-02-15 1 2  
+2022-03-04 16:13:33.200 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.Dao.ProjectMapper.GetProjectById   : ==>  Preparing: select * from project where id = ? order by project.infoCreateTime desc
+2022-03-04 16:13:33.200 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.Dao.ProjectMapper.GetProjectById   : ==> Parameters: 7(Integer)
+2022-03-04 16:13:33.200 DEBUG 8692 --- [nio-8800-exec-4] c.w.e.Dao.ProjectMapper.GetProjectById   : <==      Total: 1
+2022-03-04 16:13:33.205 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.P.FindProjectByProjectName       : ==>  Preparing: select * from project where name = ? order by project.infoCreateTime desc
+2022-03-04 16:13:33.207 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.P.FindProjectByProjectName       : ==> Parameters: 玉昆项目群(String)
+2022-03-04 16:13:33.207 DEBUG 8692 --- [io-8800-exec-10] c.w.e.D.P.FindProjectByProjectName       : <==      Total: 1
+2022-03-04 18:18:28.750  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m12s680ms816?s600ns).
+2022-03-04 18:25:26.304  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m57s553ms626?s200ns).
+2022-03-04 18:32:21.725  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m55s421ms178?s900ns).
+2022-03-04 18:37:03.160  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m41s435ms39?s500ns).
+2022-03-04 18:43:47.443  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m44s283ms574?s200ns).
+2022-03-04 18:50:50.886  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m3s442ms734?s300ns).
+2022-03-04 18:58:02.503  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m11s617ms226?s100ns).
+2022-03-04 19:03:46.094  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m43s590ms156?s).
+2022-03-04 19:10:41.636  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m55s542ms409?s500ns).
+2022-03-04 19:15:17.983  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=4m36s348ms640?s600ns).
+2022-03-04 19:21:07.803  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m49s820ms45?s400ns).
+2022-03-04 19:28:02.847  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m55s44ms321?s300ns).
+2022-03-04 19:34:48.475  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m45s627ms311?s400ns).
+2022-03-04 19:40:03.660  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m15s185ms420?s100ns).
+2022-03-04 19:47:11.502  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m30s779ms759?s900ns).
+2022-03-04 19:53:29.648  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m18s146ms733?s800ns).
+2022-03-04 19:59:57.211  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m27s562ms705?s100ns).
+2022-03-04 20:02:48.249  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m51s37ms609?s100ns).
+2022-03-04 20:05:24.505  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2m36s255ms970?s500ns).
+2022-03-04 20:11:36.860  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m12s355ms27?s600ns).
+2022-03-04 20:17:36.543  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m59s683ms890?s600ns).
+2022-03-04 20:23:26.520  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=5m49s976ms710?s100ns).
+2022-03-04 20:30:13.166  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m46s646ms301?s400ns).
+2022-03-04 20:37:30.578  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=7m17s411ms863?s400ns).
+2022-03-04 20:44:01.369  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=6m789ms844?s200ns).
+2022-03-05 00:07:32.881  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3h22m55s186ms287?s700ns).
+2022-03-05 00:34:30.370  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=25m27s446ms738?s600ns).
+2022-03-05 02:37:21.795  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h2m51s425ms311?s600ns).
+2022-03-05 04:34:22.493  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h57m698ms59?s800ns).
+2022-03-05 05:17:17.865  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=42m55s371ms720?s500ns).
+2022-03-05 07:20:27.867  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h3m10s2ms121?s100ns).
+2022-03-05 09:35:28.053  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h15m186ms133?s400ns).
+2022-03-05 11:41:27.824  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h5m59s770ms414?s400ns).
+2022-03-05 12:11:58.420  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=30m30s595ms887?s100ns).
+2022-03-05 13:36:26.536  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h24m28s116ms468?s800ns).
+2022-03-05 14:30:57.047  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=54m30s510ms634?s900ns).
+2022-03-05 15:11:42.054  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=40m45s7ms153?s900ns).
+2022-03-05 15:54:49.013  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=43m6s958ms648?s).
+2022-03-05 17:19:17.196  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h24m28s183ms266?s900ns).
+2022-03-05 18:58:27.866  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h39m10s670ms135?s500ns).
+2022-03-05 20:37:47.494  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h39m19s628ms340?s).
+2022-03-05 22:37:52.378  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h4s883ms80?s600ns).
+2022-03-05 23:59:16.192  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h21m23s814ms876?s200ns).
+2022-03-06 01:14:46.292  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h15m30s99ms412?s300ns).
+2022-03-06 03:26:46.753  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h12m461ms86?s700ns).
+2022-03-06 04:38:46.935  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h12m181ms842?s400ns).
+2022-03-06 06:15:17.312  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h36m30s377ms317?s900ns).
+2022-03-06 08:27:16.721  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h11m59s408ms817?s200ns).
+2022-03-06 10:06:16.721  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h39m421?s400ns).
+2022-03-06 11:33:46.483  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h27m29s761ms453?s200ns).
+2022-03-06 11:56:02.489  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=22m16s6ms662?s400ns).
+2022-03-06 12:24:14.107  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=28m11s617ms353?s600ns).
+2022-03-06 13:19:21.205  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=55m7s98ms360?s).
+2022-03-06 14:05:01.677  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=45m40s472ms305?s700ns).
+2022-03-06 14:56:33.678  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=51m32s302?s400ns).
+2022-03-06 16:03:08.853  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1h6m35s175ms172?s400ns).
+2022-03-06 16:28:38.908  WARN 8692 --- [l-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=25m30s56ms482?s700ns).

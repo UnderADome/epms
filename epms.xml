@@ -1,0 +1,27 @@
+<service>
+
+     <id>test</id>
+
+     <name>epms</name>
+
+     <description>epms service</description>
+
+     <!-- java环境变量 -->
+
+     <env name="JAVA_HOME" value="%JAVA_HOME%"/>
+
+     <executable>java</executable>
+
+    <arguments>-jar "F:\Java WorkSpace\epms\epms.jar"</arguments>
+
+     <!-- 开机启动 -->
+
+     <startmode>Automatic</startmode>
+
+     <!-- 日志配置 -->
+
+     <logpath>%BASE%\log</logpath>
+
+     <logmode>rotate</logmode>
+
+ </service>

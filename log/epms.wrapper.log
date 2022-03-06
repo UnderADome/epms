@@ -1,0 +1,12 @@
+2022-03-03 09:33:18,030 DEBUG - Starting WinSW in console mode
+2022-03-03 09:33:20,655 DEBUG - Starting WinSW in console mode
+2022-03-03 09:33:20,669 INFO  - Installing service 'epms (test)'...
+2022-03-03 09:33:20,680 INFO  - Service 'epms (test)' was installed successfully.
+2022-03-03 09:33:46,338 DEBUG - Starting WinSW in service mode
+2022-03-03 09:33:46,357 INFO  - Starting java -jar "F:\Java WorkSpace\epms\epms.jar"
+2022-03-03 09:33:46,382 INFO  - Started process 25072
+2022-03-03 09:33:46,387 DEBUG - Forwarding logs of the process System.Diagnostics.Process (java) to WinSW.SizeBasedRollingLogAppender
+2022-03-04 16:06:05,826 DEBUG - Starting WinSW in service mode
+2022-03-04 16:06:06,210 INFO  - Starting java -jar "F:\Java WorkSpace\epms\epms.jar"
+2022-03-04 16:06:06,335 INFO  - Started process 8692
+2022-03-04 16:06:06,341 DEBUG - Forwarding logs of the process System.Diagnostics.Process (java) to WinSW.SizeBasedRollingLogAppender
