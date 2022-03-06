@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -125,10 +126,16 @@ public class TimelineController {
         //查询会议信息
         List<MonthInfo> meetingMonthInfo = meetingService.GetMeetingCountByYearMonth(year);
         int meetingNum = meetingMonthInfo.size();
+        for (MonthInfo monthInfo : meetingMonthInfo){
+            meetingNum += monthInfo.getMeetingCount();
+        }
 
         //查询培训信息
         List<MonthInfo> trainMonthInfo = trainService.GetTrainCountByYearMonth(year);
-        int trainNum = trainMonthInfo.size();
+        int trainNum = 0;//trainMonthInfo.size();
+        for (MonthInfo monthInfo : trainMonthInfo){
+            trainNum += monthInfo.getTrainCount();
+        }
 
         //查询年度实施最多的一个月
         String exeMostMonth = executeService.GetExeMostMonthByYear(year);

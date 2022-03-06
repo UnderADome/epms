@@ -83,7 +83,8 @@ public interface ExecuteMapper {
             "</script>")
     void SetOverdue(Page<Execute> executes);
 
-    @Select("select count(id) from execute where year(exeRealEndTime) = #{year}")
+    //这里exeRealEndTime修改为了exeStartTime
+    @Select("select count(id) from execute where year(exeStartTime) = #{year}")
     int GetExecuteCountByYear(String year);
 
     @Select("select date_format(exeRealEndTime, '%m') as time, count(id) as executeCount from execute " +
