@@ -79,7 +79,20 @@ alter table project add column finished int(1) default 0;
 alter table project add column infoCreateTime datetime;
 alter table project add column overdue int(1) default 0;
 
-
+drop table platform;
+create table platform(
+id int(11) primary key auto_increment,
+name varchar(100),
+content text,
+leader varchar(100),
+partner varchar(100),
+platStartTime datetime,
+platEndTime datetime,
+platRealEndTime datetime,
+infoCreateTime datetime,
+finished int(1) default 0,
+overdue int(1) default 0
+);
 
 
 #多表联删

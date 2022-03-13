@@ -88,6 +88,26 @@
           ]
         },
         {
+          "title": "平台型任务管理",
+          "href": "",
+          "icon": "fa fa-home",
+          "target": "_self",
+          "child": [
+            {
+              "title": "增加任务",
+              "href": "epmsview/AddPlatform",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            },
+            {
+              "title": "查看任务",
+              "href": "epmsview/ReadPlatformInfo",
+              "icon": "fa fa-tachometer",
+              "target": "_self"
+            }
+          ]
+        },
+        {
           "title": "看板",
           "href": "",
           "icon": "fa fa-home",
