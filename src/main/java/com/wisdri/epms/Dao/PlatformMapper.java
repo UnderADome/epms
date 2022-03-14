@@ -20,23 +20,26 @@ public interface PlatformMapper {
     Page<Platform> GetPlatformByPage();
 
     @Select("<script>" +
-            "select platform.* from platform, plan where 1=1 " +
+            "select platform.* from platform where 1=1 " +
+            "<if test='name!=null and name!=\"\"'> and platform.name like concat('%',#{name},'%') </if> " +
+            "<if test='content!=null and content!=\"\"'> and platform.content like concat('%',#{content},'%') </if> " +
             "<if test='leader!=null and leader!=\"\"'> and platform.leader like concat('%',#{leader},'%') </if> " +
+            "<if test='partner!=null and partner!=\"\"'> and platform.partner like concat('%',#{partner},'%') </if> " +
             "<if test='platStartTime!=null'> and platStartTime like concat('%',#{platStartTime},'%') </if> " +
             "<if test='platEndTime!=null'> and platEndTime like concat('%',#{platEndTime},'%') </if>" +
-            "<if test='planName !=null and planName !=\"\"'> and plan.name like concat('%',#{planName},'%') </if> " +
-            "and platform.planId = plan.id " +
+            "<if test='platRealEndTime!=null'> and platRealEndTime like concat('%',#{platRealEndTime},'%') </if> " +
             " order by platform.infoCreateTime desc" +
             "</script>")
     @ResultType(Platform.class)
     Page<Platform> GetPlatformByPageAndCondition(Platform platform);
 
     @Select("<script>" +
-            "select platform.* from platform, plan where 1=1 " +
+            "select platform.* from platform where 1=1 " +
+            "<if test='name!=null and name!=\"\"'> and platform.name like concat('%',#{name},'%') </if> " +
+            "<if test='content!=null and content!=\"\"'> and platform.content like concat('%',#{content},'%') </if> " +
             "<if test='leader!=null and leader!=\"\"'> and platform.leader like concat('%',#{leader},'%') </if> " +
+            "<if test='partner!=null and partner!=\"\"'> and platform.partner like concat('%',#{partner},'%') </if> " +
             "<if test='platStartTime!=null and platEndTime!=null'> and platStartTime >= #{platStartTime} and platEndTime &lt;= #{platEndTime} </if> " +
-            "<if test='planName !=null and planName !=\"\"'> and plan.name like concat('%',#{planName},'%') </if> " +
-            "and platform.planId = plan.id " +
             " order by platform.infoCreateTime desc" +
             "</script>")
     @ResultType(Platform.class)

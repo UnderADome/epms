@@ -66,7 +66,12 @@ public class PlatformController {
     @ResponseBody
     public Map<String, Object> ReadPlatformInfo(@RequestParam("page") String page, @RequestParam("limit") String limit,
                                                @RequestParam(value = "platform", required = false)String platform){
-        Platform platform1 = JSON.parseObject(platform, Platform.class);
+        Platform platform1 = null;
+        try{
+            platform1 = JSON.parseObject(platform, Platform.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
         Page<Platform> mResultList = new Page<Platform>();
         if (platform1 == null)
             mResultList = platformService.GetPlatformByPage(Integer.parseInt(page), Integer.parseInt(limit));
