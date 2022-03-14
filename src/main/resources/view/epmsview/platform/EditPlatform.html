@@ -2,7 +2,7 @@
     <div class="layuimini-main">
 
         <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-            <legend>填写实施基础内容</legend>
+            <legend>编辑平台型任务内容</legend>
         </fieldset>
 
         <form class="layui-form" action="" id="form" name="form" th:object="${platform}">
@@ -14,29 +14,48 @@
                 <input id="id" name="id" type="text" class="layui-input"
                        th:value="*{id}" style="display: none;">
             </div>
+            <!-- 任务名称
+            name
+            -->
+            <div class="layui-form-item">
+                <label class="layui-form-label">任务名称</label>
+                <div class="layui-input-block">
+                    <input id="name" name="name" type="text"  lay-verify="title" autocomplete="off"
+                           placeholder="任务名称" class="layui-input" th:value="*{name}">
+                </div>
+            </div>
             <!--富文本编辑器-->
             <div class="layui-form-item layui-form-text">
-                <label class="layui-form-label">实施纪要</label>
+                <label class="layui-form-label">任务内容</label>
                 <div class="layui-input-inline" id="editor">   <!--style="margin: 100px 0 100px 0"-->
-                    <p>请输入实施纪要</p>
                 </div>
             </div>
             <!--隐藏的文本域，用于同步富文本中的文本内容，然后向后台传值
             content
             -->
-            <div class="layui-form-item layui-form-text" style="display: none;">
-                <div class="layui-input-block">
-                    <textarea id="content" name="content" class="layui-textarea"></textarea>
+            <div class="layui-form-item layui-form-text" >
+                <div class="layui-input-block"> style="display: none;"
+                    <textarea id="content1" name="content" class="layui-textarea"></textarea>
                 </div>
             </div>
-            <!--实施负责人
+            <!--负责人
             leader
             -->
             <div class="layui-form-item">
-                <label class="layui-form-label">实施落实人</label>
+                <label class="layui-form-label">负责人</label>
                 <div class="layui-input-block">
                     <input id="leader" name="leader" type="text"  lay-verify="title" autocomplete="off"
                            placeholder="实施落实人" class="layui-input" th:value="*{leader}">
+                </div>
+            </div>
+            <!-- 参与人员
+            partner
+            -->
+            <div class="layui-form-item">
+                <label class="layui-form-label">参与人员</label>
+                <div class="layui-input-block">
+                    <input id="partner" name="partner" type="text"  lay-verify="title" autocomplete="off"
+                           placeholder="参与人员" class="layui-input" th:value="*{partner}">
                 </div>
             </div>
             <!--实施启动日期
@@ -74,7 +93,7 @@
             <div class="layui-form-item">
                 <div class="layui-input-block">
                     <button class="layui-btn" lay-submit="" lay-filter="submitAll">立即提交</button>
-                    <button id="reset" type="reset" class="layui-btn layui-btn-primary">重置</button>
+                    <button id="resetBtn" type="reset" class="layui-btn layui-btn-primary">重置</button>
                 </div>
             </div>
 
@@ -132,12 +151,9 @@ https://blog.csdn.net/Hellowenpan/article/details/88680627
             //重写富文本编辑器中的内容
             layui.use('epmsEditor', function () {
                 var epmsEditor = layui.epmsEditor;
-                epmsEditor.initEditor(platformContent, $('#content'));
+                epmsEditor.initEditor(platformContent, $('#content1'));
             });
 
-            //$('#content').text(meetingContent);
-            //$('#content').val(meetingContent);  //这里没有用的原因是textarea要回显的话，需要用$('#content').text
-            //form提交数据的时候也是读的$('#content').text
             console.log("重置操作完毕");
         });
 
@@ -152,6 +168,7 @@ https://blog.csdn.net/Hellowenpan/article/details/88680627
 
     layui.use('epmsEditor', function () {
         var epmsEditor = layui.epmsEditor;
-        epmsEditor.initEditor(platformContent, $('#content'));
+        epmsEditor.initEditor(platformContent, $('#content1'));  //这里不清楚为什么用content就不能修改 #content 底下的值
+        console.log("初始化editor完毕");
     });
 </script>

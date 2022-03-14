@@ -102,6 +102,8 @@ public class PlatformController {
     @RequestMapping(value="platform/UpdatePlatform", method = RequestMethod.POST)
     @ResponseBody
     public String UpdatePlatform(@RequestBody Platform platform){
+        System.out.println(platform);
+        System.out.println("UpdatePlatform：" + platform.getContent() + "\n" + platform.getPlatRealEndTime() == null);
         try{
             platformService.UpdatePlatform(platform);
         }
@@ -112,5 +114,14 @@ public class PlatformController {
         return "1";  //返回1表示成功
     }
 
-
+    /**
+     * 更改为未完成的状态
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "platform/NotdonePlatform", method = RequestMethod.POST)
+    @ResponseBody
+    public String NotdonePlatform(@RequestParam String id){
+        return platformService.NotdonePlatform(id);
+    }
 }

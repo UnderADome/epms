@@ -59,7 +59,7 @@ public interface PlatformMapper {
             "where id = #{id}")
     void UpdatePlatformWithDone(Platform platform);
 
-    @Update("update platform set leader = #{leader}, content = #{content}, question = #{question}, " +
+    @Update("update platform set name = #{name}, content = #{content}, leader = #{leader}, partner = #{partner}, " +
             "platStartTime = #{platStartTime}, platEndTime = #{platEndTime}, " +
             "platRealEndTime = #{platRealEndTime}, finished = 0 " +
             "where id = #{id}")
@@ -80,6 +80,9 @@ public interface PlatformMapper {
             "</foreach>" +
             "</script>")
     void SetOverdue(Page<Platform> platforms);
+
+    @Update("update platform set overdue = #{overdue} where id = #{id}")
+    void SetOverdueOfOnePlatform(Platform platform);
 
     //这里platRealEndTime修改为了platStartTime
     @Select("select count(id) from platform where year(platStartTime) = #{year}")

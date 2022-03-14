@@ -6,6 +6,16 @@
         </fieldset>
 
         <form class="layui-form" action="" id="form" name="form">
+            <!--任务名称
+            name
+            -->
+            <div class="layui-form-item">
+                <label class="layui-form-label">任务名称</label>
+                <div class="layui-input-block">
+                    <input id="name" name="name" type="text"  lay-verify="title" autocomplete="off"
+                           placeholder="任务名称" class="layui-input">
+                </div>
+            </div>
             <!--富文本编辑器-->
             <div class="layui-form-item layui-form-text">
                 <label class="layui-form-label">工作内容</label>
@@ -21,6 +31,16 @@
                     <textarea id="content" name="content" class="layui-textarea"></textarea>
                 </div>
             </div>
+            <!--组织人员
+            leader
+            -->
+            <div class="layui-form-item">
+                <label class="layui-form-label">负责人</label>
+                <div class="layui-input-block">
+                    <input id="leader" name="leader" type="text"  lay-verify="title" autocomplete="off"
+                           placeholder="任务负责人" class="layui-input">
+                </div>
+            </div>
             <!--参与人员
             partner
             -->
@@ -31,23 +51,13 @@
                            placeholder="请输入内容" class="layui-input">
                 </div>
             </div>
-            <!--组织人员
-            organize
-            -->
-            <div class="layui-form-item">
-                <label class="layui-form-label">负责人</label>
-                <div class="layui-input-block">
-                    <input id="leader" name="leader" type="text"  lay-verify="title" autocomplete="off"
-                           placeholder="任务负责人" class="layui-input">
-                </div>
-            </div>
             <!--预计开始时间
             platStartTime
             -->
             <div class="layui-inline">
                 <label class="layui-form-label">预计开始时间</label>
                 <div class="layui-input-inline">
-                    <input id="platStartTime" name="platStartTime" class="layui-input" type="text" lay-verity="date"
+                    <input id="platStartTime" name="platStartTime" class="layui-input timeelement" type="text" lay-verity="date"
                            placeholder="yyyy-MM-dd" autocomplete="off" >
                 </div>
             </div>
@@ -57,17 +67,17 @@
             <div class="layui-inline">
                 <label class="layui-form-label">预计结束时间</label>
                 <div class="layui-input-inline">
-                    <input id="platEndTime" name="platEndTime" class="layui-input" type="text" lay-verity="date"
+                    <input id="platEndTime" name="platEndTime" class="layui-input timeelement" type="text" lay-verity="date"
                            placeholder="yyyy-MM-dd" autocomplete="off" >
                 </div>
             </div>
             <!--实际结束时间
-            realPlatEndTime
+            platRealEndTime
             -->
             <div class="layui-inline">
-                <label class="layui-form-label">实际结束时间</label>
+                <label class="layui-form-label">实际结束时间（填写即表示已完成）</label>
                 <div class="layui-input-inline">
-                    <input id="realPlatEndTime" name="realPlatEndTime" class="layui-input" type="text" lay-verity="date"
+                    <input id="platRealEndTime" name="platRealEndTime" class="layui-input timeelement" type="text" lay-verity="date"
                            placeholder="yyyy-MM-dd" autocomplete="off" >
                 </div>
             </div>
@@ -85,18 +95,19 @@
 </div>
 
 <!--渲染select-->
-<script type="text/javascript">
-    layui.use(['form'], function () {
-        layui.form.render("select");
-    });
-</script>
-
 <!--处理日期的显示-->
 <script type="text/javascript">
     layui.use(['form', 'laydate'], function () {
+        <!--渲染select-->
+        var form = layui.form;
         var laydate = layui.laydate;
-        laydate.render({
-            elem: '#meetingTime'
+        form.render("select");
+        <!--处理日期的显示-->
+        lay('.timeelement').each(function () {
+            laydate.render({
+                elem:this,
+                trigger:'click'
+            })
         })
     })
 </script>

@@ -26,6 +26,12 @@
                             </div>
                         </div>
                         <div class="layui-inline">
+                            <label class="layui-form-label">参与人员</label>
+                            <div class="layui-input-inline">
+                                <input type="text" id="partner" name="partner" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                        <div class="layui-inline">
                             <label class="layui-form-label">预计开始时间</label>
                             <div class="layui-input-inline">
                                 <input type="text" id="platStartTime" name="platStartTime" autocomplete="off" class="layui-input timeelement">
@@ -106,7 +112,7 @@ function renderTable() {
                 //{type: "checkbox", width: 50},
                 {field: 'id', title: 'ID', hide:true},
                 {field: 'name',     width: 120, title: '任务项'},
-                {field: 'content',    width: 200, title: '实施内容', align: "center"},
+                {field: 'content',    width: 200, title: '任务内容', align: "center"},
                 {field: 'leader',    width: 150, title: '负责人', sort: true},
                 {field: 'partner',    width: 150, title: '参与人', sort: true},
                 {field: 'platStartTime', width: 120, title: '预计启动时间',  sort: true},
@@ -150,9 +156,9 @@ function renderTableByPlanId(data) {
                 //{type: "checkbox", width: 50},
                 {field: 'id', title: 'ID', hide:true},
                 {field: 'name',     width: 120, title: '任务项'},
-                {field: 'content',    width: 200, title: '实施内容', align: "center"},
-                {field: 'leader',    width: 150, title: '实施负责人', sort: true},
-                {field: 'partner',    width: 150, title: '实施负责人', sort: true},
+                {field: 'content',    width: 200, title: '任务内容', align: "center"},
+                {field: 'leader',    width: 150, title: '负责人', sort: true},
+                {field: 'partner',    width: 150, title: '参与人', sort: true},
                 {field: 'platStartTime', width: 120, title: '预计启动时间',  sort: true},
                 {field: 'platEndTime', width: 120, title: '预计结束时间',  sort: true},
                 {field: 'platRealEndTime', width: 120, title: '实际结束时间',  sort: true},
