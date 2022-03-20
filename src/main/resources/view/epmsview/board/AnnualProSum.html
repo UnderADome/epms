@@ -186,8 +186,13 @@
                     <div class="layui-card-header" style="font-size: 18px">
                         <i class="fa fa-line-chart icon"></i>报表统计
                     </div>
+                    <!--一年中各种事件的直接统计-->
                     <div class="layui-card-body">
-                        <div id="echarts-records" style="width: 100%;min-height:500px"></div>
+                        <div id="events-records" style="width: 100%;min-height:500px"></div>
+                    </div>
+                    <!--一年中每个人做的实施的统计-->
+                    <div class="layui-card-body">
+                        <div id="person-events-records" style="width: 100%;min-height:500px"></div>
                     </div>
                 </div>
             </div>
@@ -262,9 +267,9 @@
 
                     //渲染曲线图
                     /**
-                     * 报表功能
+                     * 年度事件的直接统计
                      */
-                    var echartsRecords = echarts.init(document.getElementById('echarts-records'), 'walden');
+                    var echartsRecords = echarts.init(document.getElementById('events-records'), 'walden');
                     var optionRecords = {
                         tooltip: {
                             trigger: 'axis'
@@ -313,14 +318,48 @@
                         ]
                     };
                     echartsRecords.setOption(optionRecords);
+
+                    /**
+                     * 年度个人实施的数据统计
+                     */
+                    var echartsRecords = echarts.init(document.getElementById('person-events-records'), 'walden');
+                    var optionRecords = {
+                        tooltip: {
+                            trigger: 'axis'
+                        },
+                        legend: {
+                            data: data.nameArray
+                        },
+                        grid: {
+                            left: '3%',
+                            right: '4%',
+                            bottom: '3%',
+                            containLabel: true
+                        },
+                        toolbox: {
+                            feature: {
+                                saveAsImage: {}
+                            }
+                        },
+                        xAxis: {
+                            type: 'category',
+                            boundaryGap: false,
+                            data: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月']
+                        },
+                        yAxis: {
+                            type: 'value'
+                        },
+                        series: data.personExecuteMonthInfo
+
+                    };
+                    echartsRecords.setOption(optionRecords);
                 },
                 error: function (data) {
                     alert("数据获取异常");
                 }
             });
+
         })
-
-
     }
 
     //判断是否为空串、未定义、null

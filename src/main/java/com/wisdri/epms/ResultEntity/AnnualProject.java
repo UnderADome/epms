@@ -1,5 +1,6 @@
 package com.wisdri.epms.ResultEntity;
 
+import com.alibaba.fastjson.JSONArray;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -39,4 +40,14 @@ public class AnnualProject {
      * 月度信息
      */
     private List<MonthInfo> monthInfoList;
+
+    /**
+     * 一个人某年每个月的实施量的情况统计
+     */
+    private JSONArray personExecuteMonthInfo;
+
+    /**
+     * 用户名称（实施者）信息
+     */
+    private String[] nameArray;
 }

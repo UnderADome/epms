@@ -8,6 +8,7 @@ import com.wisdri.epms.Entity.Plan;
 import com.wisdri.epms.Entity.Receive.SearchExecute;
 import com.wisdri.epms.Entity.Receive.SearchPlan;
 import com.wisdri.epms.ResultEntity.MonthInfo;
+import com.wisdri.epms.ResultEntity.PersonalInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -181,5 +182,11 @@ public class ExecuteService {
      */
     public int GetAllCountOfExecute(){
         return executeMapper.GetAllCountOfExecute();
+    }
+    /**
+     * 按照年月、人员id查询实施情况
+     */
+    public List<PersonalInfo> GetPersonalInfoByYearMonthAndPersonId(String year, String personId){
+        return executeMapper.GetPersonalInfoByYearMonthAndPersonId(year, personId);
     }
 }

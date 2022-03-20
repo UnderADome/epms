@@ -1,11 +1,17 @@
 package com.wisdri.epms.Controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.wisdri.epms.Dao.ExecuteMapper;
+import com.wisdri.epms.Dao.PersonMapper;
 import com.wisdri.epms.Entity.Execute;
+import com.wisdri.epms.Entity.Person;
 import com.wisdri.epms.Entity.Plan;
 import com.wisdri.epms.Entity.Project;
 import com.wisdri.epms.ResultEntity.AnnualProject;
 import com.wisdri.epms.ResultEntity.MonthInfo;
+import com.wisdri.epms.ResultEntity.PersonalInfo;
 import com.wisdri.epms.ResultEntity.ProjectResult;
 import com.wisdri.epms.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +42,8 @@ public class TimelineController {
     TrainService trainService;
     @Autowired
     ExecuteService executeService;
+    @Autowired
+    PersonMapper personMapper;
 
     /**
      * 显示时间线的画面
@@ -125,6 +133,8 @@ public class TimelineController {
     @ResponseBody
     public AnnualProject GetAnnualInfo(String year){
         AnnualProject annualProject = new AnnualProject();
+
+        //region 年度信息直接汇总折线图数据
         //查询项目信息
         //在查询的过程中对项目中完成、未完成；逾期、未逾期的数据进行重计算
         int projectNum = projectService.GetProjectCountByYear(year);
@@ -180,6 +190,45 @@ public class TimelineController {
         annualProject.setTrainNum(trainNum);
         annualProject.setExeMostMonth(exeMostMonth);
         annualProject.setMonthInfoList(monthInfoList);
+
+        //endregion
+
+        //region 每个人的月度实施量信息
+        //预定义一个返回值
+        JSONArray jsonArray = new JSONArray();
+        //查询数据库中有什么人
+        List<Person> personList = personMapper.GetPeople();
+        //提取用户的名称返回给前端
+        String[] nameArray = new String[personList.size()];
+        for (int i=0; i<personList.size(); i++)
+            nameArray[i] = personList.get(i).getName();
+        annualProject.setNameArray(nameArray);
+
+        for (int i=0; i<personList.size(); i++){
+            JSONObject jsonObject = new JSONObject();
+            //对于每个人
+            Person person = personList.get(i);
+            //查询这个人每个月的实施量
+            List<PersonalInfo> personalInfoList = executeService.GetPersonalInfoByYearMonthAndPersonId(year, person.getId());
+            //这个人每个月的实施量，以数组形式记录，用作返回值
+            ArrayList<Integer> m = new ArrayList<>();
+            for (int month = 1; month <=12; month++){
+                for (PersonalInfo personalInfo : personalInfoList){
+                    if (month == Integer.parseInt(personalInfo.getTime()))
+                        m.add(personalInfo.getExecuteCount());
+                    else
+                        m.add(0);
+                }
+            }
+            System.out.println(person.getName());
+            jsonObject.put("name", person.getName());
+            jsonObject.put("type", "line");
+            jsonObject.put("data", m);
+            jsonArray.add(jsonObject);
+        }
+        annualProject.setPersonExecuteMonthInfo(jsonArray);
+        //endregion
+
         return annualProject;
     }
 

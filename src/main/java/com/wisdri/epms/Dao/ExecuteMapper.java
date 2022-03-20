@@ -5,6 +5,7 @@ import com.wisdri.epms.Entity.Execute;
 import com.wisdri.epms.Entity.Plan;
 import com.wisdri.epms.Entity.Receive.SearchExecute;
 import com.wisdri.epms.ResultEntity.MonthInfo;
+import com.wisdri.epms.ResultEntity.PersonalInfo;
 import org.apache.ibatis.annotations.*;
 
 import java.time.LocalDateTime;
@@ -100,4 +101,8 @@ public interface ExecuteMapper {
 
     @Select("select count(id) from execute")
     int GetAllCountOfExecute();
+
+    @Select("select date_format(exeRealEndTime, '%m') as time, count(execute.id) as executeCount, person.name from execute, person " +
+            "where year(exeRealEndTime) = #{year} and execute.leader = #{personId} and execute.leader = person.id group by month(exeRealEndTime)")
+    List<PersonalInfo> GetPersonalInfoByYearMonthAndPersonId(String year, String personId);
 }

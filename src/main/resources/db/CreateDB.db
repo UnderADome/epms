@@ -94,6 +94,23 @@ finished int(1) default 0,
 overdue int(1) default 0
 );
 
+drop table person;
+create table person(
+id varchar(100) unique,
+name varchar(100)
+);
+insert into person values(14530, '李韬');
+insert into person values(18342, '龚宗宜');
+insert into person values(16074, '刘丹瑶');
+insert into person values(08387, '潘宇东');
+insert into person values(20083, '彭起');
+insert into person values(08377, '腾旭东');
+insert into person values(18587, '涂家琪');
+insert into person values(08396, '熊鹏飞');
+insert into person values(46054, '徐明卉');
+insert into person values(08203, '尤敏');
+insert into person values(11156, '张学红');
+insert into person values(14532, '张燎原')
 
 #多表联删
 # delete plan, execute from plan left join execute on execute.planid = plan.id where plan.id = #{id}
