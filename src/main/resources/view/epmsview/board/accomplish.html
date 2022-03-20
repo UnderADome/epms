@@ -189,6 +189,8 @@
     
     function renderTable(data) {
         var appendHtml = '';
+        if (data == null)
+            return;
         console.log("数据量：" + data.length)
         var t1 = 0, t2='', t3=0, t4='';
         var planCount = 0, executeCount = 0;
