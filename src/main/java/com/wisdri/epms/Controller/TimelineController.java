@@ -145,7 +145,7 @@ public class TimelineController {
 
         //查询会议信息
         List<MonthInfo> meetingMonthInfo = meetingService.GetMeetingCountByYearMonth(year);
-        int meetingNum = meetingMonthInfo.size();
+        int meetingNum = 0;// meetingMonthInfo.size();
         for (MonthInfo monthInfo : meetingMonthInfo){
             meetingNum += monthInfo.getMeetingCount();
         }
