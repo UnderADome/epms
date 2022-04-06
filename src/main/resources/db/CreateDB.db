@@ -1,7 +1,7 @@
 create database epms;
 use epms;
 
-drop table meeting;
+drop table if exists meeting;
 create table meeting(
 id int(11) primary key auto_increment,
 content text,
@@ -14,10 +14,9 @@ type varchar(25),
 userId int
 );
 select * from meeting;
-update meeting set content = '1' where id = 29; 
 
 
-create table train(
+create table if exists train(
 id int(11) primary key auto_increment,
 content text,
 question text,
@@ -30,7 +29,7 @@ userId int
 );
 select * from train;
 
-drop table execute;
+drop table if exists execute;
 create table execute(
 id int(11) primary key auto_increment,
 planid int(11),
@@ -41,12 +40,13 @@ exeStartTime datetime,
 exeEndTime datetime
 );
 select * from execute;
-alter table execute drop column finished;
+# alter table execute drop column finished;
 alter table execute add column finished int(1) default 0;
 alter table execute add column infoCreateTime datetime;
 alter table execute add column exeRealEndTime datetime;
 alter table execute add column overdue int(1) default 0;
 
+drop table if exists plan;
 create table plan(
 id int(11) primary key auto_increment,
 projectid int(11),
@@ -57,12 +57,12 @@ planStartTime datetime,
 planEndTime datetime
 );
 select * from plan;
-alter table plan drop column finished;
+# alter table plan drop column finished;
 alter table plan add column finished int(1) default 0;
 alter table plan add column infoCreateTime datetime;
 alter table plan add column overdue int(1) default 0;
 
-drop table project;
+drop table if exists project;
 create table project(
 id int(11) primary key auto_increment,
 leader varchar(100),
@@ -74,12 +74,12 @@ proEndTime datetime,
 partner varchar(100)
 );
 select * from project;
-alter table project drop column finished;
+# alter table project drop column finished;
 alter table project add column finished int(1) default 0;
 alter table project add column infoCreateTime datetime;
 alter table project add column overdue int(1) default 0;
 
-drop table platform;
+drop table if exists platform;
 create table platform(
 id int(11) primary key auto_increment,
 name varchar(100),
@@ -94,7 +94,7 @@ finished int(1) default 0,
 overdue int(1) default 0
 );
 
-drop table person;
+drop table if exists person;
 create table person(
 id varchar(100) unique,
 name varchar(100)
@@ -110,7 +110,16 @@ insert into person values(08396, '熊鹏飞');
 insert into person values(46054, '徐明卉');
 insert into person values(08203, '尤敏');
 insert into person values(11156, '张学红');
-insert into person values(14532, '张燎原')
+insert into person values(14532, '张燎原');
+
+
+drop table if exists oplog;
+create table oplog(
+id int(11) primary key auto_increment,
+personid varchar(100),
+ip varchar(50),
+action varchar(100)
+);
 
 #多表联删
 # delete plan, execute from plan left join execute on execute.planid = plan.id where plan.id = #{id}
