@@ -1,11 +1,15 @@
 package com.wisdri.epms.Controller;
 
+import com.wisdri.epms.Entity.Person;
 import com.wisdri.epms.ResultEntity.WangEditor;
 import io.swagger.annotations.Api;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
@@ -15,25 +19,25 @@ import java.util.*;
 
 @Controller
 @Api("测试")
+@Slf4j
 public class AppController {
-
-//    @RequestMapping("/")
-//    public String app(){
-//        return "epmsview/project/ReadProjectInfo";
-//    }
-
+    /**
+     * 显示layuimini模板中自带的内容
+     * @param content
+     * @return
+     */
     @RequestMapping("page/{content}")
     public String test1(@PathVariable("content") String content){
         System.out.println(content);
         return "page/"+content;
     }
 
-//    @RequestMapping("project/{content1}")
-//    public String test2(@PathVariable("content1") String content1){
-//        System.out.println(content1);
-//        return "project/"+content1;
-//    }
-
+    /**
+     * 测试上传一张图片
+     * @param multipartFile
+     * @param request
+     * @return
+     */
     @RequestMapping(value = "test/submit", method = RequestMethod.POST)
     @ResponseBody
     public WangEditor UploadOnePicture(@RequestParam("pictures") MultipartFile multipartFile, HttpServletRequest request){
@@ -130,4 +134,50 @@ public class AppController {
         return wangEditor;
     }
 
+    //region 用户登录拦截
+    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    public ModelAndView index(Model model, HttpServletRequest request) {
+        //Person person = (Person) request.getSession().getAttribute("user");
+        String person = (String)request.getSession().getAttribute("user");
+        model.addAttribute("user", person);
+        log.info(person + "已进入");
+        //return "redirect:#/epmsview/ReadProjectInfo";
+        //return "#/epmsview/Project/ReadProjectInfo.html";
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("redirect:#/epmsview/ReadProjectInfo");  //这里的跳转一定要加上#，否则不能成功
+        return modelAndView;
+    }
+
+    /**
+     * get方式用来进入login页面
+     * @return
+     */
+    @RequestMapping(value = {"/login"}, method = RequestMethod.GET)
+    public String loginIndex() {
+        log.info("尝试进入login页面");
+        return "epmsview/login";
+    }
+
+    /**
+     * post方式用来验证
+     * @param username
+     * @param password
+     * @param model
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = {"/checklogin"}, method = RequestMethod.POST)
+    public String Login(@RequestParam(name = "username")String username, @RequestParam(name = "password")String password,
+                        Model model, HttpServletRequest request){
+        log.info("执行用户名密码检测 " + username + " " + password);
+        if (username.equals("123123")){
+            model.addAttribute("user", "123123");
+            request.getSession().setAttribute("user", "123123");
+            log.info(username + " 已匹配");
+            return "redirect:/index";
+        }else
+            return "/404";
+    }
+
+    //endregion
 }
