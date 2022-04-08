@@ -1,6 +1,9 @@
 package com.wisdri.epms.Util;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Service;
 
 import javax.naming.AuthenticationException;
 import javax.naming.Context;
@@ -15,6 +18,8 @@ import java.util.Hashtable;
  * @description LDAP认证
  */
 @Slf4j
+@Service
+@PropertySource(value = "classpath:application.properties", ignoreResourceNotFound = true)
 public class LDAPUtil {
 
     /*
@@ -24,6 +29,15 @@ public class LDAPUtil {
 				"192.168.200.14", "@wisdri.com", "389");
 		System.out.println(flag);
      */
+    @Value("${LDAP.host}")
+    public String host;
+    @Value("${LDAP.domain}")
+    public String domain;
+    @Value("${LDAP.port}")
+    public String port;
+    @Value("${LDAP.enabled}")
+    public String LDAPEnabled;
+
 
     /**
      * @param userName

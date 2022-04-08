@@ -31,14 +31,14 @@ document.addEventListener('click', function(){
 
 $('.modal-login form').addEventListener('submit', function(e){
   e.preventDefault()
-  if(!/^\w{3,8}$/.test($('.modal-login input[name=username]').value)){
-    $('.modal-login .errormsg').innerText = '用户名需输入3-8个字符，包括字母数字下划线'
-    return false
-  }
-  if(!/^\w{6,10}$/.test($('.modal-login input[name=password]').value)){
-    $('.modal-login .errormsg').innerText = '密码需输入6-10个字符，包括字母数字下划线'
-    return false
-  }
+  // if(!/^\w{3,8}$/.test($('.modal-login input[name=username]').value)){
+  //   $('.modal-login .errormsg').innerText = '用户名需输入3-8个字符，包括字母数字下划线'
+  //   return false
+  // }
+  // if(!/^\w{6,10}$/.test($('.modal-login input[name=password]').value)){
+  //   $('.modal-login .errormsg').innerText = '密码需输入6-10个字符，包括字母数字下划线'
+  //   return false
+  // }
   this.submit()
 })
 

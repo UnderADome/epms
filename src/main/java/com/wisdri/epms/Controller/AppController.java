@@ -2,8 +2,10 @@ package com.wisdri.epms.Controller;
 
 import com.wisdri.epms.Entity.Person;
 import com.wisdri.epms.ResultEntity.WangEditor;
+import com.wisdri.epms.Service.LoginService;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.ResourceUtils;
@@ -135,6 +137,9 @@ public class AppController {
     }
 
     //region 用户登录拦截
+    @Autowired
+    LoginService loginService;
+
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView index(Model model, HttpServletRequest request) {
         //Person person = (Person) request.getSession().getAttribute("user");
@@ -160,23 +165,39 @@ public class AppController {
 
     /**
      * post方式用来验证
-     * @param username
+     * @param id
      * @param password
      * @param model
      * @param request
      * @return
      */
     @RequestMapping(value = {"/checklogin"}, method = RequestMethod.POST)
-    public String Login(@RequestParam(name = "username")String username, @RequestParam(name = "password")String password,
+    public ModelAndView Login(@RequestParam(name = "id")String id, @RequestParam(name = "password")String password,
                         Model model, HttpServletRequest request){
-        log.info("执行用户名密码检测 " + username + " " + password);
-        if (username.equals("123123")){
-            model.addAttribute("user", "123123");
-            request.getSession().setAttribute("user", "123123");
-            log.info(username + " 已匹配");
-            return "redirect:/index";
-        }else
-            return "/404";
+        ModelAndView view = new ModelAndView();
+        if (!id.equals("") && !password.equals("")) {
+            log.info("执行用户名密码检测 " + id + " " + password);
+            //调用Service中的方法
+            if (loginService.CheckPasswordFromDB(id, password) == true){
+                model.addAttribute("userid", id);
+                request.getSession().setAttribute("userid", id);
+                view.setViewName("redirect:/index");
+            }
+            else if (loginService.CheckPasswordFromLDAP(id, password) == true){
+                model.addAttribute("userid", id);
+                request.getSession().setAttribute("userid", id);
+                view.setViewName("redirect:/index");
+            }
+            else{
+                view.addObject("loginFlag", "false");
+                view.setViewName("epmsview/login");
+            }
+        }
+        else{
+            view.addObject("loginFlag", "false");
+            view.setViewName("epmsview/login");
+        }
+        return view;
     }
 
     //endregion

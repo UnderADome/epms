@@ -30,9 +30,9 @@ public class UserLoginInterceptor implements HandlerInterceptor {
             HttpSession session = request.getSession();
             //统一拦截（查询当前session是否存在person）(这里person会在每次登录成功后，写入session)
             //Person person = (Person) session.getAttribute("person");
-            String person = (String)request.getSession().getAttribute("user");
+            String person = (String)request.getSession().getAttribute("userid");
             if (person != null && !person.equals("")) {
-                log.info("已获取session - " + person + " sessionid = " + request.getSession().getAttribute("user"));
+                log.info("已获取session - " + person + " sessionid = " + request.getSession().getAttribute("userid"));
                 return true;
             }  //else
             log.info("未获取到session，跳转到login页面");
