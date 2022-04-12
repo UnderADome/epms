@@ -175,6 +175,9 @@ select count(id) from project where year(proStartTime) = '2022';
 select max(exeCount) as count, date_format(exeRealEndTime, '%Y-%m') from 
 (select count(id) as exeCount, date_format(exeRealEndTime, '%Y-%m') as exeRealEndTime from execute where year(exeRealEndTime) = '2022') as a;
 
+use epms;
+SET SQL_SAFE_UPDATES = 0;
 select id from person where id=123;
 select * from person;
 update person set id = 14530, password='123' where id = 14530;
+delete from person where id = 14530;
