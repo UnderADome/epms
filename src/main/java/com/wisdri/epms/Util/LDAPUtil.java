@@ -102,18 +102,23 @@ public class LDAPUtil {
             if (ctx!=null){
                 log.info("进入readLdap方法");
                 //过滤条件
-                String filter = "uid=14530";//"(&(objectClass=*)(uid=*))"
+                String filter = "cn=14530";//"(&(objectClass=*)(uid=*))"
                 String[] attrPersonArray = { "uid", "userPassword", "displayName", "cn", "sn", "mail", "description" };
+                //String[] attrPersonArray = { "uid" };
                 //搜索控件
                 SearchControls searchControls = new SearchControls();
-                searchControls.setSearchScope(2);//搜索范围
+                searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);//搜索范围
                 searchControls.setReturningAttributes(attrPersonArray);
                 //测试
-                NamingEnumeration answer_test = ctx.search(basedn, filter.toString(),searchControls);
-                while(answer_test.hasMoreElements()){
+                NamingEnumeration<SearchResult> answer_test = ctx.search(basedn, filter.toString(), searchControls);
+                log.info("查询结果是否为空？" + (answer_test==null));
+                log.info(answer_test.hasMoreElements() + "");
+                log.info(answer_test.hasMore() + "");
+                while(answer_test!=null && answer_test.hasMoreElements()){
                     SearchResult sr = (SearchResult) answer_test.next();
                     log.info("getname=" + sr.getName());
                 }
+
                 //https://blog.csdn.net/belialxing/article/details/89157737
                 //https://www.cnblogs.com/Nadim/p/4681003.html
                 //https://blog.csdn.net/qq_34605063/article/details/108303657
@@ -122,7 +127,7 @@ public class LDAPUtil {
                 // 3.搜索控件，可为null，使用默认的搜索控件
                 NamingEnumeration<SearchResult> answer = ctx.search(basedn, filter.toString(),searchControls);
                 log.info("搜索结果是否为空？" + (answer == null) + " hasMore?" + (answer.hasMore()) + "  " + answer.toString());
-                //while (answer.hasMore()) {
+                while (answer.hasMore()) {
                     log.info("执行搜索ing...");
                     SearchResult result = (SearchResult) answer.next();
                     NamingEnumeration<? extends Attribute> attrs = result.getAttributes().getAll();
@@ -149,7 +154,7 @@ public class LDAPUtil {
                     }
                     if(lu.getUid()!=null)
                         lm.add(lu);
-                //}
+                }
             }
         }catch (Exception e) {
             System.out.println("获取用户信息异常:");

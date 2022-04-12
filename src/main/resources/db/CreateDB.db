@@ -15,8 +15,8 @@ userId int
 );
 select * from meeting;
 
-
-create table if exists train(
+drop table if exists train;
+create table train(
 id int(11) primary key auto_increment,
 content text,
 question text,
