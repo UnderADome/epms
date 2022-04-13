@@ -96,9 +96,10 @@ overdue int(1) default 0
 
 drop table if exists person;
 create table person(
-id varchar(100) unique,
+id varchar(100) unique not null,
 name varchar(100),
-password varchar(50)
+password varchar(50),
+mail varchar(50)
 );
 insert into person(id, name) values(14530, '李韬');
 insert into person(id, name) values(18342, '龚宗宜');

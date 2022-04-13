@@ -1,5 +1,6 @@
 package com.wisdri.epms.Util;
 
+import com.wisdri.epms.Entity.Person;
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -52,68 +53,78 @@ public class LDAPUtil {
      * @param port      默认389
      * @return
      */
-    public boolean Authentication(String userName, String password, String host, String domain, String port){
+    public LdapContext Authentication(String userName, String password, String host, String domain, String port){
         String url = new String("ldap://" + host + ":" + port);//固定写法
         String user = userName.indexOf(domain) > 0 ? userName : userName
                 + domain;//网上有别的方法，但是在我这儿都不好使，建议这么使用
         Hashtable env = new Hashtable();//实例化一个Env
         LdapContext ctx = null;
-        //DirContext ctx = null;
         env.put(Context.SECURITY_AUTHENTICATION, "simple");//LDAP访问安全级别(none,simple,strong),一种模式，这么写就行
         env.put(Context.SECURITY_PRINCIPAL, user); //用户名
         env.put(Context.SECURITY_CREDENTIALS, password);//密码
         env.put(Context.INITIAL_CONTEXT_FACTORY,
                 "com.sun.jndi.ldap.LdapCtxFactory");// LDAP工厂类
         env.put(Context.PROVIDER_URL, url);//Url
+        //env.put(Context.REFERRAL, "follow");//这里有三种模式，默认是ignore
         try {
             ctx = new InitialLdapContext(env, null);
-            //ctx = new InitialDirContext(env);// 初始化上下文
+            //ctx1 = new InitialDirContext(env);// 初始化上下文
             log.info("初始化ctx");
-            readLdap(ctx, "dc=wisdri,dc=com");
-            log.info(LocalDateTime.now() + " " + userName + " " + password + " " + "身份验证成功!");
-            return true;
+            log.info(userName + " " + password + " " + "身份验证成功!");
+            //readLdap(ctx, "dc=wisdri,dc=com", "cn=14530");
+            return ctx;
         } catch (AuthenticationException e) {
             log.info(LocalDateTime.now() + " " + "身份验证失败!");
             e.printStackTrace();
-            return false;
+            return null;
         } catch (javax.naming.CommunicationException e) {
             log.info(LocalDateTime.now() + " " + "AD域连接失败!");
             e.printStackTrace();
-            return false;
+            return null;
         } catch (Exception e) {
             log.info(LocalDateTime.now() + " " + "未知的身份信息!");
             e.printStackTrace();
-            return false;
-        } finally{
-            if(null!=ctx){
-                try {
-                    ctx.close();
-                    ctx=null;
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
+            return null;
         }
+        //
+        //一个非常狗血的问题：如果写了finally，try里面的内容一定会先走finally，再return
+        //
+//        finally{
+//            if(null!=ctx){
+//                try {
+//                    ctx.close();
+//                    ctx=null;
+//                } catch (Exception e) {
+//                    e.printStackTrace();
+//                }
+//            }
+//        }
     }
 
-    public void readLdap(LdapContext ctx, String basedn){
-        List<LdapUser> lm=new ArrayList<LdapUser>();
+    /**
+     * 从ldap中读取用户基本信息
+     * @param ctx
+     * @param basedn
+     * @param filter 过滤条件 格式：filter = "cn=14530";
+     */
+    public Person readLdap(LdapContext ctx, String basedn, String filter){
+        Person person = new Person();
         try{
             if (ctx!=null){
                 log.info("进入readLdap方法");
                 //过滤条件
-                String filter = "cn=14530";//"(&(objectClass=*)(uid=*))"
-                String[] attrPersonArray = { "uid", "userPassword", "displayName", "cn", "sn", "mail", "description" };
-                //String[] attrPersonArray = { "uid" };
+                //String filter = "displayName=李韬";//"(&(objectClass=*)(uid=*))"
+                String[] attrPersonArray = { "uid", "userPassword", "displayName", "cn", "sn", "mail", "description",
+                    "ou", "mobile", "objectClass"};
+
                 //搜索控件
                 SearchControls searchControls = new SearchControls();
                 searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);//搜索范围
                 searchControls.setReturningAttributes(attrPersonArray);
-                //测试
+                System.out.println("filter="+filter + " baseDN=" + basedn);
+                //可以查询所在组织
                 NamingEnumeration<SearchResult> answer_test = ctx.search(basedn, filter.toString(), searchControls);
-                log.info("查询结果是否为空？" + (answer_test==null));
-                log.info(answer_test.hasMoreElements() + "");
-                log.info(answer_test.hasMore() + "");
+                //NamingEnumeration<SearchResult> answer_test = ctx.search("dc=wisdri,dc=com", "displayName=李韬", searchControls);
                 while(answer_test!=null && answer_test.hasMoreElements()){
                     SearchResult sr = (SearchResult) answer_test.next();
                     log.info("getname=" + sr.getName());
@@ -131,29 +142,19 @@ public class LDAPUtil {
                     log.info("执行搜索ing...");
                     SearchResult result = (SearchResult) answer.next();
                     NamingEnumeration<? extends Attribute> attrs = result.getAttributes().getAll();
-                    LdapUser lu=new LdapUser();
+
                     while (attrs.hasMore()) {
                         Attribute attr = (Attribute) attrs.next();
-                        if("userPassword".equals(attr.getID())){
-                            Object value = attr.get();
-                            lu.setUserPassword(new String((byte [])value));
-                        }else if("uid".equals(attr.getID())){
-                            lu.setUid(attr.get().toString());
+                        log.info(attr.getID() + " " + attr.get().toString());
+                        if("cn".equals(attr.getID())){
+                            System.out.println(attr.get().toString());
+                            person.setId(attr.get().toString());
                         }else if("displayName".equals(attr.getID())){
-                            lu.setDisplayName(attr.get().toString());
-                        }else if("cn".equals(attr.getID())){
-                            lu.setCn(attr.get().toString());
-                        }else if("sn".equals(attr.getID())){
-                            lu.setSn(attr.get().toString());
+                            person.setName(attr.get().toString());
                         }else if("mail".equals(attr.getID())){
-                            lu.setMail(attr.get().toString());
-                        }else if("description".equals(attr.getID())){
-                            lu.setDescription(attr.get().toString());
+                            person.setMail(attr.get().toString());
                         }
-                        System.out.println(lu);
                     }
-                    if(lu.getUid()!=null)
-                        lm.add(lu);
                 }
             }
         }catch (Exception e) {
@@ -161,20 +162,6 @@ public class LDAPUtil {
             e.printStackTrace();
         }
 
-        //return lm;
-    }
-
-    @Data
-    public class LdapUser {
-        public String cn;
-        public String sn;
-        public String uid;
-        public String userPassword;
-        public String displayName;
-        public String mail;
-        public String description;
-        public String uidNumber;
-        public String gidNumber;
-        /**忽略get\set方法**/
+        return person;
     }
 }

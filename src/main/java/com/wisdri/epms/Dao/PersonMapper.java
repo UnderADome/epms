@@ -17,8 +17,8 @@ public interface PersonMapper {
     @Update("update person set password = #{password} where id = #{id}")
     int UpdatePerson(String id, String password);
 
-    @Insert("insert into person(id, password) values (#{id}, #{password})")
-    int AddPerson(String id, String password);
+    @Insert("insert into person(id, password, mail, name) values (#{id}, #{password}, #{mail}, #{name})")
+    int AddPerson(Person person);
 
     @Select("select id from person where id = #{id}")
     String SearchPersonId(String id);

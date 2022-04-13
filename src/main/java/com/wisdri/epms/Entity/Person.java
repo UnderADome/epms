@@ -12,15 +12,19 @@ import lombok.Setter;
 @Getter
 public class Person {
     /**
-     * 用户id
+     * 用户id cn
      */
     private String id;
     /**
-     * 姓名
+     * 姓名 displayName
      */
     private String name;
     /**
      * 密码
      */
     private String password;
+    /**
+     * 邮箱
+     */
+    private String mail;
 }
