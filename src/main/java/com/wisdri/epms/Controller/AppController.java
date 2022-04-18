@@ -1,8 +1,11 @@
 package com.wisdri.epms.Controller;
 
+import com.wisdri.epms.Dao.CommonMapper;
+import com.wisdri.epms.Entity.Operation;
 import com.wisdri.epms.Entity.Person;
 import com.wisdri.epms.ResultEntity.WangEditor;
 import com.wisdri.epms.Service.LoginService;
+import com.wisdri.epms.Util.LogUtil;
 import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,12 +20,14 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.net.URLDecoder;
+import java.time.LocalDateTime;
 import java.util.*;
 
 @Controller
 @Api("测试")
 @Slf4j
 public class AppController {
+    //region 测试用
     /**
      * 显示layuimini模板中自带的内容
      * @param content
@@ -135,10 +140,15 @@ public class AppController {
         System.out.println(wangEditor.toString());
         return wangEditor;
     }
+    //endregion
 
     //region 用户登录拦截
     @Autowired
     LoginService loginService;
+    @Autowired
+    CommonMapper commonMapper;
+    @Autowired
+    LogUtil logUtil;
 
     @RequestMapping(value = "/index", method = RequestMethod.GET)
     public ModelAndView index(Model model, HttpServletRequest request) {
@@ -182,20 +192,28 @@ public class AppController {
                 model.addAttribute("userid", id);
                 request.getSession().setAttribute("userid", id);
                 view.setViewName("redirect:/index");
+                Operation operation = logUtil.CreateOneLog(id, request.getRemoteAddr(), "用户登录-数据库验证", LocalDateTime.now().toString(), 1);
+                commonMapper.SaveLog(operation);
             }
             else if (loginService.CheckPasswordFromLDAP(id, password) == true){
                 model.addAttribute("userid", id);
                 request.getSession().setAttribute("userid", id);
                 view.setViewName("redirect:/index");
+                Operation operation = logUtil.CreateOneLog(id, request.getRemoteAddr(), "用户登录-LDAP验证", LocalDateTime.now().toString(), 1);
+                commonMapper.SaveLog(operation);
             }
             else{
                 view.addObject("loginFlag", "false");
                 view.setViewName("epmsview/login");
+                Operation operation = logUtil.CreateOneLog(id, request.getRemoteAddr(), "用户登录-验证失败", LocalDateTime.now().toString(), 0);
+                commonMapper.SaveLog(operation);
             }
         }
         else{
             view.addObject("loginFlag", "false");
             view.setViewName("epmsview/login");
+            Operation operation = logUtil.CreateOneLog(id, request.getRemoteAddr(), "用户登录-输入有误，返回登录页面", LocalDateTime.now().toString(), 0);
+            commonMapper.SaveLog(operation);
         }
         return view;
     }

@@ -120,8 +120,11 @@ create table oplog(
 id int(11) primary key auto_increment,
 personid varchar(100),
 ip varchar(50),
-action text
+action text,
+operateTime datetime,
+successFlag int(1)
 );
+select * from oplog;
 
 #多表联删
 # delete plan, execute from plan left join execute on execute.planid = plan.id where plan.id = #{id}

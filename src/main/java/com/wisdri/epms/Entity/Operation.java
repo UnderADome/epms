@@ -25,4 +25,12 @@ public class Operation {
      * 在DB中text类型
      */
     private String action;
+    /**
+     * 操作时间
+     */
+    private String operateTime;
+    /**
+     * 标识该操作是否成功 1 成功 0 未成功
+     */
+    private int successFlag;
 }
