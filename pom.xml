@@ -16,8 +16,22 @@
 	<description>BIM中心内部项目管理平台（Engineering Project Management System）</description>
 	<properties>
 		<java.version>1.8</java.version>
+		<!--一种写法，也可参见下方log4j配置-->
+        <!--<log4j.version>2.17.0</log4j.version>-->
 	</properties>
 	<dependencies>
+		<!--这个配置要放在第一位（排除logback的依赖需要放在第一位上）-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+			<!--改用log4j，因此排除springboot自带的logback（不想写logback的xml配置）-->
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jdbc</artifactId>
@@ -28,7 +42,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
+			<artifactId>spring-boot-starter-log4j</artifactId>
+			<version>1.3.8.RELEASE</version>
 		</dependency>
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
